@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03">
+  <CstmrCdtTrfInitn>
+    <GrpHdr>
+      <MsgId>US_XML_V3_WIRE_SAMPLE</MsgId>
+      <CreDtTm>2016-04-25T22:28:00</CreDtTm>
+      <Authstn>
+        <Cd>AUTH</Cd>
+      </Authstn>
+      <NbOfTxs>1</NbOfTxs>
+      <InitgPty>
+        <Id>
+          <OrgId>
+            <Othr>
+              <Id>ABC999999999</Id>
+            </Othr>
+          </OrgId>
+        </Id>
+      </InitgPty>
+    </GrpHdr>
+    <PmtInf>
+      <PmtInfId>USXMLV3WIRE</PmtInfId>
+
+      <PmtMtd>TRF</PmtMtd>
+     
+      <PmtTpInf>
+         <SvcLvl><Cd>URGP</Cd></SvcLvl>
+      </PmtTpInf>
+      <ReqdExctnDt>2016-04-25</ReqdExctnDt>
+      <Dbtr>
+        <Nm>DEBTOR NAME HERE</Nm>
+        <PstlAdr>
+           <StrtNm>DEBTOR STREET</StrtNm> 
+           <BldgNb>ONE</BldgNb> 
+           <PstCd>14203</PstCd> 
+           <TwnNm>BUFFALO</TwnNm> 
+           <CtrySubDvsn>NEW YORK</CtrySubDvsn>
+           <Ctry>US</Ctry> 
+        </PstlAdr>
+      </Dbtr>
+      <DbtrAcct>
+      <Id>
+        <Othr>
+          <Id>999999999</Id>
+        </Othr>
+      </Id>
+      </DbtrAcct>
+      <DbtrAgt>
+       <FinInstnId>
+         <BIC>MRMDUS33</BIC>
+         <Nm>DEBTOR AGENT NAME</Nm>
+         <PstlAdr>
+           <StrtNm>DBTR AGENT STREET</StrtNm>
+           <BldgNb>DBTRBLDG</BldgNb>
+           <PstCd>DBTRZIP</PstCd>
+           <TwnNm>DBTRTWN</TwnNm>
+           <CtrySubDvsn>New York</CtrySubDvsn>
+           <Ctry>US</Ctry>
+         </PstlAdr>
+       </FinInstnId>
+      </DbtrAgt>
+      <ChrgBr>DEBT</ChrgBr>
+      <CdtTrfTxInf>
+        <PmtId>
+          <InstrId>US_XMLV3_WIRE_SAMPLE</InstrId>
+          <EndToEndId>US_XMLV3_WIRE_SAMPLE</EndToEndId>
+        </PmtId>
+        <Amt>
+          <InstdAmt Ccy="USD">.01</InstdAmt>
+        </Amt>
+        <CdtrAgt>
+          <FinInstnId>
+            <BIC>MRMDUS33</BIC>
+             <PstlAdr>
+              <StrtNm>CREDITOR AGENT STREET</StrtNm> 
+              <BldgNb>30</BldgNb> 
+              <PstCd>14301</PstCd> 
+              <TwnNm>NIAGARA FALLS</TwnNm> 
+              <CtrySubDvsn>NEW YORK</CtrySubDvsn>
+              <Ctry>US</Ctry> 
+          </PstlAdr>
+          </FinInstnId>
+        </CdtrAgt>
+        <Cdtr>
+          <Nm>CREDITOR NAME </Nm>
+          <PstlAdr>
+            <StrtNm>CREDITOR STREET</StrtNm> 
+            <BldgNb>140</BldgNb> 
+            <PstCd>14228</PstCd> 
+            <TwnNm>NORTH TONAWANDA</TwnNm> 
+            <CtrySubDvsn>NEW YORK</CtrySubDvsn>
+            <Ctry>US</Ctry> 
+          </PstlAdr>
+        </Cdtr>
+        <CdtrAcct>
+          <Id>
+            <Othr><Id>123456789</Id></Othr>
+          </Id>
+        </CdtrAcct>
+     </CdtTrfTxInf>
+    </PmtInf>
+  </CstmrCdtTrfInitn>
+</Document>

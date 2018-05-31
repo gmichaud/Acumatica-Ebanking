@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03">
+  <CstmrCdtTrfInitn>
+    <GrpHdr>
+      <MsgId>US_XMLV3_COS_SAMPLE</MsgId>
+      <CreDtTm>2016-04-27T22:28:00</CreDtTm>
+      <Authstn>
+        <Cd>AUTH</Cd>
+      </Authstn>
+      <NbOfTxs>1</NbOfTxs>
+      <InitgPty><Id><OrgId><Othr><Id>ABC999999999</Id></Othr></OrgId></Id></InitgPty>
+    </GrpHdr>
+    <PmtInf>
+      <PmtInfId>US_XMLV3_COS_SAMPLE</PmtInfId>
+      <PmtMtd>CHK</PmtMtd>
+      <PmtTpInf><SvcLvl><Cd>NURG</Cd></SvcLvl></PmtTpInf>
+      <ReqdExctnDt>2016-04-27</ReqdExctnDt>
+      <Dbtr>
+        <Nm>DEBTOR NAME</Nm>
+        <PstlAdr>
+           <StrtNm>DEBTOR STREET</StrtNm> 
+           <BldgNb>ONE</BldgNb> 
+           <PstCd>14203</PstCd> 
+           <TwnNm>BUFFALO</TwnNm> 
+           <CtrySubDvsn>NY</CtrySubDvsn>
+           <Ctry>US</Ctry> 
+        </PstlAdr>
+        <Id><OrgId><Othr><Id>9999999999</Id></Othr></OrgId></Id>
+      </Dbtr>
+      <DbtrAcct><Id><Othr><Id>999999999</Id></Othr></Id></DbtrAcct>
+      <DbtrAgt>
+        <FinInstnId>
+        <ClrSysMmbId><MmbId>022000020</MmbId></ClrSysMmbId>
+         <PstlAdr>
+            <Ctry>US</Ctry> 
+        </PstlAdr>
+        </FinInstnId>
+      </DbtrAgt>   
+      <CdtTrfTxInf>
+        <PmtId>
+          <InstrId>IID_US_XMLV3_COS</InstrId>
+          <EndToEndId>E2E_US_XMLV3_COS</EndToEndId>
+        </PmtId>
+        <Amt>
+          <InstdAmt Ccy="USD">4.44</InstdAmt>
+        </Amt>
+        <ChqInstr>
+          <ChqNb>122611</ChqNb>
+          <DlvryMtd>
+              <Cd>CRDB</Cd>
+          </DlvryMtd>
+          <DlvrTo>
+            <Nm>DELIVER TO NAME</Nm>
+            <Adr>
+             <AdrTp>ADDR</AdrTp>
+             <Dept>Department</Dept>
+    	     <SubDept>SubDepartment</SubDept>
+	     <StrtNm>DELIVER TO STREET</StrtNm>
+	     <PstCd>14228</PstCd>
+	     <TwnNm>MILLARDTOWN</TwnNm>
+	     <CtrySubDvsn>NY</CtrySubDvsn>
+	     <Ctry>US</Ctry>
+            </Adr>
+          </DlvrTo>
+          <FrmsCd>XXX</FrmsCd>
+          <MemoFld>Inf1 need to printed on cheque</MemoFld>
+        </ChqInstr>
+         <Cdtr>
+          <Nm>US COS CREDITOR NAME </Nm>
+          <PstlAdr>
+            <StrtNm>CREDITOR STREET</StrtNm> 
+            <BldgNb>140</BldgNb> 
+            <PstCd>14228</PstCd> 
+            <TwnNm>NORTH TONAWANDA</TwnNm> 
+            <CtrySubDvsn>NY</CtrySubDvsn>
+            <Ctry>US</Ctry> 
+          </PstlAdr>
+        </Cdtr>
+      </CdtTrfTxInf>
+    </PmtInf>
+  </CstmrCdtTrfInitn>
+</Document>
