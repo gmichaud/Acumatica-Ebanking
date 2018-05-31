@@ -3,25 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AcumaticaDemo70", "http://localhost/AcumaticaDemo70", "{E752D644-F22A-449F-9556-0C5AE763A714}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LTApparel", "http://localhost/LTApparel", "{E752D644-F22A-449F-9556-0C5AE763A714}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "false"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
-		Debug.AspNetCompiler.VirtualPath = "/AcumaticaDemo70"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo70\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\AcumaticaDemo70\"
+		ProjectReferences = "{769d0108-a644-4dcf-b96e-ac00fb22f9c3}|NexVue.HsbcEBanking.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/LTApparel"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\Program Files (x86)\Acumatica ERP\LTApparel\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\LTApparel\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/AcumaticaDemo70"
-		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo70\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\AcumaticaDemo70\"
+		Release.AspNetCompiler.VirtualPath = "/LTApparel"
+		Release.AspNetCompiler.PhysicalPath = "..\..\Program Files (x86)\Acumatica ERP\LTApparel\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\LTApparel\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "..\..\..\..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo70\"
+		SlnRelativePath = "..\..\Program Files (x86)\Acumatica ERP\LTApparel\"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexVue.HsbcEBanking", "NexVue.HsbcEBanking.csproj", "{769D0108-A644-4DCF-B96E-AC00FB22F9C3}"
@@ -43,9 +44,7 @@ Global
 		{769D0108-A644-4DCF-B96E-AC00FB22F9C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{769D0108-A644-4DCF-B96E-AC00FB22F9C3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CEC8B31F-8A7E-4F62-808F-CAA06E4A950D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CEC8B31F-8A7E-4F62-808F-CAA06E4A950D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEC8B31F-8A7E-4F62-808F-CAA06E4A950D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CEC8B31F-8A7E-4F62-808F-CAA06E4A950D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -31,16 +31,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PX.Common">
-      <HintPath>..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo70\Bin\PX.Common.dll</HintPath>
+      <HintPath>..\..\Program Files (x86)\Acumatica ERP\LTApparel\Bin\PX.Common.dll</HintPath>
     </Reference>
     <Reference Include="PX.Data">
-      <HintPath>..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo70\Bin\PX.Data.dll</HintPath>
+      <HintPath>..\..\Program Files (x86)\Acumatica ERP\LTApparel\Bin\PX.Data.dll</HintPath>
     </Reference>
     <Reference Include="PX.DataSync">
-      <HintPath>..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo70\Bin\PX.DataSync.dll</HintPath>
+      <HintPath>..\..\Program Files (x86)\Acumatica ERP\LTApparel\Bin\PX.DataSync.dll</HintPath>
+    </Reference>
+    <Reference Include="PX.DbServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Program Files (x86)\Acumatica ERP\LTApparel\Bin\PX.DbServices.dll</HintPath>
     </Reference>
     <Reference Include="PX.Objects">
-      <HintPath>..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo70\Bin\PX.Objects.dll</HintPath>
+      <HintPath>..\..\Program Files (x86)\Acumatica ERP\LTApparel\Bin\PX.Objects.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -54,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Descriptor\Messages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="HsbcAchProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="XmlFormater\" />
