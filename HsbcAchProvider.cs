@@ -73,6 +73,8 @@ namespace NexVue.HsbcEBanking
 
         public override string ProviderName => "HSBC ACH Export Provider";
 
+        public override string Extensiton => DefaultFileExtension;
+
         public override PXFieldState[] GetSchemaFields(string objectName)
         {
             List<PXFieldState> ret = new List<PXFieldState>(base.GetSchemaFields(objectName));
@@ -132,6 +134,12 @@ namespace NexVue.HsbcEBanking
             List<PXStringState> ret = base.FillParameters();
             ret.Add(CreateParameter(IncomingBatchNumber, Titles.IncomingBatchNumber, String.Empty));
             return ret;
+        }
+
+        protected override void InitialiseFile(string fileName, bool create, int? revision)
+        {
+            //TODO: Fix wrong file extension issue
+            base.InitialiseFile(fileName, create, revision);
         }
 
         protected override byte[] InternalExport(string objectName, PXSYTable table)
@@ -245,7 +253,7 @@ namespace NexVue.HsbcEBanking
                         writer.WriteStartElement("CdtrAgt");
                             writer.WriteStartElement("FinInstnId");
                                 writer.WriteStartElement("ClrSysMmbId");
-                                    writer.WriteElementString("MmbId", row[table.Columns.IndexOf(DbtrFinInstnClrSysMmbId)]);
+                                    writer.WriteElementString("MmbId", row[table.Columns.IndexOf(CdtrFinInstnClrSysMmbId)]);
                                 writer.WriteEndElement(); //ClrSysMmbId
                                 writer.WriteStartElement("PstlAdr");
                                     writer.WriteElementString("StrtNm", row[table.Columns.IndexOf(CdtrFinInstnStrtNm)]);
@@ -267,7 +275,10 @@ namespace NexVue.HsbcEBanking
                                 writer.WriteElementString("CtrySubDvsn", row[table.Columns.IndexOf(CdtrCtrySubDvsn)]);
                                 writer.WriteElementString("Ctry", row[table.Columns.IndexOf(CdtrCtry)]);
                                 writer.WriteElementString("AdrLine", row[table.Columns.IndexOf(CdtrAdrLine1)]);
-                                writer.WriteElementString("AdrLine", row[table.Columns.IndexOf(CdtrAdrLine2)]);
+                                if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(CdtrAdrLine2)]))
+                                {
+                                    writer.WriteElementString("AdrLine", row[table.Columns.IndexOf(CdtrAdrLine2)]);
+                                }
                             writer.WriteEndElement(); //PstlAdr
                         writer.WriteEndElement(); //Cdtr
 
@@ -337,8 +348,6 @@ namespace NexVue.HsbcEBanking
 
         protected virtual void SaveNotes(Guid fileId, IEnumerable<String> notes)
         {
-            if (notes.Count() <= 0) return;
-
             foreach (String note in notes)
             {
                 if (!String.IsNullOrEmpty(note))
@@ -397,6 +406,11 @@ namespace NexVue.HsbcEBanking
         public string FormatDate(DateTime date)
         {
             return date.ToString("yyyy-MM-dd");
+        }
+
+        public virtual string FormatAmount(decimal amount)
+        {
+            return amount.ToString(System.Globalization.CultureInfo.InvariantCulture);
         }
 
         public virtual string CacheValue(string key, string value)
