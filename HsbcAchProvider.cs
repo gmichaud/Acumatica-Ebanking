@@ -55,8 +55,8 @@ namespace NexVue.HsbcEBanking
         protected const string CdtrFinInstnCtrySubDvsn = "CdtrFinInstnCtrySubDvsn";
         protected const string CdtrFinInstnCtry = "CdtrFinInstnCtry";
         protected const string CdtrNm = "CdtrNm";
-        protected const string CdtrStrtNm = "CdtrStrtNm";
-        protected const string CdtrBldgNb = "CdtrBldgNb";
+        protected const string CdtrAdrLine1 = "CdtrAdrLine1";
+        protected const string CdtrAdrLine2 = "CdtrAdrLine2";
         protected const string CdtrPstCd = "CdtrPstCd";
         protected const string CdtrTwnNm = "CdtrTwnNm";
         protected const string CdtrCtrySubDvsn = "CdtrCtrySubDvsn";
@@ -116,8 +116,8 @@ namespace NexVue.HsbcEBanking
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrFinInstnCtrySubDvsn)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrFinInstnCtry)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrNm)));
-            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrStrtNm)));
-            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrBldgNb)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrAdrLine1)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrAdrLine2)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrPstCd)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrTwnNm)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrCtrySubDvsn)));
@@ -204,7 +204,7 @@ namespace NexVue.HsbcEBanking
                         writer.WriteEndElement(); //Id
                     writer.WriteEndElement(); //Dbtr
 
-                    //Debitor account
+                    //Debitor Account
                     writer.WriteStartElement("DbtrAcct");
                         writer.WriteStartElement("Id");
                             writer.WriteStartElement("Othr");
@@ -213,7 +213,7 @@ namespace NexVue.HsbcEBanking
                         writer.WriteEndElement(); //Id
                     writer.WriteEndElement(); //DbtrAcct
 
-                    //Debitor agent
+                    //Debitor Agent
                     writer.WriteStartElement("DbtrAgt");
                         writer.WriteStartElement("FinInstnId");
                         writer.WriteStartElement("ClrSysMmbId");
@@ -262,16 +262,16 @@ namespace NexVue.HsbcEBanking
                         writer.WriteStartElement("Cdtr");
                             writer.WriteElementString("Nm", row[table.Columns.IndexOf(CdtrNm)]);
                             writer.WriteStartElement("PstlAdr");
-                                writer.WriteElementString("StrtNm", row[table.Columns.IndexOf(CdtrStrtNm)]);
-                                writer.WriteElementString("BldgNb", row[table.Columns.IndexOf(CdtrBldgNb)]);
                                 writer.WriteElementString("PstCd", row[table.Columns.IndexOf(CdtrPstCd)]);
                                 writer.WriteElementString("TwnNm", row[table.Columns.IndexOf(CdtrTwnNm)]);
                                 writer.WriteElementString("CtrySubDvsn", row[table.Columns.IndexOf(CdtrCtrySubDvsn)]);
                                 writer.WriteElementString("Ctry", row[table.Columns.IndexOf(CdtrCtry)]);
+                                writer.WriteElementString("AdrLine", row[table.Columns.IndexOf(CdtrAdrLine1)]);
+                                writer.WriteElementString("AdrLine", row[table.Columns.IndexOf(CdtrAdrLine2)]);
                             writer.WriteEndElement(); //PstlAdr
                         writer.WriteEndElement(); //Cdtr
 
-                        //Creditor account
+                        //Creditor Account
                         writer.WriteStartElement("CdtrAcct");
                             writer.WriteStartElement("Id");
                                 writer.WriteStartElement("Othr");

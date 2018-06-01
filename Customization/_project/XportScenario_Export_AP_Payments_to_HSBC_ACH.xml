@@ -1,0 +1,190 @@
+﻿<XportScenario>
+    <data-set>
+        <relations format-version="3" relations-version="20160101" main-table="SYMapping">
+            <link from="SYMapping (ProviderID, NoteID)" to="SYProvider (ProviderID, NoteID)" type="ToMaster" />
+            <link from="SYMapping (NoteID)" to="Note (NoteID)" type="ToMaster" />
+            <link from="SYProvider (NoteID)" to="Note (NoteID)" type="ToMaster" />
+            <link from="SYProviderField (ProviderID)" to="SYProvider (ProviderID)" />
+            <link from="SYProviderField (NoteID)" to="Note (NoteID)" type="Note" />
+            <link from="SYProviderObject (ProviderID)" to="SYProvider (ProviderID)" />
+            <link from="SYProviderObject (NoteID)" to="Note (NoteID)" type="Note" />
+            <link from="SYProviderParameter (ProviderID)" to="SYProvider (ProviderID)" />
+            <link from="SYProviderParameter (NoteID)" to="Note (NoteID)" type="Note" />
+            <link from="SYMappingCondition (MappingID)" to="SYMapping (MappingID)" />
+            <link from="SYMappingCondition (NoteID)" to="Note (NoteID)" type="Note" />
+            <link from="SYMappingField (MappingID)" to="SYMapping (MappingID)" />
+            <link from="SYMappingField (NoteID)" to="Note (NoteID)" type="Note" />
+            <link from="SYImportCondition (MappingID)" to="SYMapping (MappingID)" />
+            <link from="SYImportCondition (NoteID)" to="Note (NoteID)" type="Note" />
+            <link from="NoteDoc (NoteID)" to="SYProvider (NoteID)" />
+            <link from="UploadFile (FileID)" to="NoteDoc (FileID)" />
+            <link from="UploadFile (FileID, LastRevisionID)" to="UploadFileRevision (FileID, FileRevisionID)" type="LastRevision" />
+        </relations>
+        <layout>
+            <table name="SYMapping">
+                <table name="SYMappingCondition" uplink="(MappingID) = (MappingID)">
+                    <table name="Note" uplink="(NoteID) = (NoteID)" />
+                </table>
+                <table name="SYMappingField" uplink="(MappingID) = (MappingID)">
+                    <table name="Note" uplink="(NoteID) = (NoteID)" />
+                </table>
+                <table name="SYImportCondition" uplink="(MappingID) = (MappingID)">
+                    <table name="Note" uplink="(NoteID) = (NoteID)" />
+                </table>
+            </table>
+            <table name="SYProvider">
+                <table name="SYProviderField" uplink="(ProviderID) = (ProviderID)">
+                    <table name="Note" uplink="(NoteID) = (NoteID)" />
+                </table>
+                <table name="SYProviderObject" uplink="(ProviderID) = (ProviderID)">
+                    <table name="Note" uplink="(NoteID) = (NoteID)" />
+                </table>
+                <table name="SYProviderParameter" uplink="(ProviderID) = (ProviderID)">
+                    <table name="Note" uplink="(NoteID) = (NoteID)" />
+                </table>
+                <table name="NoteDoc" uplink="(NoteID) = (NoteID)">
+                    <table name="UploadFile" uplink="(FileID) = (FileID)">
+                        <table name="UploadFileRevision" uplink="(FileID, LastRevisionID) = (FileID, FileRevisionID)" />
+                    </table>
+                </table>
+            </table>
+            <table name="Note" />
+        </layout>
+        <data>
+            <SYMapping>
+                <row MappingID="b1771049-bcfe-4e6d-93aa-cbaec5047823" Name="Export AP Payments to HSBC ACH" IsActive="1" ScreenID="AP305000" MappingType="E" GraphName="PX.Objects.CA.CABatchEntry" ViewName="Document" GridViewName="BatchPayments" ProviderID="a470d57e-c9e6-4ab1-96d8-865cd281f220" ProviderObject="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" SyncType="F" Status="F" FieldCntr="3743" FieldOrderCntr="0" ImportConditionCntr="0" ConditionCntr="0" DataCntr="2" NbrRecords="2" PreparedOn="2018-06-01 14:21:46.197" CompletedOn="2018-05-31 19:02:09.273" ExportTimeStamp="2018-06-01 10:21:45" ExportTimeStampUtc="2018-06-01 14:21:45" DiscardResult="0" NoteID="735d62cd-3664-e811-9ce8-001c42067942" IsExportOnlyMappingFields="0">
+                    <SYMappingField LineNbr="96" OrderNumber="3" IsActive="1" IsVisible="1" ObjectName="Document" FieldName="BatchNbr" Value="=Provider.GetBatchNbr()" NeedCommit="1" IgnoreError="0" />
+                    <SYMappingField LineNbr="159" OrderNumber="1" IsActive="1" IsVisible="0" ParentLineNbr="96" ObjectName="Document" FieldName="@@BatchNbr" Value="=[Document.BatchNbr]" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="191" OrderNumber="2" IsActive="1" IsVisible="0" ParentLineNbr="96" ObjectName="Document" FieldName="&lt;Cancel&gt;" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="255" OrderNumber="5" IsActive="1" IsVisible="1" ObjectName="APPaymentList" FieldName="=Provider.FormatDateTime(Now())" Value="CreDtTm" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2079" OrderNumber="53" IsActive="1" IsVisible="1" ObjectName="Document" FieldName="=Provider.CacheValue('ExportFileName',(Format( 'ACH{0:MMddyy}-{1:00}.xml', [Document.TranDate], [Document.DateSeqNbr] )))" Value="FileName" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2111" OrderNumber="54" IsActive="1" IsVisible="1" ObjectName="Document" FieldName="Processing" Value="='1'" NeedCommit="1" IgnoreError="0" />
+                    <SYMappingField LineNbr="2143" OrderNumber="55" IsActive="1" IsVisible="1" ObjectName="Document" FieldName="ExportTime" Value="=Now()" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2175" OrderNumber="56" IsActive="1" IsVisible="1" ObjectName="Document" FieldName="ExportFileName" Value="=Format( 'ACH{0:MMddyy}-{1:00}.xml', [Document.TranDate], [Document.DateSeqNbr] )" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2207" OrderNumber="57" IsActive="1" IsVisible="1" ObjectName="Document" FieldName="&lt;Save&gt;" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2239" OrderNumber="4" IsActive="1" IsVisible="1" ObjectName="Document" FieldName="BatchNbr" Value="MsgId" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2271" OrderNumber="6" IsActive="1" IsVisible="1" ObjectName="APPaymentList" FieldName="='AUTH'" Value="AuthstnCd" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2303" OrderNumber="7" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="@CashAccountPaymentMethodDetail.detailID" Value="='INITGPTYID'" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2335" OrderNumber="8" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="=[cashAccountSettings.DetailValue]" Value="InitgPtyId" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2367" OrderNumber="9" IsActive="1" IsVisible="1" ObjectName="APPaymentList" FieldName="=[APPaymentList.RefNbr]" Value="PmtInfId" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2399" OrderNumber="10" IsActive="1" IsVisible="1" ObjectName="APPaymentList" FieldName="='SAL'" Value="PmtMtd" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2431" OrderNumber="11" IsActive="1" IsVisible="1" ObjectName="APPaymentList" FieldName="='NURG'" Value="PmtTpInfSvcLvlCd" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2463" OrderNumber="12" IsActive="1" IsVisible="1" ObjectName="APPaymentList" FieldName="=Provider.FormatDate([APPaymentList.DocDate])" Value="ReqdExctnDt" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2495" OrderNumber="51" IsActive="1" IsVisible="1" ObjectName="VendorRemitContact" FieldName="=[VendorRemitContact.FullName]" Value="CdtrNm" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2527" OrderNumber="52" IsActive="1" IsVisible="1" ObjectName="VendorRemitAddress" FieldName="=[VendorRemitAddress.AddressLine1]" Value="CdtrAdrLine1" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2559" OrderNumber="13" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="@CashAccountPaymentMethodDetail.detailID" Value="='DBTRNAME'" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2591" OrderNumber="14" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="=[cashAccountSettings.DetailValue]" Value="DbtrNm" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2623" OrderNumber="15" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="@CashAccountPaymentMethodDetail.detailID" Value="='DBTRSTNAME'" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2655" OrderNumber="16" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="=[cashAccountSettings.DetailValue]" Value="DbtrStrtNm" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2687" OrderNumber="17" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="@CashAccountPaymentMethodDetail.detailID" Value="='DBTRBLDGNB'" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2719" OrderNumber="18" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="=[cashAccountSettings.DetailValue]" Value="DbtrBldgNb" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2751" OrderNumber="19" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="@CashAccountPaymentMethodDetail.detailID" Value="='DBTRZIP'" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2783" OrderNumber="20" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="=[cashAccountSettings.DetailValue]" Value="DbtrPstCd" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2815" OrderNumber="21" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="@CashAccountPaymentMethodDetail.detailID" Value="='DBTRTOWN'" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2847" OrderNumber="22" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="=[cashAccountSettings.DetailValue]" Value="DbtrTwnNm" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2879" OrderNumber="23" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="@CashAccountPaymentMethodDetail.detailID" Value="='DBTRSTATE'" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2911" OrderNumber="24" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="=[cashAccountSettings.DetailValue]" Value="DbtrCtrySubDvsn" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2943" OrderNumber="25" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="@CashAccountPaymentMethodDetail.detailID" Value="='DBTRCNTRY'" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2975" OrderNumber="26" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="=[cashAccountSettings.DetailValue]" Value="DbtrCtry" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3007" OrderNumber="27" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="@CashAccountPaymentMethodDetail.detailID" Value="='DBTRID'" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3039" OrderNumber="28" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="=[cashAccountSettings.DetailValue]" Value="DbtrOrgId" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3071" OrderNumber="29" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="@CashAccountPaymentMethodDetail.detailID" Value="='DBTRACCTID'" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3103" OrderNumber="30" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="=[cashAccountSettings.DetailValue]" Value="DbtrAcctId" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3135" OrderNumber="31" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="@CashAccountPaymentMethodDetail.detailID" Value="='FININSTID'" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3167" OrderNumber="32" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="=[cashAccountSettings.DetailValue]" Value="DbtrFinInstnClrSysMmbId" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3199" OrderNumber="33" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="@CashAccountPaymentMethodDetail.detailID" Value="='FINSTNAME'" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3231" OrderNumber="34" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="=[cashAccountSettings.DetailValue]" Value="DbtrFinInstnStrtNm" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3263" OrderNumber="35" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="@CashAccountPaymentMethodDetail.detailID" Value="='FINBLDGNB'" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3295" OrderNumber="36" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="=[cashAccountSettings.DetailValue]" Value="DbtrFinInstnBldgNb" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3327" OrderNumber="37" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="@CashAccountPaymentMethodDetail.detailID" Value="='FINSTNAME'" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3359" OrderNumber="38" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="=[cashAccountSettings.DetailValue]" Value="DbtrFinInstnStrtNm" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3391" OrderNumber="41" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="@CashAccountPaymentMethodDetail.detailID" Value="='FINZIP'" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3423" OrderNumber="42" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="=[cashAccountSettings.DetailValue]" Value="DbtrFinInstnPstCd" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3455" OrderNumber="43" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="@CashAccountPaymentMethodDetail.detailID" Value="='FINSTATE'" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3487" OrderNumber="44" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="=[cashAccountSettings.DetailValue]" Value="DbtrFinInstnCtrySubDvsn" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3519" OrderNumber="39" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="@CashAccountPaymentMethodDetail.detailID" Value="='FINTOWN'" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3551" OrderNumber="40" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="=[cashAccountSettings.DetailValue]" Value="DbtrFinInstnTwnNm" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3583" OrderNumber="45" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="@CashAccountPaymentMethodDetail.detailID" Value="='FINCNTRY'" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3615" OrderNumber="46" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="=[cashAccountSettings.DetailValue]" Value="DbtrFinInstnCtry" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3647" OrderNumber="47" IsActive="1" IsVisible="1" ObjectName="APPaymentList" FieldName="=[APPaymentList.RefNbr]" Value="CdtTrfTxInfPmtInstrId" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3679" OrderNumber="48" IsActive="1" IsVisible="1" ObjectName="APPaymentList" FieldName="=[APPaymentList.RefNbr]" Value="CdtTrfTxInfPmtEndToEndId" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3711" OrderNumber="49" IsActive="1" IsVisible="1" ObjectName="APPaymentList" FieldName="=Provider.FormatAmount([APPaymentList.CuryOrigDocAmt])" Value="CdtTrfTxInfAmt" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="3743" OrderNumber="50" IsActive="1" IsVisible="1" ObjectName="APPaymentList" FieldName="=[APPaymentList.CuryId]" Value="CdtTrfTxInfAmtCcy" NeedCommit="0" IgnoreError="0" />
+                </row>
+            </SYMapping>
+            <SYProvider>
+                <row ProviderID="a470d57e-c9e6-4ab1-96d8-865cd281f220" Name="HSBCACH" IsActive="1" ProviderType="NexVue.HsbcEBanking.HsbcAchProvider" ObjectCntr="1" ParameterCntr="6" NoteID="735d62cd-3664-e811-9ce8-001c42067942">
+                    <SYProviderField ObjectName="File" LineNbr="3" IsActive="1" Name="Amount" IsKey="0" DataType="System.String" IsCustom="1" />
+                    <SYProviderField ObjectName="File" LineNbr="2" IsActive="1" Name="FileName" IsKey="0" DataType="System.String" IsCustom="1" />
+                    <SYProviderField ObjectName="File" LineNbr="1" IsActive="1" Name="NoteID" IsKey="0" DataType="System.String" IsCustom="1" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="90" IsActive="1" Name="AuthstnCd" DisplayName="AuthstnCd" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="130" IsActive="1" Name="CdtrAcctId" DisplayName="CdtrAcctId" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="125" IsActive="1" Name="CdtrBldgNb" DisplayName="CdtrBldgNb" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="129" IsActive="1" Name="CdtrCtry" DisplayName="CdtrCtry" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="128" IsActive="1" Name="CdtrCtrySubDvsn" DisplayName="CdtrCtrySubDvsn" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="118" IsActive="1" Name="CdtrFinInstnBldgNb" DisplayName="CdtrFinInstnBldgNb" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="116" IsActive="1" Name="CdtrFinInstnClrSysMmbId" DisplayName="CdtrFinInstnClrSysMmbId" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="122" IsActive="1" Name="CdtrFinInstnCtry" DisplayName="CdtrFinInstnCtry" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="121" IsActive="1" Name="CdtrFinInstnCtrySubDvsn" DisplayName="CdtrFinInstnCtrySubDvsn" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="119" IsActive="1" Name="CdtrFinInstnPstCd" DisplayName="CdtrFinInstnPstCd" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="117" IsActive="1" Name="CdtrFinInstnStrtNm" DisplayName="CdtrFinInstnStrtNm" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="120" IsActive="1" Name="CdtrFinInstnTwnNm" DisplayName="CdtrFinInstnTwnNm" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="123" IsActive="1" Name="CdtrNm" DisplayName="CdtrNm" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="126" IsActive="1" Name="CdtrPstCd" DisplayName="CdtrPstCd" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="124" IsActive="1" Name="CdtrStrtNm" DisplayName="CdtrStrtNm" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="127" IsActive="1" Name="CdtrTwnNm" DisplayName="CdtrTwnNm" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="115" IsActive="1" Name="CdtTrfTxInfAmt" DisplayName="CdtTrfTxInfAmt" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="114" IsActive="1" Name="CdtTrfTxInfAmtCcy" DisplayName="CdtTrfTxInfAmtCcy" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="113" IsActive="1" Name="CdtTrfTxInfPmtEndToEndId" DisplayName="CdtTrfTxInfPmtEndToEndId" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="112" IsActive="1" Name="CdtTrfTxInfPmtInstrId" DisplayName="CdtTrfTxInfPmtInstrId" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="89" IsActive="1" Name="CreDtTm" DisplayName="CreDtTm" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="104" IsActive="1" Name="DbtrAcctId" DisplayName="DbtrAcctId" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="98" IsActive="1" Name="DbtrBldgNb" DisplayName="DbtrBldgNb" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="102" IsActive="1" Name="DbtrCtry" DisplayName="DbtrCtry" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="101" IsActive="1" Name="DbtrCtrySubDvsn" DisplayName="DbtrCtrySubDvsn" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="107" IsActive="1" Name="DbtrFinInstnBldgNb" DisplayName="DbtrFinInstnBldgNb" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="105" IsActive="1" Name="DbtrFinInstnClrSysMmbId" DisplayName="DbtrFinInstnClrSysMmbId" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="111" IsActive="1" Name="DbtrFinInstnCtry" DisplayName="DbtrFinInstnCtry" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="110" IsActive="1" Name="DbtrFinInstnCtrySubDvsn" DisplayName="DbtrFinInstnCtrySubDvsn" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="108" IsActive="1" Name="DbtrFinInstnPstCd" DisplayName="DbtrFinInstnPstCd" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="106" IsActive="1" Name="DbtrFinInstnStrtNm" DisplayName="DbtrFinInstnStrtNm" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="109" IsActive="1" Name="DbtrFinInstnTwnNm" DisplayName="DbtrFinInstnTwnNm" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="96" IsActive="1" Name="DbtrNm" DisplayName="DbtrNm" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="103" IsActive="1" Name="DbtrOrgId" DisplayName="DbtrOrgId" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="99" IsActive="1" Name="DbtrPstCd" DisplayName="DbtrPstCd" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="97" IsActive="1" Name="DbtrStrtNm" DisplayName="DbtrStrtNm" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="100" IsActive="1" Name="DbtrTwnNm" DisplayName="DbtrTwnNm" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="87" IsActive="1" Name="FileName" DisplayName="FileName" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="91" IsActive="1" Name="InitgPtyId" DisplayName="InitgPtyId" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="88" IsActive="1" Name="MsgId" DisplayName="MsgId" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="86" IsActive="1" Name="NoteID" DisplayName="NoteID" IsKey="0" DataType="System.Int64" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="92" IsActive="1" Name="PmtInfId" DisplayName="PmtInfId" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="93" IsActive="1" Name="PmtMtd" DisplayName="PmtMtd" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="94" IsActive="1" Name="PmtTpInfSvcLvlCd" DisplayName="PmtTpInfSvcLvlCd" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderField ObjectName="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" LineNbr="95" IsActive="1" Name="ReqdExctnDt" DisplayName="ReqdExctnDt" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+                    <SYProviderObject LineNbr="1" IsActive="1" Name="XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" FieldCntr="130" IsCustom="0" />
+                    <SYProviderParameter LineNbr="5" Name="FileName" DisplayName="File Name" Value="&lt;EmptyFileName&gt;" />
+                    <SYProviderParameter LineNbr="6" Name="Encoding" DisplayName="Encoding" Value="utf-8" />
+                    <NoteDoc FileID="5536c68b-2343-4e8f-90b7-2f91fd728a88">
+                        <UploadFile Name="FEDWIRE-10200     -2017030200000.txt" Versioned="1" LastRevisionID="5" PrimaryScreenID="AP305000" IsPublic="0" NoteID="56dcb52c-dd64-e811-9ce8-001c42067942">
+                            <UploadFileRevision FileRevisionID="5" Data="0x3C446F63756D656E7420786D6C6E733A7873693D2275726E3A69736F3A7374643A69736F3A32303032323A746563683A7873643A7061696E2E3030312E3030312E303322202F3E" Size="1" Comment="Exported by 'HSBC ACH Export Provider' provider." />
+                        </UploadFile>
+                    </NoteDoc>
+                    <NoteDoc FileID="cfd529c7-64e5-4b86-9104-934d8507ff22">
+                        <UploadFile Name="FEDWIRE-10200     -2017020100000.txt" Versioned="1" LastRevisionID="1" PrimaryScreenID="AP305000" IsPublic="0" NoteID="2403e1c0-d864-e811-9ce8-001c42067942">
+                            <UploadFileRevision FileRevisionID="1" Data="0x" Size="0" Comment="Exported by 'HSBC ACH Export Provider' provider." />
+                        </UploadFile>
+                    </NoteDoc>
+                    <NoteDoc FileID="484e2d68-ea2a-4866-a4fc-ed50168da84c">
+                        <UploadFile Name="Data Providers (HSBCACH)\XMLV3_USACH_CUSTOMER_SAMPLE_FILE.XML" Versioned="1" LastRevisionID="1" PrimaryScreenID="SM206015" IsPublic="0" NoteID="9edeed2c-d564-e811-9ce8-001c42067942">
+                            <UploadFileRevision FileRevisionID="1" Data="0x3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D227574662D38223F3E0D0A3C446F63756D656E7420786D6C6E733A7873693D22687474703A2F2F7777772E77332E6F72672F323030312F584D4C536368656D612D696E7374616E63652220786D6C6E733D2275726E3A69736F3A7374643A69736F3A32303032323A746563683A7873643A7061696E2E3030312E3030312E3033223E0D0A20203C4373746D72436474547266496E69746E3E0D0A202020203C4772704864723E0D0A2020202020203C4D736749643E55535F584D4C5F56335F4143485F53414D504C453C2F4D736749643E0D0A2020202020203C4372654474546D3E323031362D30342D32355432323A32383A30303C2F4372654474546D3E0D0A2020202020203C4175746873746E3E0D0A20202020202020203C43643E415554483C2F43643E0D0A2020202020203C2F4175746873746E3E0D0A2020202020203C4E624F665478733E313C2F4E624F665478733E0D0A2020202020203C496E6974675074793E0D0A20202020202020203C49643E0D0A202020202020202020203C4F726749643E0D0A2020202020202020202020203C4F7468723E0D0A20202020202020202020202020203C49643E4142433939393939393939393C2F49643E0D0A2020202020202020202020203C2F4F7468723E0D0A202020202020202020203C2F4F726749643E0D0A20202020202020203C2F49643E0D0A2020202020203C2F496E6974675074793E0D0A202020203C2F4772704864723E0D0A202020203C506D74496E663E0D0A2020202020203C506D74496E6649643E5553584D4C56334143483C2F506D74496E6649643E0D0A2020202020203C506D744D74643E53414C3C2F506D744D74643E0D0A2020202020203C506D745470496E663E0D0A20202020202020203C5376634C766C3E0D0A202020202020202020203C43643E4E5552473C2F43643E0D0A20202020202020203C2F5376634C766C3E0D0A2020202020203C2F506D745470496E663E0D0A2020202020203C52657164457863746E44743E323031362D30342D32353C2F52657164457863746E44743E0D0A2020202020203C446274723E0D0A20202020202020203C4E6D3E444542544F52204E414D453C2F4E6D3E0D0A20202020202020203C5073746C4164723E0D0A20202020202020202020203C537472744E6D3E444542544F52205354524545543C2F537472744E6D3E200D0A20202020202020202020203C426C64674E623E4F4E453C2F426C64674E623E200D0A20202020202020202020203C50737443643E31343230333C2F50737443643E200D0A20202020202020202020203C54776E4E6D3E42554646414C4F3C2F54776E4E6D3E200D0A20202020202020202020203C437472795375624476736E3E4E455720594F524B3C2F437472795375624476736E3E0D0A20202020202020202020203C437472793E55533C2F437472793E200D0A20202020202020203C2F5073746C4164723E0D0A20202020202020203C49643E3C4F726749643E3C4F7468723E3C49643E3132333435363738393C2F49643E3C2F4F7468723E3C2F4F726749643E3C2F49643E0D0A2020202020203C2F446274723E0D0A2020202020203C44627472416363743E0D0A2020202020203C49643E0D0A20202020202020203C4F7468723E0D0A202020202020202020203C49643E3939393939393939393C2F49643E0D0A20202020202020203C2F4F7468723E0D0A2020202020203C2F49643E0D0A2020202020203C2F44627472416363743E0D0A2020202020203C446274724167743E0D0A20202020202020203C46696E496E73746E49643E0D0A202020202020202020203C436C725379734D6D6249643E3C4D6D6249643E3032323030303032303C2F4D6D6249643E3C2F436C725379734D6D6249643E0D0A2020202020202020203C5073746C4164723E0D0A2020202020202020202020203C537472744E6D3E446562746F72204167656E74205374726565743C2F537472744E6D3E200D0A2020202020202020202020203C426C64674E623E4F4E453C2F426C64674E623E200D0A2020202020202020202020203C50737443643E31343230333C2F50737443643E200D0A2020202020202020202020203C54776E4E6D3E42554646414C4F3C2F54776E4E6D3E200D0A2020202020202020202020203C437472795375624476736E3E4E455720594F524B3C2F437472795375624476736E3E0D0A2020202020202020202020203C437472793E55533C2F437472793E200D0A20202020202020203C2F5073746C4164723E0D0A20202020202020203C2F46696E496E73746E49643E0D0A2020202020203C2F446274724167743E0D0A2020202020203C4364745472665478496E663E0D0A20202020202020203C506D7449643E0D0A202020202020202020203C496E73747249643E5553584D4C56334143483C2F496E73747249643E0D0A202020202020202020203C456E64546F456E6449643E5553584D4C56334143483C2F456E64546F456E6449643E0D0A20202020202020203C2F506D7449643E0D0A20202020202020203C416D743E0D0A202020202020202020203C496E737464416D74204363793D22555344223E2E30323C2F496E737464416D743E0D0A20202020202020203C2F416D743E0D0A20202020202020203C436474724167743E0D0A202020202020202020203C46696E496E73746E49643E0D0A2020202020202020202020203C436C725379734D6D6249643E3C4D6D6249643E3032323030303032303C2F4D6D6249643E3C2F436C725379734D6D6249643E0D0A2020202020202020202020203C5073746C4164723E0D0A20202020202020202020202020203C537472744E6D3E435245444954204147454E54205354524545543C2F537472744E6D3E200D0A20202020202020202020202020203C426C64674E623E33303C2F426C64674E623E200D0A20202020202020202020202020203C50737443643E31343330313C2F50737443643E200D0A20202020202020202020202020203C54776E4E6D3E4E4941474152412046414C4C533C2F54776E4E6D3E200D0A20202020202020202020202020203C437472795375624476736E3E4E455720594F524B3C2F437472795375624476736E3E0D0A20202020202020202020202020203C437472793E55533C2F437472793E200D0A202020202020202020203C2F5073746C4164723E0D0A202020202020202020203C2F46696E496E73746E49643E0D0A20202020202020203C2F436474724167743E0D0A20202020202020203C436474723E0D0A202020202020202020203C4E6D3E4352454449544F52204E414D45203C2F4E6D3E0D0A202020202020202020203C5073746C4164723E0D0A2020202020202020202020203C537472744E6D3E4352454449544F52205354524545543C2F537472744E6D3E200D0A2020202020202020202020203C426C64674E623E3134303C2F426C64674E623E200D0A2020202020202020202020203C50737443643E31343232383C2F50737443643E200D0A2020202020202020202020203C54776E4E6D3E4E4F52544820544F4E4157414E44413C2F54776E4E6D3E200D0A2020202020202020202020203C437472795375624476736E3E4E455720594F524B3C2F437472795375624476736E3E0D0A2020202020202020202020203C437472793E55533C2F437472793E200D0A202020202020202020203C2F5073746C4164723E0D0A20202020202020203C2F436474723E0D0A20202020202020203C43647472416363743E0D0A202020202020202020203C49643E0D0A2020202020202020202020203C4F7468723E3C49643E3132333435363738393C2F49643E3C2F4F7468723E0D0A202020202020202020203C2F49643E0D0A20202020202020203C2F43647472416363743E0D0A0D0A20202020203C2F4364745472665478496E663E0D0A202020203C2F506D74496E663E0D0A20203C2F4373746D72436474547266496E69746E3E0D0A3C2F446F63756D656E743E" Size="3" />
+                        </UploadFile>
+                    </NoteDoc>
+                </row>
+            </SYProvider>
+            <Note>
+                <row NoteText="" GraphType="PX.Api.SYProviderMaint" EntityType="PX.Api.SYProvider" NoteID="735d62cd-3664-e811-9ce8-001c42067942" />
+            </Note>
+        </data>
+    </data-set>
+</XportScenario>
