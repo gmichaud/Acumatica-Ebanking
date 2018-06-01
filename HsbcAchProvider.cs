@@ -34,6 +34,7 @@ namespace NexVue.HsbcEBanking
         protected const string DbtrTwnNm = "DbtrTwnNm";
         protected const string DbtrCtrySubDvsn = "DbtrCtrySubDvsn";
         protected const string DbtrCtry = "DbtrCtry";
+        protected const string DbtrOrgId = "DbtrOrgId";
         protected const string DbtrAcctId = "DbtrAcctId";
         protected const string DbtrFinInstnClrSysMmbId = "DbtrFinInstnClrSysMmbId";
         protected const string DbtrFinInstnStrtNm = "DbtrFinInstnStrtNm";
@@ -94,6 +95,7 @@ namespace NexVue.HsbcEBanking
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrTwnNm)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrCtrySubDvsn)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrCtry)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrOrgId)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrAcctId)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrFinInstnClrSysMmbId)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrFinInstnStrtNm)));
@@ -150,37 +152,140 @@ namespace NexVue.HsbcEBanking
                 
                 //GrpHdr
                 writer.WriteStartElement("GrpHdr");
-                writer.WriteElementString(MsgId, table.Rows[0][table.Columns.IndexOf(MsgId)]);
-                writer.WriteElementString(CreDtTm, table.Rows[0][table.Columns.IndexOf(CreDtTm)]);
-                writer.WriteStartElement("Authstn");
-                writer.WriteElementString("Cd", table.Rows[0][table.Columns.IndexOf(AuthstnCd)]);
-                writer.WriteEndElement();
-                writer.WriteElementString("NbOfTxs", table.Rows.Count.ToString());
-                writer.WriteStartElement("InitgPty");
-                writer.WriteStartElement("Id");
-                writer.WriteStartElement("OrgId");
-                writer.WriteStartElement("Othr");
-                writer.WriteElementString("Id", table.Rows[0][table.Columns.IndexOf(InitgPtyId)]);
-                writer.WriteEndElement();
-                writer.WriteEndElement();
-                writer.WriteEndElement();
-                writer.WriteEndElement();
-                writer.WriteEndElement();
+                    writer.WriteElementString(MsgId, table.Rows[0][table.Columns.IndexOf(MsgId)]);
+                    writer.WriteElementString(CreDtTm, table.Rows[0][table.Columns.IndexOf(CreDtTm)]);
+                    writer.WriteStartElement("Authstn");
+                        writer.WriteElementString("Cd", table.Rows[0][table.Columns.IndexOf(AuthstnCd)]);
+                    writer.WriteEndElement(); //Authstn
+                    writer.WriteElementString("NbOfTxs", table.Rows.Count.ToString());
+                    writer.WriteStartElement("InitgPty");
+                        writer.WriteStartElement("Id");
+                            writer.WriteStartElement("OrgId");
+                                writer.WriteStartElement("Othr");
+                                    writer.WriteElementString("Id", table.Rows[0][table.Columns.IndexOf(InitgPtyId)]);
+                                writer.WriteEndElement(); //Othr
+                            writer.WriteEndElement(); //OrgId
+                         writer.WriteEndElement(); //Id
+                    writer.WriteEndElement(); //InitgPty
+                writer.WriteEndElement(); //GrpHdr
 
-                //foreach (PXSYRow row in table)
-                //{
-                //    writer.WriteStartElement("PmtInf");
-                //    foreach(var col in table.Columns)
-                //    {
-                //        writer.WriteStartElement(col);
-                //        writer.WriteEndElement();
-                //    }
-                //    writer.WriteEndElement();
-                //}
+                foreach (PXSYRow row in table)
+                {
+                    writer.WriteStartElement("PmtInf");
+                    writer.WriteElementString(PmtInfId, row[table.Columns.IndexOf(PmtInfId)]);
+                    writer.WriteElementString(PmtMtd, row[table.Columns.IndexOf(PmtMtd)]);
 
-                writer.WriteEndElement();
-                writer.WriteEndElement();
-                writer.WriteEndDocument();
+                    //Payment Type Information 
+                    writer.WriteStartElement("PmtTpInf");
+                        writer.WriteStartElement("SvcLvl");
+                            writer.WriteElementString("Cd", row[table.Columns.IndexOf(PmtTpInfSvcLvlCd)]);
+                        writer.WriteEndElement(); //SvcLvl
+                    writer.WriteEndElement(); //PmtTpInf
+                    
+                    writer.WriteElementString("ReqdExctnDt", row[table.Columns.IndexOf(ReqdExctnDt)]);
+
+                    //Debitor
+                    writer.WriteStartElement("Dbtr");
+                        writer.WriteElementString("Nm", row[table.Columns.IndexOf(DbtrNm)]);
+                        writer.WriteStartElement("PstlAdr");
+                            writer.WriteElementString("StrtNm", row[table.Columns.IndexOf(DbtrStrtNm)]);
+                            writer.WriteElementString("BldgNb", row[table.Columns.IndexOf(DbtrBldgNb)]);
+                            writer.WriteElementString("PstCd", row[table.Columns.IndexOf(DbtrPstCd)]);
+                            writer.WriteElementString("TwnNm", row[table.Columns.IndexOf(DbtrTwnNm)]);
+                            writer.WriteElementString("CtrySubDvsn", row[table.Columns.IndexOf(DbtrCtrySubDvsn)]);
+                            writer.WriteElementString("Ctry", row[table.Columns.IndexOf(DbtrCtry)]);
+                        writer.WriteEndElement(); //PstlAdr
+                        writer.WriteStartElement("Id");
+                            writer.WriteStartElement("OrgId");
+                                writer.WriteStartElement("Othr");
+                                    writer.WriteElementString("Id", row[table.Columns.IndexOf(DbtrOrgId)]);
+                                writer.WriteEndElement(); //Othr
+                            writer.WriteEndElement(); //OrgId
+                        writer.WriteEndElement(); //Id
+                    writer.WriteEndElement(); //Dbtr
+
+                    //Debitor account
+                    writer.WriteStartElement("DbtrAcct");
+                        writer.WriteStartElement("Id");
+                            writer.WriteStartElement("Othr");
+                                writer.WriteElementString("Id", row[table.Columns.IndexOf(DbtrAcctId)]);
+                            writer.WriteEndElement(); //Othr
+                        writer.WriteEndElement(); //Id
+                    writer.WriteEndElement(); //DbtrAcct
+
+                    //Debitor agent
+                    writer.WriteStartElement("DbtrAgt");
+                        writer.WriteStartElement("FinInstnId");
+                        writer.WriteStartElement("ClrSysMmbId");
+                            writer.WriteElementString("MmbId", row[table.Columns.IndexOf(DbtrFinInstnClrSysMmbId)]);
+                        writer.WriteEndElement(); //ClrSysMmbId
+                        writer.WriteStartElement("PstlAdr");
+                            writer.WriteElementString("StrtNm", row[table.Columns.IndexOf(DbtrFinInstnStrtNm)]);
+                            writer.WriteElementString("BldgNb", row[table.Columns.IndexOf(DbtrFinInstnBldgNb)]);
+                            writer.WriteElementString("PstCd", row[table.Columns.IndexOf(DbtrFinInstnPstCd)]);
+                            writer.WriteElementString("TwnNm", row[table.Columns.IndexOf(DbtrFinInstnTwnNm)]);
+                            writer.WriteElementString("CtrySubDvsn", row[table.Columns.IndexOf(DbtrFinInstnCtrySubDvsn)]);
+                            writer.WriteElementString("Ctry", row[table.Columns.IndexOf(DbtrFinInstnCtry)]);
+                        writer.WriteEndElement(); //PstlAdr
+                        writer.WriteEndElement(); //FinInstnId
+                    writer.WriteEndElement(); //DbtrAgt
+
+                    //Credit Transaction Info
+                    writer.WriteStartElement("CdtTrfTxInf");
+                        writer.WriteStartElement("PmtId");
+                            writer.WriteElementString("InstrId", row[table.Columns.IndexOf(CdtTrfTxInfPmtInstrId)]);
+                            writer.WriteElementString("EndToEndId", row[table.Columns.IndexOf(CdtTrfTxInfPmtEndToEndId)]);
+                        writer.WriteEndElement(); //PmtId
+                        writer.WriteStartElement("Amt");
+                            writer.WriteStartElement("InstdAmt");
+                                writer.WriteAttributeString("Ccy", row[table.Columns.IndexOf(CdtTrfTxInfAmtCcy)]);
+                                writer.WriteValue(row[table.Columns.IndexOf(CdtTrfTxInfAmt)]);
+                            writer.WriteEndElement(); //InstdAmt
+                        writer.WriteEndElement(); //Amt
+                        writer.WriteStartElement("CdtrAgt");
+                            writer.WriteStartElement("FinInstnId");
+                                writer.WriteStartElement("ClrSysMmbId");
+                                    writer.WriteElementString("MmbId", row[table.Columns.IndexOf(DbtrFinInstnClrSysMmbId)]);
+                                writer.WriteEndElement(); //ClrSysMmbId
+                                writer.WriteStartElement("PstlAdr");
+                                    writer.WriteElementString("StrtNm", row[table.Columns.IndexOf(CdtrFinInstnStrtNm)]);
+                                    writer.WriteElementString("BldgNb", row[table.Columns.IndexOf(CdtrFinInstnBldgNb)]);
+                                    writer.WriteElementString("PstCd", row[table.Columns.IndexOf(CdtrFinInstnPstCd)]);
+                                    writer.WriteElementString("TwnNm", row[table.Columns.IndexOf(CdtrFinInstnTwnNm)]);
+                                    writer.WriteElementString("CtrySubDvsn", row[table.Columns.IndexOf(CdtrFinInstnCtrySubDvsn)]);
+                                    writer.WriteElementString("Ctry", row[table.Columns.IndexOf(CdtrFinInstnCtry)]);
+                                writer.WriteEndElement(); //PstlAdr
+                            writer.WriteEndElement(); //FinInstnId
+                        writer.WriteEndElement(); //CdtrAgt
+
+                        //Creditor
+                        writer.WriteStartElement("Cdtr");
+                            writer.WriteElementString("Nm", row[table.Columns.IndexOf(CdtrNm)]);
+                            writer.WriteStartElement("PstlAdr");
+                                writer.WriteElementString("StrtNm", row[table.Columns.IndexOf(CdtrStrtNm)]);
+                                writer.WriteElementString("BldgNb", row[table.Columns.IndexOf(CdtrBldgNb)]);
+                                writer.WriteElementString("PstCd", row[table.Columns.IndexOf(CdtrPstCd)]);
+                                writer.WriteElementString("TwnNm", row[table.Columns.IndexOf(CdtrTwnNm)]);
+                                writer.WriteElementString("CtrySubDvsn", row[table.Columns.IndexOf(CdtrCtrySubDvsn)]);
+                                writer.WriteElementString("Ctry", row[table.Columns.IndexOf(CdtrCtry)]);
+                            writer.WriteEndElement(); //PstlAdr
+                        writer.WriteEndElement(); //Cdtr
+
+                        //Creditor account
+                        writer.WriteStartElement("CdtrAcct");
+                            writer.WriteStartElement("Id");
+                                writer.WriteStartElement("Othr");
+                                    writer.WriteElementString("Id", row[table.Columns.IndexOf(CdtrAcctId)]);
+                                writer.WriteEndElement(); //Othr
+                            writer.WriteEndElement(); //Id
+                        writer.WriteEndElement(); //CdtrAcct
+                    writer.WriteEndElement(); //CdtTrfTxInf
+                    writer.WriteEndElement(); //PmtInf
+                }
+
+                writer.WriteEndElement(); //CstmrCdtTrfInitn
+                writer.WriteEndElement(); //Document
+                writer.WriteEndDocument(); 
                 writer.Flush();
             }
 
@@ -275,6 +380,13 @@ namespace NexVue.HsbcEBanking
         public virtual string GetBatchNbr()
         {
             return this.GetParameter(IncomingBatchNumber);
+        }
+
+        public virtual string Coalesce(string aFirst, string aSecond)
+        {
+            if (string.IsNullOrEmpty(aFirst))
+                return aSecond;
+            return aFirst;
         }
 
         public string FormatDateTime(DateTime date)
