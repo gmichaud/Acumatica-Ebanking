@@ -163,11 +163,41 @@ namespace NexVue.HsbcEBanking
             ret.Add(CreateParameter(IncomingBatchNumber, Titles.IncomingBatchNumber, String.Empty));
             return ret;
         }
+        
+		protected override void InitialiseFile(int? revision)
+		{
+			base.InitialiseFile(null);
+		}
 
-        protected override void InitialiseFile(string fileName, bool create, int? revision)
+		protected override void InitialiseFile()
+		{
+			InitialiseFile(true);
+		}
+
+		protected override void InitialiseFile(Boolean create)
+		{
+			InitialiseFile(GetParameter(FILE_PARAM), true, null);
+		}
+        
+		protected override void InitialiseFile(String fileName, Boolean create, Int32? revision)
+		{
+			base.InitialiseFile(GetParameter(FILE_PARAM), true, null);
+		}
+
+        public override void Export(string objectName, PXSYTable table, bool breakOnError, Action<SyProviderRowResult> callback)
         {
-            //TODO: Fix wrong file extension issue
-            base.InitialiseFile(fileName, create, revision);
+            if (table.Count > 0 || table.Columns.Contains(FileID))
+            {
+                Int32 fileIndex = table.IndexOfColumn(FileID);
+                string file = table[0][fileIndex];
+
+                if (!String.IsNullOrEmpty(file))
+                {
+                    SetParameters(_Parameters.Where(r => r.Name != FILE_PARAM).Concat(new PXSYParameter[] { new PXSYParameter(FILE_PARAM, file) }).ToArray());
+                }
+            }
+
+            base.Export(objectName, table, breakOnError, callback);
         }
 
         protected override byte[] InternalExport(string objectName, PXSYTable table)
