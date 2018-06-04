@@ -334,7 +334,10 @@ namespace NexVue.HsbcEBanking
                                     writer.WriteStartElement("Adr");
                                         writer.WriteElementString("PstCd", row[table.Columns.IndexOf(ChqInstrDlvryPstCd)]);
                                         writer.WriteElementString("TwnNm", row[table.Columns.IndexOf(ChqInstrDlvryTwnNm)]);
-                                        writer.WriteElementString("CtrySubDvsn", row[table.Columns.IndexOf(ChqInstrDlvryCtrySubDvsn)]);
+                                        if(!String.IsNullOrEmpty(row[table.Columns.IndexOf(ChqInstrDlvryCtrySubDvsn)]))
+                                        { 
+                                            writer.WriteElementString("CtrySubDvsn", row[table.Columns.IndexOf(ChqInstrDlvryCtrySubDvsn)]);
+                                        }
                                         writer.WriteElementString("Ctry", row[table.Columns.IndexOf(ChqInstrDlvryCtry)]);
                                         writer.WriteElementString("AdrLine", row[table.Columns.IndexOf(ChqInstrDlvryAdrLine1)]);
                                         if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(ChqInstrDlvryAdrLine2)]))
@@ -354,7 +357,10 @@ namespace NexVue.HsbcEBanking
                             writer.WriteStartElement("PstlAdr");
                                 writer.WriteElementString("PstCd", row[table.Columns.IndexOf(CdtrPstCd)]);
                                 writer.WriteElementString("TwnNm", row[table.Columns.IndexOf(CdtrTwnNm)]);
-                                writer.WriteElementString("CtrySubDvsn", row[table.Columns.IndexOf(CdtrCtrySubDvsn)]);
+                                if(!String.IsNullOrEmpty(row[table.Columns.IndexOf(CdtrCtrySubDvsn)]))
+                                { 
+                                    writer.WriteElementString("CtrySubDvsn", row[table.Columns.IndexOf(CdtrCtrySubDvsn)]);
+                                }
                                 writer.WriteElementString("Ctry", row[table.Columns.IndexOf(CdtrCtry)]);
                                 writer.WriteElementString("AdrLine", row[table.Columns.IndexOf(CdtrAdrLine1)]);
                                 if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(CdtrAdrLine2)]))
