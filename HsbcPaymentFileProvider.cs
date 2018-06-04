@@ -14,7 +14,7 @@ using System.Xml.Schema;
 
 namespace NexVue.HsbcEBanking
 {
-    public class HsbcAchProvider : PXSYBaseEncodedFileProvider, IPXSYProvider
+    public class HsbcPaymentFileProvider : PXSYBaseEncodedFileProvider, IPXSYProvider
     {
         private const string IncomingBatchNumber = "BatchNbr";
 
@@ -85,7 +85,7 @@ namespace NexVue.HsbcEBanking
 
         public string DefaultFileExtension => ".xml";
 
-        public override string ProviderName => "HSBC ACH Export Provider";
+        public override string ProviderName => "HSBC Payment File Export Provider";
 
         public override string Extensiton => DefaultFileExtension;
 
