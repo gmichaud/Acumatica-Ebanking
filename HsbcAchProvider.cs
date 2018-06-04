@@ -36,6 +36,7 @@ namespace NexVue.HsbcEBanking
         protected const string DbtrCtry = "DbtrCtry";
         protected const string DbtrOrgId = "DbtrOrgId";
         protected const string DbtrAcctId = "DbtrAcctId";
+        protected const string DbtrFinInstnBic = "DbtrFinInstnBic";
         protected const string DbtrFinInstnClrSysMmbId = "DbtrFinInstnClrSysMmbId";
         protected const string DbtrFinInstnStrtNm = "DbtrFinInstnStrtNm";
         protected const string DbtrFinInstnBldgNb = "DbtrFinInstnBldgNb";
@@ -43,10 +44,23 @@ namespace NexVue.HsbcEBanking
         protected const string DbtrFinInstnTwnNm = "DbtrFinInstnTwnNm";
         protected const string DbtrFinInstnCtrySubDvsn = "DbtrFinInstnCtrySubDvsn";
         protected const string DbtrFinInstnCtry = "DbtrFinInstnCtry";
+        protected const string ChrgBr = "ChrgBr";
         protected const string CdtTrfTxInfPmtInstrId = "CdtTrfTxInfPmtInstrId";
         protected const string CdtTrfTxInfPmtEndToEndId = "CdtTrfTxInfPmtEndToEndId";
         protected const string CdtTrfTxInfAmtCcy = "CdtTrfTxInfAmtCcy";
         protected const string CdtTrfTxInfAmt = "CdtTrfTxInfAmt";
+        protected const string ChqInstrChqNb = "ChqInstrChqNb"; //New for CHECK OUTSOURCING
+        protected const string ChqInstrDlvryMtd = "ChqInstrDlvryMtd"; //New for CHECK OUTSOURCING
+        protected const string ChqInstrDlvryToNm = "ChqInstrDlvryToNm"; //New for CHECK OUTSOURCING
+        protected const string ChqInstrDlvryAdrLine1 = "ChqInstrDlvryAdrLine1"; //New for CHECK OUTSOURCING
+        protected const string ChqInstrDlvryAdrLine2 = "ChqInstrDlvryAdrLine2"; //New for CHECK OUTSOURCING
+        protected const string ChqInstrDlvryPstCd = "ChqInstrDlvryPstCd"; //New for CHECK OUTSOURCING
+        protected const string ChqInstrDlvryTwnNm = "ChqInstrDlvryTwnNm"; //New for CHECK OUTSOURCING
+        protected const string ChqInstrDlvryCtrySubDvsn = "ChqInstrDlvryCtrySubDvsn"; //New for CHECK OUTSOURCING
+        protected const string ChqInstrDlvryCtry = "ChqInstrDlvryCtry"; //New for CHECK OUTSOURCING
+        protected const string ChqInstrFrmsCd = "ChqInstrFrmsCd"; //New for CHECK OUTSOURCING
+        protected const string ChqInstrMemoFld = "ChqInstrMemoFld"; //New for CHECK OUTSOURCING
+        protected const string CdtrFinInstnBic = "CdtrFinInstnBic";
         protected const string CdtrFinInstnClrSysMmbId = "CdtrFinInstnClrSysMmbId";
         protected const string CdtrFinInstnStrtNm = "CdtrFinInstnStrtNm";
         protected const string CdtrFinInstnBldgNb = "CdtrFinInstnBldgNb";
@@ -99,6 +113,7 @@ namespace NexVue.HsbcEBanking
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrCtry)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrOrgId)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrAcctId)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrFinInstnBic)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrFinInstnClrSysMmbId)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrFinInstnStrtNm)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrFinInstnBldgNb)));
@@ -106,10 +121,23 @@ namespace NexVue.HsbcEBanking
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrFinInstnTwnNm)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrFinInstnCtrySubDvsn)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrFinInstnCtry)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ChrgBr)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtTrfTxInfPmtInstrId)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtTrfTxInfPmtEndToEndId)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtTrfTxInfAmtCcy)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtTrfTxInfAmt)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ChqInstrChqNb)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ChqInstrDlvryMtd)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ChqInstrDlvryToNm)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ChqInstrDlvryAdrLine1)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ChqInstrDlvryAdrLine2)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ChqInstrDlvryPstCd)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ChqInstrDlvryTwnNm)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ChqInstrDlvryCtrySubDvsn)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ChqInstrDlvryCtry)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ChqInstrFrmsCd)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ChqInstrMemoFld)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrFinInstnBic)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrFinInstnClrSysMmbId)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrFinInstnStrtNm)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrFinInstnBldgNb)));
@@ -152,7 +180,6 @@ namespace NexVue.HsbcEBanking
             
             using (XmlWriter writer = doc.CreateNavigator().AppendChild())
             {
-                //TODO: Header
                 writer.WriteStartDocument();
                 writer.WriteStartElement("Document", "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03");
                 writer.WriteAttributeString("xmlns", "xsi", null, "http://www.w3.org/2001/XMLSchema-instance");
@@ -224,9 +251,19 @@ namespace NexVue.HsbcEBanking
                     //Debitor Agent
                     writer.WriteStartElement("DbtrAgt");
                         writer.WriteStartElement("FinInstnId");
-                        writer.WriteStartElement("ClrSysMmbId");
-                            writer.WriteElementString("MmbId", row[table.Columns.IndexOf(DbtrFinInstnClrSysMmbId)]);
-                        writer.WriteEndElement(); //ClrSysMmbId
+
+                        if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(DbtrFinInstnBic)]))
+                        {
+                            writer.WriteElementString("BIC", row[table.Columns.IndexOf(DbtrFinInstnBic)]);
+                        }
+
+                        if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(DbtrFinInstnClrSysMmbId)]))
+                        { 
+                            writer.WriteStartElement("ClrSysMmbId");
+                                writer.WriteElementString("MmbId", row[table.Columns.IndexOf(DbtrFinInstnClrSysMmbId)]);
+                            writer.WriteEndElement(); //ClrSysMmbId
+                        }
+
                         writer.WriteStartElement("PstlAdr");
                             writer.WriteElementString("StrtNm", row[table.Columns.IndexOf(DbtrFinInstnStrtNm)]);
                             writer.WriteElementString("BldgNb", row[table.Columns.IndexOf(DbtrFinInstnBldgNb)]);
@@ -237,6 +274,11 @@ namespace NexVue.HsbcEBanking
                         writer.WriteEndElement(); //PstlAdr
                         writer.WriteEndElement(); //FinInstnId
                     writer.WriteEndElement(); //DbtrAgt
+
+                    if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(ChrgBr)]))
+                    {
+                        writer.WriteElementString("ChrgBr", row[table.Columns.IndexOf(ChrgBr)]);
+                    }
 
                     //Credit Transaction Info
                     writer.WriteStartElement("CdtTrfTxInf");
@@ -250,21 +292,61 @@ namespace NexVue.HsbcEBanking
                                 writer.WriteValue(row[table.Columns.IndexOf(CdtTrfTxInfAmt)]);
                             writer.WriteEndElement(); //InstdAmt
                         writer.WriteEndElement(); //Amt
-                        writer.WriteStartElement("CdtrAgt");
-                            writer.WriteStartElement("FinInstnId");
-                                writer.WriteStartElement("ClrSysMmbId");
-                                    writer.WriteElementString("MmbId", row[table.Columns.IndexOf(CdtrFinInstnClrSysMmbId)]);
-                                writer.WriteEndElement(); //ClrSysMmbId
-                                writer.WriteStartElement("PstlAdr");
-                                    writer.WriteElementString("StrtNm", row[table.Columns.IndexOf(CdtrFinInstnStrtNm)]);
-                                    writer.WriteElementString("BldgNb", row[table.Columns.IndexOf(CdtrFinInstnBldgNb)]);
-                                    writer.WriteElementString("PstCd", row[table.Columns.IndexOf(CdtrFinInstnPstCd)]);
-                                    writer.WriteElementString("TwnNm", row[table.Columns.IndexOf(CdtrFinInstnTwnNm)]);
-                                    writer.WriteElementString("CtrySubDvsn", row[table.Columns.IndexOf(CdtrFinInstnCtrySubDvsn)]);
-                                    writer.WriteElementString("Ctry", row[table.Columns.IndexOf(CdtrFinInstnCtry)]);
-                                writer.WriteEndElement(); //PstlAdr
-                            writer.WriteEndElement(); //FinInstnId
-                        writer.WriteEndElement(); //CdtrAgt
+
+                        if(String.IsNullOrEmpty(row[table.Columns.IndexOf(ChqInstrChqNb)]))
+                        { 
+                            //Regular ACH/WIRE File
+                            writer.WriteStartElement("CdtrAgt");
+                                writer.WriteStartElement("FinInstnId");
+                                    if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(CdtrFinInstnBic)]))
+                                    {
+                                        writer.WriteElementString("BIC", row[table.Columns.IndexOf(CdtrFinInstnBic)]);
+                                    }
+
+                                    if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(CdtrFinInstnClrSysMmbId)]))
+                                    {
+                                        writer.WriteStartElement("ClrSysMmbId");
+                                            writer.WriteElementString("MmbId", row[table.Columns.IndexOf(CdtrFinInstnClrSysMmbId)]);
+                                        writer.WriteEndElement(); //ClrSysMmbId
+                                    }
+
+                                    writer.WriteStartElement("PstlAdr");
+                                        writer.WriteElementString("StrtNm", row[table.Columns.IndexOf(CdtrFinInstnStrtNm)]);
+                                        writer.WriteElementString("BldgNb", row[table.Columns.IndexOf(CdtrFinInstnBldgNb)]);
+                                        writer.WriteElementString("PstCd", row[table.Columns.IndexOf(CdtrFinInstnPstCd)]);
+                                        writer.WriteElementString("TwnNm", row[table.Columns.IndexOf(CdtrFinInstnTwnNm)]);
+                                        writer.WriteElementString("CtrySubDvsn", row[table.Columns.IndexOf(CdtrFinInstnCtrySubDvsn)]);
+                                        writer.WriteElementString("Ctry", row[table.Columns.IndexOf(CdtrFinInstnCtry)]);
+                                    writer.WriteEndElement(); //PstlAdr
+                                writer.WriteEndElement(); //FinInstnId
+                            writer.WriteEndElement(); //CdtrAgt
+                        }
+                        else
+                        {
+                            //Cheque outsourcing
+                            writer.WriteStartElement("ChqInstr");
+                                writer.WriteElementString("ChqNb", row[table.Columns.IndexOf(ChqInstrChqNb)]);
+                                writer.WriteStartElement("DlvryMtd");
+                                    writer.WriteElementString("Cd", row[table.Columns.IndexOf(ChqInstrDlvryMtd)]);
+                                writer.WriteEndElement(); //DlvryMtd
+                                writer.WriteStartElement("DlvrTo");
+                                    writer.WriteElementString("Nm", row[table.Columns.IndexOf(ChqInstrDlvryToNm)]);
+                                    writer.WriteStartElement("Adr");
+                                        writer.WriteElementString("PstCd", row[table.Columns.IndexOf(ChqInstrDlvryPstCd)]);
+                                        writer.WriteElementString("TwnNm", row[table.Columns.IndexOf(ChqInstrDlvryTwnNm)]);
+                                        writer.WriteElementString("CtrySubDvsn", row[table.Columns.IndexOf(ChqInstrDlvryCtrySubDvsn)]);
+                                        writer.WriteElementString("Ctry", row[table.Columns.IndexOf(ChqInstrDlvryCtry)]);
+                                        writer.WriteElementString("AdrLine", row[table.Columns.IndexOf(ChqInstrDlvryAdrLine1)]);
+                                        if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(ChqInstrDlvryAdrLine2)]))
+                                        {
+                                            writer.WriteElementString("AdrLine", row[table.Columns.IndexOf(ChqInstrDlvryAdrLine2)]);
+                                        }
+                                    writer.WriteEndElement(); //Adr
+                                writer.WriteEndElement(); //DlvrTo
+                                writer.WriteElementString("FrmsCd", row[table.Columns.IndexOf(ChqInstrFrmsCd)]);
+                                writer.WriteElementString("MemoFld", row[table.Columns.IndexOf(ChqInstrMemoFld)]);
+                            writer.WriteEndElement(); //ChqInstr
+                        }
 
                         //Creditor
                         writer.WriteStartElement("Cdtr");
@@ -282,14 +364,17 @@ namespace NexVue.HsbcEBanking
                             writer.WriteEndElement(); //PstlAdr
                         writer.WriteEndElement(); //Cdtr
 
-                        //Creditor Account
-                        writer.WriteStartElement("CdtrAcct");
-                            writer.WriteStartElement("Id");
-                                writer.WriteStartElement("Othr");
-                                    writer.WriteElementString("Id", row[table.Columns.IndexOf(CdtrAcctId)]);
-                                writer.WriteEndElement(); //Othr
-                            writer.WriteEndElement(); //Id
-                        writer.WriteEndElement(); //CdtrAcct
+                        //Creditor Account -- omit node on cheque outsourcing files
+                        if(!String.IsNullOrEmpty(row[table.Columns.IndexOf(CdtrAcctId)]))
+                        { 
+                            writer.WriteStartElement("CdtrAcct");
+                                writer.WriteStartElement("Id");
+                                    writer.WriteStartElement("Othr");
+                                        writer.WriteElementString("Id", row[table.Columns.IndexOf(CdtrAcctId)]);
+                                    writer.WriteEndElement(); //Othr
+                                writer.WriteEndElement(); //Id
+                            writer.WriteEndElement(); //CdtrAcct
+                        }
                     writer.WriteEndElement(); //CdtTrfTxInf
                     writer.WriteEndElement(); //PmtInf
                 }
