@@ -26,6 +26,7 @@ namespace NexVue.HsbcEBanking
         protected const string PmtInfId = "PmtInfId";
         protected const string PmtMtd = "PmtMtd";
         protected const string PmtTpInfSvcLvlCd = "PmtTpInfSvcLvlCd";
+        protected const string PmtTpInfLclInstrmPrty = "PmtTpInfLclInstrmPrty";
         protected const string ReqdExctnDt = "ReqdExctnDt";
         protected const string DbtrNm = "DbtrNm";
         protected const string DbtrStrtNm = "DbtrStrtNm";
@@ -107,6 +108,7 @@ namespace NexVue.HsbcEBanking
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, PmtInfId)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, PmtMtd)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, PmtTpInfSvcLvlCd)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, PmtTpInfLclInstrmPrty)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ReqdExctnDt)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrNm)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrStrtNm)));
@@ -252,6 +254,12 @@ namespace NexVue.HsbcEBanking
                     writer.WriteStartElement("SvcLvl");
                         writer.WriteElementString("Cd", table.Rows[0][table.Columns.IndexOf(PmtTpInfSvcLvlCd)]);
                     writer.WriteEndElement(); //SvcLvl
+                    if(!String.IsNullOrEmpty(table.Rows[0][table.Columns.IndexOf(PmtTpInfSvcLvlCd)]))
+                    {
+                        writer.WriteStartElement("LclInstrm");
+                            writer.WriteElementString("Prtry", table.Rows[0][table.Columns.IndexOf(PmtTpInfLclInstrmPrty)]);
+                        writer.WriteEndElement(); //LclInstrm
+                    }
                 writer.WriteEndElement(); //PmtTpInf
                     
                 writer.WriteElementString("ReqdExctnDt", table.Rows[0][table.Columns.IndexOf(ReqdExctnDt)]);
