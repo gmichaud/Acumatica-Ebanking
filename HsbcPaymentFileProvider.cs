@@ -26,7 +26,7 @@ namespace NexVue.HsbcEBanking
         protected const string PmtInfId = "PmtInfId";
         protected const string PmtMtd = "PmtMtd";
         protected const string PmtTpInfSvcLvlCd = "PmtTpInfSvcLvlCd";
-        protected const string ReqdExctnDt = "ReqdExctnDt";r
+        protected const string ReqdExctnDt = "ReqdExctnDt";
         protected const string DbtrNm = "DbtrNm";
         protected const string DbtrStrtNm = "DbtrStrtNm";
         protected const string DbtrBldgNb = "DbtrBldgNb";
@@ -522,10 +522,10 @@ namespace NexVue.HsbcEBanking
         {
             return date.ToString("yyyy-MM-dd");
         }
-
+        
         public virtual string FormatAmount(decimal amount)
         {
-            return amount.ToString(System.Globalization.CultureInfo.InvariantCulture);
+            return amount.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture);
         }
 
         public virtual string CacheValue(string key, string value)
