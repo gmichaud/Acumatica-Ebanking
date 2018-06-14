@@ -26,7 +26,7 @@ namespace NexVue.HsbcEBanking
         protected const string PmtInfId = "PmtInfId";
         protected const string PmtMtd = "PmtMtd";
         protected const string PmtTpInfSvcLvlCd = "PmtTpInfSvcLvlCd";
-        protected const string ReqdExctnDt = "ReqdExctnDt";
+        protected const string ReqdExctnDt = "ReqdExctnDt";r
         protected const string DbtrNm = "DbtrNm";
         protected const string DbtrStrtNm = "DbtrStrtNm";
         protected const string DbtrBldgNb = "DbtrBldgNb";
@@ -267,13 +267,16 @@ namespace NexVue.HsbcEBanking
                         writer.WriteElementString("CtrySubDvsn", table.Rows[0][table.Columns.IndexOf(DbtrCtrySubDvsn)]);
                         writer.WriteElementString("Ctry", table.Rows[0][table.Columns.IndexOf(DbtrCtry)]);
                     writer.WriteEndElement(); //PstlAdr
-                    writer.WriteStartElement("Id");
-                        writer.WriteStartElement("OrgId");
-                            writer.WriteStartElement("Othr");
-                                writer.WriteElementString("Id", table.Rows[0][table.Columns.IndexOf(DbtrOrgId)]);
-                            writer.WriteEndElement(); //Othr
-                        writer.WriteEndElement(); //OrgId
-                    writer.WriteEndElement(); //Id
+                    if(!String.IsNullOrEmpty(table.Rows[0][table.Columns.IndexOf(DbtrOrgId)])) //For HSBC, this is needed only on ACH documents and should include the ACH ID. Leave blank otherwise.
+                    { 
+                        writer.WriteStartElement("Id");
+                            writer.WriteStartElement("OrgId");
+                                writer.WriteStartElement("Othr");
+                                    writer.WriteElementString("Id", table.Rows[0][table.Columns.IndexOf(DbtrOrgId)]);
+                                writer.WriteEndElement(); //Othr
+                            writer.WriteEndElement(); //OrgId
+                        writer.WriteEndElement(); //Id
+                    }
                 writer.WriteEndElement(); //Dbtr
 
                 //Debitor Account
