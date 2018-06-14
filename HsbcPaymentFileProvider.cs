@@ -254,7 +254,7 @@ namespace NexVue.HsbcEBanking
                     writer.WriteStartElement("SvcLvl");
                         writer.WriteElementString("Cd", table.Rows[0][table.Columns.IndexOf(PmtTpInfSvcLvlCd)]);
                     writer.WriteEndElement(); //SvcLvl
-                    if(!String.IsNullOrEmpty(table.Rows[0][table.Columns.IndexOf(PmtTpInfSvcLvlCd)]))
+                    if(!String.IsNullOrEmpty(table.Rows[0][table.Columns.IndexOf(PmtTpInfLclInstrmPrty)]))
                     {
                         writer.WriteStartElement("LclInstrm");
                             writer.WriteElementString("Prtry", table.Rows[0][table.Columns.IndexOf(PmtTpInfLclInstrmPrty)]);
