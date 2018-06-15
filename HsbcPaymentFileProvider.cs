@@ -366,24 +366,30 @@ namespace NexVue.HsbcEBanking
                             //Cheque outsourcing
                             writer.WriteStartElement("ChqInstr");
                                 writer.WriteElementString("ChqNb", row[table.Columns.IndexOf(ChqInstrChqNb)]);
-                                writer.WriteStartElement("DlvryMtd");
-                                    writer.WriteElementString("Cd", row[table.Columns.IndexOf(ChqInstrDlvryMtd)]);
-                                writer.WriteEndElement(); //DlvryMtd
-                                writer.WriteStartElement("DlvrTo");
-                                    writer.WriteElementString("Nm", row[table.Columns.IndexOf(ChqInstrDlvryToNm)]);
-                                    writer.WriteStartElement("Adr");
-                                        writer.WriteElementStringIfNotNull("StrtNm", row[table.Columns.IndexOf(ChqInstrDlvryStrtNm)]);
-                                        writer.WriteElementStringIfNotNull("BldgNb", row[table.Columns.IndexOf(ChqInstrDlvryBldgNb)]);
-                                        writer.WriteElementStringIfNotNull("PstCd", row[table.Columns.IndexOf(ChqInstrDlvryPstCd)]);
-                                        writer.WriteElementStringIfNotNull("TwnNm", row[table.Columns.IndexOf(ChqInstrDlvryTwnNm)]);
-                                        writer.WriteElementStringIfNotNull("CtrySubDvsn", row[table.Columns.IndexOf(ChqInstrDlvryCtrySubDvsn)]);
-                                        writer.WriteElementStringIfNotNull("Ctry", row[table.Columns.IndexOf(ChqInstrDlvryCtry)]);
-                                        writer.WriteElementStringIfNotNull("AdrLine", row[table.Columns.IndexOf(ChqInstrDlvryAdrLine1)]);
-                                        writer.WriteElementStringIfNotNull("AdrLine", row[table.Columns.IndexOf(ChqInstrDlvryAdrLine2)]);
-                                    writer.WriteEndElement(); //Adr
-                                writer.WriteEndElement(); //DlvrTo
+                                if(!String.IsNullOrEmpty(row[table.Columns.IndexOf(ChqInstrDlvryMtd)]))
+                                { 
+                                    writer.WriteStartElement("DlvryMtd"); //TODO: Make node optional
+                                        writer.WriteElementString("Cd", row[table.Columns.IndexOf(ChqInstrDlvryMtd)]);
+                                    writer.WriteEndElement(); //DlvryMtd
+                                }
+                                if(!String.IsNullOrEmpty(row[table.Columns.IndexOf(ChqInstrDlvryToNm)]))
+                                { 
+                                    writer.WriteStartElement("DlvrTo");
+                                        writer.WriteElementString("Nm", row[table.Columns.IndexOf(ChqInstrDlvryToNm)]);
+                                        writer.WriteStartElement("Adr");
+                                            writer.WriteElementStringIfNotNull("StrtNm", row[table.Columns.IndexOf(ChqInstrDlvryStrtNm)]);
+                                            writer.WriteElementStringIfNotNull("BldgNb", row[table.Columns.IndexOf(ChqInstrDlvryBldgNb)]);
+                                            writer.WriteElementStringIfNotNull("PstCd", row[table.Columns.IndexOf(ChqInstrDlvryPstCd)]);
+                                            writer.WriteElementStringIfNotNull("TwnNm", row[table.Columns.IndexOf(ChqInstrDlvryTwnNm)]);
+                                            writer.WriteElementStringIfNotNull("CtrySubDvsn", row[table.Columns.IndexOf(ChqInstrDlvryCtrySubDvsn)]);
+                                            writer.WriteElementStringIfNotNull("Ctry", row[table.Columns.IndexOf(ChqInstrDlvryCtry)]);
+                                            writer.WriteElementStringIfNotNull("AdrLine", row[table.Columns.IndexOf(ChqInstrDlvryAdrLine1)]);
+                                            writer.WriteElementStringIfNotNull("AdrLine", row[table.Columns.IndexOf(ChqInstrDlvryAdrLine2)]);
+                                        writer.WriteEndElement(); //Adr
+                                    writer.WriteEndElement(); //DlvrTo
+                                }
                                 writer.WriteElementString("FrmsCd", row[table.Columns.IndexOf(ChqInstrFrmsCd)]);
-                                writer.WriteElementString("MemoFld", row[table.Columns.IndexOf(ChqInstrMemoFld)]);
+                                writer.WriteElementStringIfNotNull("MemoFld", row[table.Columns.IndexOf(ChqInstrMemoFld)]);
                             writer.WriteEndElement(); //ChqInstr
                         }
 

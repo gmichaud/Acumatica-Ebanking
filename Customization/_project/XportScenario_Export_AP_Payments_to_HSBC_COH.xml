@@ -114,14 +114,14 @@
                     <SYMappingField LineNbr="2591" OrderNumber="70" IsActive="1" IsVisible="1" ObjectName="Document" FieldName="ExportFileName" Value="=Format( 'COH{0:MMddyy}-{1:00}.xml', [Document.TranDate], [Document.DateSeqNbr] )" NeedCommit="0" IgnoreError="0" />
                     <SYMappingField LineNbr="2623" OrderNumber="71" IsActive="1" IsVisible="1" ObjectName="Document" FieldName="&lt;Save&gt;" NeedCommit="0" IgnoreError="0" />
                     <SYMappingField LineNbr="2655" OrderNumber="52" IsActive="1" IsVisible="1" ObjectName="APPaymentList" FieldName="RefNbr" Value="ChqInstrChqNb" NeedCommit="0" IgnoreError="0" />
-                    <SYMappingField LineNbr="2687" OrderNumber="53" IsActive="1" IsVisible="1" ObjectName="APPaymentList" FieldName="='CRDB'" Value="ChqInstrDlvryMtd" NeedCommit="0" IgnoreError="0" />
-                    <SYMappingField LineNbr="2751" OrderNumber="54" IsActive="1" IsVisible="1" ObjectName="APPaymentList" FieldName="DocDesc" Value="ChqInstrMemoFld" NeedCommit="0" IgnoreError="0" />
-                    <SYMappingField LineNbr="2783" OrderNumber="55" IsActive="1" IsVisible="1" ObjectName="VendorRemitContact" FieldName="FullName" Value="ChqInstrDlvryToNm" NeedCommit="0" IgnoreError="0" />
-                    <SYMappingField LineNbr="2815" OrderNumber="56" IsActive="1" IsVisible="1" ObjectName="VendorRemitAddress" FieldName="AddressLine1" Value="ChqInstrDlvryStrtNm" NeedCommit="0" IgnoreError="0" />
-                    <SYMappingField LineNbr="2879" OrderNumber="57" IsActive="1" IsVisible="1" ObjectName="VendorRemitAddress" FieldName="City" Value="ChqInstrDlvryTwnNm" NeedCommit="0" IgnoreError="0" />
-                    <SYMappingField LineNbr="2911" OrderNumber="58" IsActive="1" IsVisible="1" ObjectName="VendorRemitAddress" FieldName="State" Value="ChqInstrDlvryCtrySubDvsn" NeedCommit="0" IgnoreError="0" />
-                    <SYMappingField LineNbr="2943" OrderNumber="59" IsActive="1" IsVisible="1" ObjectName="VendorRemitAddress" FieldName="PostalCode" Value="ChqInstrDlvryPstCd" NeedCommit="0" IgnoreError="0" />
-                    <SYMappingField LineNbr="2975" OrderNumber="60" IsActive="1" IsVisible="1" ObjectName="VendorRemitAddress" FieldName="CountryID" Value="ChqInstrDlvryCtry" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2687" OrderNumber="53" IsActive="0" IsVisible="1" ObjectName="APPaymentList" FieldName="='CRDB'" Value="ChqInstrDlvryMtd" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2751" OrderNumber="54" IsActive="0" IsVisible="1" ObjectName="APPaymentList" FieldName="DocDesc" Value="ChqInstrMemoFld" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2783" OrderNumber="55" IsActive="0" IsVisible="1" ObjectName="VendorRemitContact" FieldName="FullName" Value="ChqInstrDlvryToNm" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2815" OrderNumber="56" IsActive="0" IsVisible="1" ObjectName="VendorRemitAddress" FieldName="AddressLine1" Value="ChqInstrDlvryStrtNm" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2879" OrderNumber="57" IsActive="0" IsVisible="1" ObjectName="VendorRemitAddress" FieldName="City" Value="ChqInstrDlvryTwnNm" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2911" OrderNumber="58" IsActive="0" IsVisible="1" ObjectName="VendorRemitAddress" FieldName="State" Value="ChqInstrDlvryCtrySubDvsn" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2943" OrderNumber="59" IsActive="0" IsVisible="1" ObjectName="VendorRemitAddress" FieldName="PostalCode" Value="ChqInstrDlvryPstCd" NeedCommit="0" IgnoreError="0" />
+                    <SYMappingField LineNbr="2975" OrderNumber="60" IsActive="0" IsVisible="1" ObjectName="VendorRemitAddress" FieldName="CountryID" Value="ChqInstrDlvryCtry" NeedCommit="0" IgnoreError="0" />
                     <SYMappingField LineNbr="3007" OrderNumber="46" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="@CashAccountPaymentMethodDetail.detailID" Value="='CHQFRMSCD'" NeedCommit="0" IgnoreError="0" />
                     <SYMappingField LineNbr="3039" OrderNumber="47" IsActive="1" IsVisible="1" ObjectName="cashAccountSettings" FieldName="DetailValue" Value="ChqInstrFrmsCd" NeedCommit="0" IgnoreError="0" />
                 </row>
