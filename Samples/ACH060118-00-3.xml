@@ -1,0 +1,156 @@
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03">
+  <CstmrCdtTrfInitn>
+    <GrpHdr>
+      <MsgId>000013B</MsgId>
+      <CreDtTm>2018-06-15T09:02:38</CreDtTm>
+      <Authstn>
+        <Cd>AUTH</Cd>
+      </Authstn>
+      <NbOfTxs>2</NbOfTxs>
+      <InitgPty>
+        <Id>
+          <OrgId>
+            <Othr>
+              <Id>ABC16829001</Id>
+            </Othr>
+          </OrgId>
+        </Id>
+      </InitgPty>
+    </GrpHdr>
+    <PmtInf>
+      <PmtInfId>000691</PmtInfId>
+      <PmtMtd>TRF</PmtMtd>
+      <PmtTpInf>
+        <SvcLvl>
+          <Cd>NURG</Cd>
+        </SvcLvl>
+        <LclInstrm>
+          <Prtry>CCD</Prtry>
+        </LclInstrm>
+      </PmtTpInf>
+      <ReqdExctnDt>2018-06-20</ReqdExctnDt>
+      <Dbtr>
+        <Nm>Lollytogs Ltd.</Nm>
+        <PstlAdr>
+          <StrtNm>W. 33rd St. Suite 1012</StrtNm>
+          <BldgNb>100</BldgNb>
+          <PstCd>10001</PstCd>
+          <TwnNm>New York</TwnNm>
+          <CtrySubDvsn>NY</CtrySubDvsn>
+          <Ctry>US</Ctry>
+        </PstlAdr>
+        <Id>
+          <OrgId>
+            <Othr>
+              <Id>123456789</Id>
+            </Othr>
+          </OrgId>
+        </Id>
+      </Dbtr>
+      <DbtrAcct>
+        <Id>
+          <Othr>
+            <Id>797049622</Id>
+          </Othr>
+        </Id>
+      </DbtrAcct>
+      <DbtrAgt>
+        <FinInstnId>
+          <ClrSysMmbId>
+            <MmbId>021001088</MmbId>
+          </ClrSysMmbId>
+          <PstlAdr>
+            <StrtNm>5th Ave.</StrtNm>
+            <BldgNb>452</BldgNb>
+            <PstCd>10001</PstCd>
+            <TwnNm>New York</TwnNm>
+            <CtrySubDvsn>NY</CtrySubDvsn>
+            <Ctry>US</Ctry>
+          </PstlAdr>
+        </FinInstnId>
+      </DbtrAgt>
+      <CdtTrfTxInf>
+        <PmtId>
+          <InstrId>000691</InstrId>
+          <EndToEndId>000691</EndToEndId>
+        </PmtId>
+        <Amt>
+          <InstdAmt Ccy="USD">1000.00</InstdAmt>
+        </Amt>
+        <CdtrAgt>
+          <FinInstnId>
+            <ClrSysMmbId>
+              <MmbId>03300030</MmbId>
+            </ClrSysMmbId>
+            <PstlAdr>
+              <StrtNm>Wall St.</StrtNm>
+              <BldgNb>10</BldgNb>
+              <PstCd>12102</PstCd>
+              <TwnNm>New York</TwnNm>
+              <CtrySubDvsn>NY</CtrySubDvsn>
+              <Ctry>US</Ctry>
+            </PstlAdr>
+          </FinInstnId>
+        </CdtrAgt>
+        <Cdtr>
+          <Nm>Widget Supply Company - ACH</Nm>
+          <PstlAdr>
+            <StrtNm>2300 Standard Ave</StrtNm>
+            <PstCd>46394</PstCd>
+            <TwnNm>Whiting</TwnNm>
+            <CtrySubDvsn>IN</CtrySubDvsn>
+            <Ctry>US</Ctry>
+          </PstlAdr>
+        </Cdtr>
+        <CdtrAcct>
+          <Id>
+            <Othr>
+              <Id>987654321</Id>
+            </Othr>
+          </Id>
+        </CdtrAcct>
+      </CdtTrfTxInf>
+      <CdtTrfTxInf>
+        <PmtId>
+          <InstrId>000692</InstrId>
+          <EndToEndId>000692</EndToEndId>
+        </PmtId>
+        <Amt>
+          <InstdAmt Ccy="USD">234.33</InstdAmt>
+        </Amt>
+        <CdtrAgt>
+          <FinInstnId>
+            <ClrSysMmbId>
+              <MmbId>022000020</MmbId>
+            </ClrSysMmbId>
+            <PstlAdr>
+              <StrtNm>Some Street</StrtNm>
+              <BldgNb>123</BldgNb>
+              <PstCd>14203</PstCd>
+              <TwnNm>Buffalo</TwnNm>
+              <CtrySubDvsn>NY</CtrySubDvsn>
+              <Ctry>US</Ctry>
+            </PstlAdr>
+          </FinInstnId>
+        </CdtrAgt>
+        <Cdtr>
+          <Nm>Home Depot - Bellevue</Nm>
+          <PstlAdr>
+            <StrtNm>325 120th Ave NE</StrtNm>
+            <PstCd>98005</PstCd>
+            <TwnNm>Bellevue</TwnNm>
+            <CtrySubDvsn>WA</CtrySubDvsn>
+            <Ctry>US</Ctry>
+          </PstlAdr>
+        </Cdtr>
+        <CdtrAcct>
+          <Id>
+            <Othr>
+              <Id>123456</Id>
+            </Othr>
+          </Id>
+        </CdtrAcct>
+      </CdtTrfTxInf>
+    </PmtInf>
+  </CstmrCdtTrfInitn>
+</Document>

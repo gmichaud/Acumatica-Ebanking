@@ -1,0 +1,87 @@
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03">
+  <CstmrCdtTrfInitn>
+    <GrpHdr>
+      <MsgId>000014B</MsgId>
+      <CreDtTm>2018-06-15T09:02:35</CreDtTm>
+      <Authstn>
+        <Cd>AUTH</Cd>
+      </Authstn>
+      <NbOfTxs>1</NbOfTxs>
+      <InitgPty>
+        <Id>
+          <OrgId>
+            <Othr>
+              <Id>ABC16829001</Id>
+            </Othr>
+          </OrgId>
+        </Id>
+      </InitgPty>
+    </GrpHdr>
+    <PmtInf>
+      <PmtInfId>000693</PmtInfId>
+      <PmtMtd>CHK</PmtMtd>
+      <PmtTpInf>
+        <SvcLvl>
+          <Cd>NURG</Cd>
+        </SvcLvl>
+      </PmtTpInf>
+      <ReqdExctnDt>2018-06-20</ReqdExctnDt>
+      <Dbtr>
+        <Nm>Lollytogs Ltd.</Nm>
+        <PstlAdr>
+          <StrtNm>W. 33rd St. Suite 1012</StrtNm>
+          <BldgNb>100</BldgNb>
+          <PstCd>10001</PstCd>
+          <TwnNm>New York</TwnNm>
+          <CtrySubDvsn>NY</CtrySubDvsn>
+          <Ctry>US</Ctry>
+        </PstlAdr>
+      </Dbtr>
+      <DbtrAcct>
+        <Id>
+          <Othr>
+            <Id>797049622</Id>
+          </Othr>
+        </Id>
+      </DbtrAcct>
+      <DbtrAgt>
+        <FinInstnId>
+          <ClrSysMmbId>
+            <MmbId>021001088</MmbId>
+          </ClrSysMmbId>
+          <PstlAdr>
+            <StrtNm>5th Ave.</StrtNm>
+            <BldgNb>452</BldgNb>
+            <PstCd>10018</PstCd>
+            <TwnNm>New York</TwnNm>
+            <CtrySubDvsn>NY</CtrySubDvsn>
+            <Ctry>US</Ctry>
+          </PstlAdr>
+        </FinInstnId>
+      </DbtrAgt>
+      <CdtTrfTxInf>
+        <PmtId>
+          <InstrId>000693</InstrId>
+          <EndToEndId>000693</EndToEndId>
+        </PmtId>
+        <Amt>
+          <InstdAmt Ccy="USD">3334.20</InstdAmt>
+        </Amt>
+        <ChqInstr>
+          <ChqNb>000693</ChqNb>
+          <FrmsCd>630</FrmsCd>
+        </ChqInstr>
+        <Cdtr>
+          <Nm>Asar Hardware Limited</Nm>
+          <PstlAdr>
+            <StrtNm>1580 Valencia St</StrtNm>
+            <PstCd>94110</PstCd>
+            <TwnNm>San Francisco</TwnNm>
+            <CtrySubDvsn>CA</CtrySubDvsn>
+            <Ctry>US</Ctry>
+          </PstlAdr>
+        </Cdtr>
+      </CdtTrfTxInf>
+    </PmtInf>
+  </CstmrCdtTrfInitn>
+</Document>

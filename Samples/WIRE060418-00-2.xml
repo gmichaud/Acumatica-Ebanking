@@ -1,0 +1,102 @@
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03">
+  <CstmrCdtTrfInitn>
+    <GrpHdr>
+      <MsgId>000015B</MsgId>
+      <CreDtTm>2018-06-15T09:00:46</CreDtTm>
+      <Authstn>
+        <Cd>AUTH</Cd>
+      </Authstn>
+      <NbOfTxs>1</NbOfTxs>
+      <InitgPty>
+        <Id>
+          <OrgId>
+            <Othr>
+              <Id>ABC16829001</Id>
+            </Othr>
+          </OrgId>
+        </Id>
+      </InitgPty>
+    </GrpHdr>
+    <PmtInf>
+      <PmtInfId>000694</PmtInfId>
+      <PmtMtd>TRF</PmtMtd>
+      <PmtTpInf>
+        <SvcLvl>
+          <Cd>URGP</Cd>
+        </SvcLvl>
+      </PmtTpInf>
+      <ReqdExctnDt>2018-06-20</ReqdExctnDt>
+      <Dbtr>
+        <Nm>Lollytogs Ltd.</Nm>
+        <PstlAdr>
+          <StrtNm>W. 33rd St. Suite 1012</StrtNm>
+          <BldgNb>100</BldgNb>
+          <PstCd>10001</PstCd>
+          <TwnNm>New York</TwnNm>
+          <CtrySubDvsn>NY</CtrySubDvsn>
+          <Ctry>US</Ctry>
+        </PstlAdr>
+      </Dbtr>
+      <DbtrAcct>
+        <Id>
+          <Othr>
+            <Id>797049622</Id>
+          </Othr>
+        </Id>
+      </DbtrAcct>
+      <DbtrAgt>
+        <FinInstnId>
+          <BIC>MRMDUS33</BIC>
+          <PstlAdr>
+            <StrtNm>5th Ave.</StrtNm>
+            <BldgNb>452</BldgNb>
+            <PstCd>10018</PstCd>
+            <TwnNm>New York</TwnNm>
+            <CtrySubDvsn>NY</CtrySubDvsn>
+            <Ctry>US</Ctry>
+          </PstlAdr>
+        </FinInstnId>
+      </DbtrAgt>
+      <ChrgBr>DEBT</ChrgBr>
+      <CdtTrfTxInf>
+        <PmtId>
+          <InstrId>000694</InstrId>
+          <EndToEndId>000694</EndToEndId>
+        </PmtId>
+        <Amt>
+          <InstdAmt Ccy="USD">1000.00</InstdAmt>
+        </Amt>
+        <CdtrAgt>
+          <FinInstnId>
+            <BIC>BARCGB21</BIC>
+            <PstlAdr>
+              <StrtNm>Oxford St.</StrtNm>
+              <BldgNb>1</BldgNb>
+              <PstCd>E14 4AA</PstCd>
+              <TwnNm>London</TwnNm>
+              <CtrySubDvsn>Greater London</CtrySubDvsn>
+              <Ctry>GB</Ctry>
+            </PstlAdr>
+          </FinInstnId>
+        </CdtrAgt>
+        <Cdtr>
+          <Nm>Acitai Systems - Computer Services For Business</Nm>
+          <PstlAdr>
+            <StrtNm>Leon House</StrtNm>
+            <PstCd>CR0 9XT</PstCd>
+            <TwnNm>Croydon</TwnNm>
+            <CtrySubDvsn>GREATER LONDON</CtrySubDvsn>
+            <Ctry>GB</Ctry>
+          </PstlAdr>
+        </Cdtr>
+        <CdtrAcct>
+          <Id>
+            <Othr>
+              <Id>987985733</Id>
+            </Othr>
+          </Id>
+        </CdtrAcct>
+      </CdtTrfTxInf>
+    </PmtInf>
+  </CstmrCdtTrfInitn>
+</Document>
