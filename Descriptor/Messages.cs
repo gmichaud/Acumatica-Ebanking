@@ -11,5 +11,6 @@ namespace NexVue.HsbcEBanking
     {
         public const string XmlFailedValidation = "The XML file failed validation: {0}";
         public const string XmlValidationWarning = "XML Validation Warning: {0}";
+        public const string DisableXmlSchemaValidation = "Disable XML Schema Validation (debug mode)";
     }
 }

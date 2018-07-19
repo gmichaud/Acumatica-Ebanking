@@ -17,6 +17,7 @@ namespace NexVue.HsbcEBanking
     public class HsbcPaymentFileProvider : PXSYBaseEncodedFileProvider, IPXSYProvider
     {
         private const string IncomingBatchNumber = "BatchNbr";
+        private const string DisableXmlSchemaValidation = "DisableXmlSchemaValidation";
 
         //HSBC fields
         protected const string MsgId = "MsgId";
@@ -171,6 +172,8 @@ namespace NexVue.HsbcEBanking
         {
             List<PXStringState> ret = base.FillParameters();
             ret.Add(CreateParameter(IncomingBatchNumber, Titles.IncomingBatchNumber, String.Empty));
+            ret.Add(CreateParameter(DisableXmlSchemaValidation, Messages.DisableXmlSchemaValidation, String.Empty));
+
             return ret;
         }
         
@@ -429,7 +432,10 @@ namespace NexVue.HsbcEBanking
                 writer.Flush();
             }
 
-            ValidateXmlDocument(doc);
+            if(this.GetParameter(DisableXmlSchemaValidation) != "True" && this.GetParameter(DisableXmlSchemaValidation) != "true")
+            { 
+                ValidateXmlDocument(doc);
+            }
 
             Encoding encoding = GetEncoding();
             return encoding.GetBytes(doc.OuterXml);
