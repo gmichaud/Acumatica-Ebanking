@@ -1,6 +1,7 @@
 ﻿using PX.Api;
 using PX.Data;
 using PX.DataSync;
+using PX.Objects.AP;
 using PX.SM;
 using System;
 using System.Collections.Generic;
@@ -82,6 +83,7 @@ namespace NexVue.HsbcEBanking
         protected const string CdtrCtrySubDvsn = "CdtrCtrySubDvsn";
         protected const string CdtrCtry = "CdtrCtry";
         protected const string CdtrAcctId = "CdtrAcctId";
+        protected const string RmtInfAPRefNbr = "RmtInfAPRefNbr";
 
         protected const string NoteID = "NoteID";
         protected const string FileID = "FileName";
@@ -164,6 +166,7 @@ namespace NexVue.HsbcEBanking
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrCtrySubDvsn)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrCtry)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrAcctId)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, RmtInfAPRefNbr)));
 
             return ret.ToArray();
         }
@@ -312,12 +315,12 @@ namespace NexVue.HsbcEBanking
                     }
 
                     writer.WriteStartElement("PstlAdr");
-                        writer.WriteElementString("StrtNm", table.Rows[0][table.Columns.IndexOf(DbtrFinInstnStrtNm)]);
-                        writer.WriteElementString("BldgNb", table.Rows[0][table.Columns.IndexOf(DbtrFinInstnBldgNb)]);
-                        writer.WriteElementString("PstCd", table.Rows[0][table.Columns.IndexOf(DbtrFinInstnPstCd)]);
-                        writer.WriteElementString("TwnNm", table.Rows[0][table.Columns.IndexOf(DbtrFinInstnTwnNm)]);
-                        writer.WriteElementString("CtrySubDvsn", table.Rows[0][table.Columns.IndexOf(DbtrFinInstnCtrySubDvsn)]);
-                        writer.WriteElementString("Ctry", table.Rows[0][table.Columns.IndexOf(DbtrFinInstnCtry)]);
+                        writer.WriteElementStringIfNotNull("StrtNm", table.Rows[0][table.Columns.IndexOf(DbtrFinInstnStrtNm)]);
+                        writer.WriteElementStringIfNotNull("BldgNb", table.Rows[0][table.Columns.IndexOf(DbtrFinInstnBldgNb)]);
+                        writer.WriteElementStringIfNotNull("PstCd", table.Rows[0][table.Columns.IndexOf(DbtrFinInstnPstCd)]);
+                        writer.WriteElementStringIfNotNull("TwnNm", table.Rows[0][table.Columns.IndexOf(DbtrFinInstnTwnNm)]);
+                        writer.WriteElementStringIfNotNull("CtrySubDvsn", table.Rows[0][table.Columns.IndexOf(DbtrFinInstnCtrySubDvsn)]);
+                        writer.WriteElementStringIfNotNull("Ctry", table.Rows[0][table.Columns.IndexOf(DbtrFinInstnCtry)]);
                     writer.WriteEndElement(); //PstlAdr
                     writer.WriteEndElement(); //FinInstnId
                 writer.WriteEndElement(); //DbtrAgt
@@ -354,12 +357,12 @@ namespace NexVue.HsbcEBanking
                                     }
 
                                     writer.WriteStartElement("PstlAdr");
-                                        writer.WriteElementString("StrtNm", row[table.Columns.IndexOf(CdtrFinInstnStrtNm)]);
-                                        writer.WriteElementString("BldgNb", row[table.Columns.IndexOf(CdtrFinInstnBldgNb)]);
-                                        writer.WriteElementString("PstCd", row[table.Columns.IndexOf(CdtrFinInstnPstCd)]);
-                                        writer.WriteElementString("TwnNm", row[table.Columns.IndexOf(CdtrFinInstnTwnNm)]);
-                                        writer.WriteElementString("CtrySubDvsn", row[table.Columns.IndexOf(CdtrFinInstnCtrySubDvsn)]);
-                                        writer.WriteElementString("Ctry", row[table.Columns.IndexOf(CdtrFinInstnCtry)]);
+                                        writer.WriteElementStringIfNotNull("StrtNm", row[table.Columns.IndexOf(CdtrFinInstnStrtNm)]);
+                                        writer.WriteElementStringIfNotNull("BldgNb", row[table.Columns.IndexOf(CdtrFinInstnBldgNb)]);
+                                        writer.WriteElementStringIfNotNull("PstCd", row[table.Columns.IndexOf(CdtrFinInstnPstCd)]);
+                                        writer.WriteElementStringIfNotNull("TwnNm", row[table.Columns.IndexOf(CdtrFinInstnTwnNm)]);
+                                        writer.WriteElementStringIfNotNull("CtrySubDvsn", row[table.Columns.IndexOf(CdtrFinInstnCtrySubDvsn)]);
+                                        writer.WriteElementStringIfNotNull("Ctry", row[table.Columns.IndexOf(CdtrFinInstnCtry)]);
                                     writer.WriteEndElement(); //PstlAdr
                                 writer.WriteEndElement(); //FinInstnId
                             writer.WriteEndElement(); //CdtrAgt
@@ -411,8 +414,14 @@ namespace NexVue.HsbcEBanking
                             writer.WriteEndElement(); //PstlAdr
                         writer.WriteEndElement(); //Cdtr
 
+                        //Detailed Remittance Information -- we are getting it directly from the AP tables because this info is not available in batch payments
+                        if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(RmtInfAPRefNbr)]))
+                        {
+                            WriteDetailedAPRemittanceInformation(writer, row[table.Columns.IndexOf(RmtInfAPRefNbr)], row[table.Columns.IndexOf(CdtTrfTxInfAmtCcy)]);
+                        }
+
                         //Creditor Account -- omit node on cheque outsourcing files
-                        if(!String.IsNullOrEmpty(row[table.Columns.IndexOf(CdtrAcctId)]))
+                        if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(CdtrAcctId)]))
                         { 
                             writer.WriteStartElement("CdtrAcct");
                                 writer.WriteStartElement("Id");
@@ -439,6 +448,81 @@ namespace NexVue.HsbcEBanking
 
             Encoding encoding = GetEncoding();
             return encoding.GetBytes(doc.OuterXml);
+        }
+
+        private void WriteDetailedAPRemittanceInformation(XmlWriter writer, string refNbr, string currencyID)
+        {
+            var payments = new PXSelectJoin<APAdjust,
+                LeftJoin<APInvoice, On<APAdjust.adjdDocType, Equal<APInvoice.docType>, And<APAdjust.adjdRefNbr, Equal<APInvoice.refNbr>>>>,
+                Where<APAdjust.adjgDocType, Equal<APDocType.check>, And<APAdjust.adjgRefNbr, Equal<Required<APAdjust.adjgRefNbr>>>>>(new PXGraph());
+
+            writer.WriteStartElement("RmtInf");
+            foreach (PXResult<APAdjust, APInvoice> p in payments.Select(refNbr))
+            {
+                var adj = (APAdjust)p;
+                var inv = (APInvoice)p;
+
+                writer.WriteStartElement("Strd");
+                    //Referred Document Information
+                    writer.WriteStartElement("RfrdDocInf");
+                        writer.WriteStartElement("Tp");
+                            writer.WriteStartElement("CdOrPrtry");
+                                writer.WriteElementString("Cd", GetReferredDocumentTypeFromAPDocType(adj.AdjdDocType));
+                            writer.WriteEndElement(); //CdOrPrtry
+                        writer.WriteEndElement(); //Tp
+                        writer.WriteElementString("Nb", adj.AdjdRefNbr);
+                        if(inv != null && inv.InvoiceDate != null) writer.WriteElementString("RltdDt", FormatDate(inv.DocDate.Value));
+                    writer.WriteEndElement(); //RfrdDocInf
+
+                    //Referred Document Amount
+                    writer.WriteStartElement("RfrdDocAmt");
+                        if(inv != null)
+                        { 
+                            writer.WriteStartElement("DuePyblAmt");
+                                writer.WriteAttributeString("Ccy", currencyID);
+                                writer.WriteValue(FormatAmount(adj.AdjgBalSign.GetValueOrDefault() * inv.CuryOrigDocAmt.GetValueOrDefault()));
+                            writer.WriteEndElement(); //DuePyblAmt
+                        }
+                        writer.WriteStartElement("DscntApldAmt");
+                            writer.WriteAttributeString("Ccy", currencyID);
+                            writer.WriteValue(FormatAmount(adj.CuryAdjgDiscAmt.GetValueOrDefault()));
+                        writer.WriteEndElement(); //DscntApldAmt
+                        writer.WriteStartElement("RmtdAmt");
+                            writer.WriteAttributeString("Ccy", currencyID);
+                            writer.WriteValue(FormatAmount(adj.AdjgBalSign.GetValueOrDefault() * adj.CuryAdjgAmt.GetValueOrDefault()));
+                        writer.WriteEndElement(); //RmtdAmt
+                    writer.WriteEndElement(); //RfrdDocAmt
+                    
+                    //Creditor Referrence Information
+                    writer.WriteStartElement("CdtrRefInf");
+                        writer.WriteStartElement("Tp");
+                            writer.WriteStartElement("CdOrPrtry");
+                                writer.WriteElementString("Cd", "RPIN"); //Related Payment Instruction
+                            writer.WriteEndElement(); //CdOrPrtry
+                        writer.WriteEndElement(); //Tp
+                        writer.WriteElementString("Ref", adj.AdjgRefNbr);
+                    writer.WriteEndElement(); //CdtrRefInf
+                writer.WriteEndElement(); //Strd
+
+            }
+            writer.WriteEndElement(); //RmtInf
+
+        }
+
+        private static string GetReferredDocumentTypeFromAPDocType(string docType)
+        {
+            switch(docType)
+            {
+                case APDocType.DebitAdj:
+                    return "DEBN";
+                case APDocType.CreditAdj:
+                    return "CREN";
+                case APDocType.Invoice:
+                default:
+                    return "CINV";
+            }
+
+            throw new NotImplementedException();
         }
 
         private void ValidateXmlDocument(XmlDocument doc)
