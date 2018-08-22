@@ -222,8 +222,12 @@ namespace NexVue.HsbcEBanking
             Int32 noteIndex = table.Columns.IndexOf(NoteID);
             if (noteIndex >= 0) _notes.AddRange(table.Select(r => r[noteIndex]).Distinct());
 
+            Encoding encoding = GetEncoding();
+
             XmlDocument doc = new XmlDocument();
-            
+            var declarationNode = doc.CreateXmlDeclaration("1.0", encoding.WebName.ToUpper(), null);
+            doc.AppendChild(declarationNode);
+
             using (XmlWriter writer = doc.CreateNavigator().AppendChild())
             {
                 writer.WriteStartDocument();
@@ -446,7 +450,6 @@ namespace NexVue.HsbcEBanking
                 ValidateXmlDocument(doc);
             }
 
-            Encoding encoding = GetEncoding();
             return encoding.GetBytes(doc.OuterXml);
         }
 
