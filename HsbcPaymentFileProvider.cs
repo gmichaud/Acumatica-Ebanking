@@ -473,7 +473,7 @@ namespace NexVue.HsbcEBanking
                                 writer.WriteElementString("Cd", GetReferredDocumentTypeFromAPDocType(adj.AdjdDocType));
                             writer.WriteEndElement(); //CdOrPrtry
                         writer.WriteEndElement(); //Tp
-                        writer.WriteElementString("Nb", adj.AdjdRefNbr);
+                        if(inv != null && String.IsNullOrEmpty(inv.InvoiceNbr)) writer.WriteElementString("Nb", inv.InvoiceNbr); else writer.WriteElementString("Nb", adj.AdjdRefNbr);
                         if(inv != null && inv.InvoiceDate != null) writer.WriteElementString("RltdDt", FormatDate(inv.DocDate.Value));
                     writer.WriteEndElement(); //RfrdDocInf
 
