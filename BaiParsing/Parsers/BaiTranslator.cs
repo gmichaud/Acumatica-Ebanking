@@ -194,6 +194,7 @@ namespace NexVue.HsbcEBanking.BaiParsing
                             Text = detail.Text,
                             TypeCode = detailType.TypeCode,
                             TypeDescription = detailType.Description,
+                            TypeTransaction = detailType.Transaction,
                             FundType = detail.FundsType,
                             TextDictionary = textDictionary
                         };

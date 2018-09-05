@@ -111,13 +111,13 @@ namespace NexVue.HsbcEBanking
             var openingLedgerFunds = account.FundsTypes.Where(ft => ft.TypeCode == OpeningLedgerTypeCode).FirstOrDefault();
             if (openingLedgerFunds != null)
             {
-                header.CuryBegBalance = decimal.Parse(openingLedgerFunds.Amount, System.Globalization.CultureInfo.InvariantCulture);
+                header.CuryBegBalance = BaiFileHelpers.GetAmount(openingLedgerFunds.Amount, account.CurrencyCode);
             }
 
             var closingLedgerFunds = account.FundsTypes.Where(ft => ft.TypeCode == ClosingLedgerTypeCode).FirstOrDefault();
             if (closingLedgerFunds != null)
             {
-                header.CuryEndBalance = decimal.Parse(closingLedgerFunds.Amount, System.Globalization.CultureInfo.InvariantCulture);
+                header.CuryEndBalance = BaiFileHelpers.GetAmount(closingLedgerFunds.Amount, account.CurrencyCode); 
             }
 
             header = graph.Header.Update(header);
@@ -130,7 +130,7 @@ namespace NexVue.HsbcEBanking
                 detail = graph.Details.Insert(detail);
 
                 //Must be done after to avoid overwriting of debit by credit
-                ProcessTransactionAfterInsert(detail, statementDetail);
+                ProcessTransactionAfterInsert(detail, statementDetail, account.CurrencyCode);
                 detail = graph.Details.Update(detail);
             }
             graph.Save.Press();
@@ -140,8 +140,8 @@ namespace NexVue.HsbcEBanking
         {
             detail.TranCode = statementDetail.TypeCode;
             detail.TranDate = transactionDate.Date;
-            detail.ExtTranID = statementDetail.BankReferenceNumber;
-            detail.ExtRefNbr = statementDetail.CustomerReferenceNumber;
+            detail.ExtTranID = (statementDetail.BankReferenceNumber == "NONREF") ? "" : statementDetail.BankReferenceNumber;
+            detail.ExtRefNbr = (statementDetail.CustomerReferenceNumber == "NONREF") ? "" : statementDetail.CustomerReferenceNumber;
             detail.TranDesc = statementDetail.Text.Trim();
             if(detail.TranDesc.Length > 256)
             {
@@ -149,13 +149,20 @@ namespace NexVue.HsbcEBanking
             }
         }
 
-        private static void ProcessTransactionAfterInsert(CABankTran detail, Detail statementDetail)
+        private static void ProcessTransactionAfterInsert(CABankTran detail, Detail statementDetail, string accountCurrencyCode)
         {
-            //TODO: Set CuryDebitAmt or CuryCreditAmt based on the TypeCode
-            //TODO: Infer number of decimals based on currency
-
-            detail.CuryDebitAmt = decimal.Parse(statementDetail.Amount) / 100;
-            //detail.CuryCreditAmt
+            var detailType = BaiFileHelpers.GetTransactionDetail(statementDetail.TypeCode);
+            switch (detailType.Transaction)
+            {
+                case TransactionType.Credit:
+                    detail.CuryDebitAmt = BaiFileHelpers.GetAmount(statementDetail.Amount, accountCurrencyCode);
+                    break;
+                case TransactionType.Debit:
+                    detail.CuryCreditAmt = BaiFileHelpers.GetAmount(statementDetail.Amount, accountCurrencyCode);
+                    break;
+                default:
+                    throw new ApplicationException($"Unknown transaction type code: {statementDetail.TypeCode}; can't determine debit/credit");
+            }
         }
 
         public bool IsValidInput(byte[] aInput)
