@@ -56,8 +56,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaiParsing\Classes\Account.cs" />
+    <Compile Include="BaiParsing\Helpers\AccountFundTypeFactory.cs" />
+    <Compile Include="BaiParsing\Enums\AsOfDateModifier.cs" />
+    <Compile Include="BaiParsing\Classes\BaiAccount.cs" />
+    <Compile Include="BaiParsing\Classes\BaiDetail.cs" />
+    <Compile Include="BaiParsing\Classes\BaiFile.cs" />
+    <Compile Include="BaiParsing\Helpers\BaiFileHelpers.cs" />
+    <Compile Include="BaiParsing\Classes\BaiGroup.cs" />
+    <Compile Include="BaiParsing\Enums\CategoryTypeCodes.cs" />
+    <Compile Include="BaiParsing\Enums\ContinuationType.cs" />
+    <Compile Include="BaiParsing\Classes\Detail.cs" />
+    <Compile Include="BaiParsing\Classes\DetailSummary.cs" />
+    <Compile Include="BaiParsing\Classes\FundType.cs" />
+    <Compile Include="BaiParsing\Helpers\FundTypeHelper.cs" />
+    <Compile Include="BaiParsing\Classes\Group.cs" />
+    <Compile Include="BaiParsing\Enums\GroupStatus.cs" />
+    <Compile Include="BaiParsing\Enums\LevelType.cs" />
+    <Compile Include="BaiParsing\Classes\SummaryHeader.cs" />
+    <Compile Include="BaiParsing\Classes\TransactionDetail.cs" />
+    <Compile Include="BaiParsing\Helpers\TransactionDetailBuilder.cs" />
+    <Compile Include="BaiParsing\Enums\TransactionType.cs" />
+    <Compile Include="BaiParsing\Classes\TranslatedBaiFile.cs" />
+    <Compile Include="BaiParsing\Classes\Usage.cs" />
+    <Compile Include="BaiParsing\Enums\UsageType.cs" />
+    <Compile Include="BaiStatementReader.cs" />
     <Compile Include="Descriptor\Messages.cs" />
     <Compile Include="HsbcPaymentFileProvider.cs" />
+    <Compile Include="BaiParsing\Parsers\BaiParser.cs" />
+    <Compile Include="BaiParsing\Parsers\BaiTranslator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
