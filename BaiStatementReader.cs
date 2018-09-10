@@ -153,7 +153,8 @@ namespace NexVue.HsbcEBanking
         {
             TransactionType tt = TransactionType.NotApplicable;
             int typeCode = int.Parse(statementDetail.TypeCode);
-
+            
+            //As per Appendix B - Transaction Type Codes of the HSBC BAI2 Statement Message Implementation Guide
             if(typeCode <= 399 || (typeCode >= 920 && typeCode <= 953))
             {
                 tt = TransactionType.Credit;

@@ -46,6 +46,9 @@
     <Reference Include="PX.Objects">
       <HintPath>..\..\Program Files (x86)\Acumatica ERP\LTApparel\Bin\PX.Objects.dll</HintPath>
     </Reference>
+    <Reference Include="Renci.SshNet">
+      <HintPath>..\..\Program Files (x86)\Acumatica ERP\LTApparel\Bin\Renci.SshNet.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -80,6 +83,7 @@
     <Compile Include="BaiParsing\Classes\Usage.cs" />
     <Compile Include="BaiParsing\Enums\UsageType.cs" />
     <Compile Include="BaiStatementReader.cs" />
+    <Compile Include="BankTransactionsSftpImport.cs" />
     <Compile Include="Descriptor\Messages.cs" />
     <Compile Include="HsbcPaymentFileProvider.cs" />
     <Compile Include="BaiParsing\Parsers\BaiParser.cs" />
