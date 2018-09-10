@@ -151,8 +151,19 @@ namespace NexVue.HsbcEBanking
 
         private static void ProcessTransactionAfterInsert(CABankTran detail, Detail statementDetail, string accountCurrencyCode)
         {
-            var detailType = BaiFileHelpers.GetTransactionDetail(statementDetail.TypeCode);
-            switch (detailType.Transaction)
+            TransactionType tt = TransactionType.NotApplicable;
+            int typeCode = int.Parse(statementDetail.TypeCode);
+
+            if(typeCode <= 399 || (typeCode >= 920 && typeCode <= 953))
+            {
+                tt = TransactionType.Credit;
+            }
+            else if((typeCode >= 400 && typeCode <= 699) || (typeCode >= 956))
+            {
+                tt = TransactionType.Debit;
+            }
+
+            switch (tt)
             {
                 case TransactionType.Credit:
                     detail.CuryDebitAmt = BaiFileHelpers.GetAmount(statementDetail.Amount, accountCurrencyCode);

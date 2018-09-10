@@ -26,8 +26,6 @@ namespace NexVue.HsbcEBanking.BaiParsing
         [Usage(UsageType.Both)]
         public string TypeCode { get; set; }
         [Usage(UsageType.TreasurySoftware)]
-        public string TypeDescription { get; set; }
-        [Usage(UsageType.TreasurySoftware)]
         public TransactionType TypeTransaction { get; set; }
         [Usage(UsageType.TreasurySoftware)]
         public string FundType { get; set; }

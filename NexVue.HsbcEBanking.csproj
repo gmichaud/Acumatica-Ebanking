@@ -75,7 +75,6 @@
     <Compile Include="BaiParsing\Enums\LevelType.cs" />
     <Compile Include="BaiParsing\Classes\SummaryHeader.cs" />
     <Compile Include="BaiParsing\Classes\TransactionDetail.cs" />
-    <Compile Include="BaiParsing\Helpers\TransactionDetailBuilder.cs" />
     <Compile Include="BaiParsing\Enums\TransactionType.cs" />
     <Compile Include="BaiParsing\Classes\TranslatedBaiFile.cs" />
     <Compile Include="BaiParsing\Classes\Usage.cs" />

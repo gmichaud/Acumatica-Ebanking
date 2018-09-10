@@ -65,13 +65,8 @@ namespace NexVue.HsbcEBanking.BaiParsing
                         ret += Format("TypeCode", fundType.TypeCode, indent);
                         ret += Format("TransactionDetail", "", indent);
                         indent++;
-                        ret += Format("CategoryType", fundType.Detail.CategoryType, indent);
-                        ret += Format("TypeCode", fundType.Detail.TypeCode, indent);
-                        ret += Format("Transaction", fundType.Detail.Transaction, indent);
-                        ret += Format("Level", fundType.Detail.Level, indent);
-                        ret += Format("Description", fundType.Detail.Description, indent);
+                        ret += Format("TypeCode", fundType.TypeCode, indent);
                         indent--;
-
                     }
                     indent--;
 
@@ -143,8 +138,7 @@ namespace NexVue.HsbcEBanking.BaiParsing
                             Amount = amount,
                             Count = fund.ItemCount,
                             FundType = fund.FundsType,
-                            TypeCode = fund.Detail.TypeCode,
-                            TypeDescription = fund.Detail.Description
+                            TypeCode = fund.TypeCode
                         });
                     }
                 }
@@ -167,7 +161,6 @@ namespace NexVue.HsbcEBanking.BaiParsing
                 {
                     foreach (var detail in account.Details)
                     {
-                        var detailType = BaiFileHelpers.GetTransactionDetail(detail.TypeCode);
                         var textDictionary = new Dictionary<string, string>();
 
                         if (dictionaryKeys != null)
@@ -192,9 +185,8 @@ namespace NexVue.HsbcEBanking.BaiParsing
                             CustomerReferenceNumber = detail.CustomerReferenceNumber,
                             CustomerAccountNumber = account.CustomerAccountNumber,
                             Text = detail.Text,
-                            TypeCode = detailType.TypeCode,
-                            TypeDescription = detailType.Description,
-                            TypeTransaction = detailType.Transaction,
+                            TypeCode = detail.TypeCode,
+                            //TypeTransaction = detailType.Transaction,
                             FundType = detail.FundsType,
                             TextDictionary = textDictionary
                         };

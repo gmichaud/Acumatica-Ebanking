@@ -6,7 +6,6 @@ namespace NexVue.HsbcEBanking.BaiParsing
     public class FundType
     {
         public string TypeCode { get; set; }
-        public TransactionDetail Detail { get; set; }
         public string Amount { get; set; }
         public string ItemCount { get; set; }
         public string FundsType { get; set; }
@@ -20,7 +19,6 @@ namespace NexVue.HsbcEBanking.BaiParsing
         public FundType(string typeCode, string amount, string itemCount, string fundsType)
         {
             TypeCode = typeCode;
-            Detail = BaiFileHelpers.GetTransactionDetail(typeCode);
             Amount = amount;
             ItemCount = itemCount;
             FundsType = fundsType;

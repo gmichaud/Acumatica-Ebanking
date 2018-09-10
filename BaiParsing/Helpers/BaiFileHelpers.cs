@@ -7,8 +7,6 @@ namespace NexVue.HsbcEBanking.BaiParsing
 {
     public static class BaiFileHelpers
     {
-        private static List<TransactionDetail> _transactionDetail;
-
         public static DateTime DateTimeFromFields(string date, string time)
         {
             // An end of day can be 9999, if it is they really ment 2400
@@ -98,21 +96,5 @@ namespace NexVue.HsbcEBanking.BaiParsing
             }
             return ret;
         }
-
-        public static TransactionDetail GetTransactionDetail(string typeCode)
-        {
-            if (_transactionDetail == null) _transactionDetail = TransactionDetailBuilder.Build();
-            // It looks like our bank uses type codes that are not in the spec - return a "dummy record"
-            var item = _transactionDetail.FirstOrDefault(i => i.TypeCode == typeCode) ?? new TransactionDetail()
-            {
-                CategoryType = CategoryTypeCodes.NonMonetaryInformation,
-                Transaction = TransactionType.NotApplicable,
-                Level = LevelType.Status,
-                TypeCode = typeCode,
-                Description = "Unknown Type Code"
-            };
-            return item;
-        }
-
     }
 }
