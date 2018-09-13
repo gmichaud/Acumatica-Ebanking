@@ -84,6 +84,7 @@
     <Compile Include="BaiParsing\Enums\UsageType.cs" />
     <Compile Include="BaiStatementReader.cs" />
     <Compile Include="BankTransactionsSftpImport.cs" />
+    <Compile Include="Cache\CASetupExt.cs" />
     <Compile Include="Descriptor\Messages.cs" />
     <Compile Include="HsbcPaymentFileProvider.cs" />
     <Compile Include="BaiParsing\Parsers\BaiParser.cs" />

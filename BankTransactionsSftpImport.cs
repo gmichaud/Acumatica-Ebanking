@@ -7,17 +7,13 @@ using PX.Objects.CA;
 using PX.Objects.CS;
 using PX.Objects.GL;
 using PX.Objects.IN;
+using PX.SM;
 
 namespace NexVue.HsbcEBanking
 {
     public class BankTransactionsSftpImport : PXGraph<BankTransactionsSftpImport>
     {
-        [Serializable]
-        public class ImportFilter : IBqlTable
-        {
-            [CashAccount(null, typeof(Search<CashAccount.cashAccountID, Where<Match<Current<AccessInfo.userName>>>>))]
-            public int? CashAccountID { get; set; }
-        }
+        private const string FilePrefix = "CD.BAI"; //Hardcoded for now, could be moved to CASetup if needed...
 
         [Serializable]
         public class BankTransactionFile : IBqlTable
@@ -30,29 +26,88 @@ namespace NexVue.HsbcEBanking
             [PXString(255, IsKey = true)]
             [PXUIField(DisplayName = "File Name")]
             public string FileName { get; set; }
+
+            [PXString(255, IsKey = true)]
+            [PXUIField(DisplayName = "Full Name")]
+            public string FullName { get; set; }
         }
 
-        public PXCancel<ImportFilter> Cancel;
-        public PXFilter<ImportFilter> Filter;
-
+        public PXSetup<CASetup> CASetup;
+        public PXCancel<BankTransactionFile> Cancel;
+        
         [PXFilterable]
         [PXVirtualDAC]
-        public PXFilteredProcessing<BankTransactionFile, ImportFilter> Files;
+        public PXProcessing<BankTransactionFile> Files;
 
-        protected virtual void ImportFilter_RowSelected(PXCache sender, PXRowSelectedEventArgs e)
+        public BankTransactionsSftpImport()
         {
-            var filterRow = e.Row as ImportFilter;
-            Files.SetProcessDelegate<CABankTransactionsImport>((graph, file) => ProcessFile(graph, filterRow.CashAccountID, file));
+            CASetup.Select();
+            if(CASetup.Current.ImportToSingleAccount == true)
+            {
+                //When this is checked, the configuration of IStatementReader is done at the cash account level; separate SFTP would have to be configured in the cash account screen
+                throw new PXException("This import process is designed to work with the 'Import to Single Account' checkbox unchecked in Cash Management Preferences.");
+            }
+
+            var setupExt = PXCache<CASetup>.GetExtension<CASetupExt>(CASetup.Current);
+            if(String.IsNullOrEmpty(setupExt.UsrStatementSftpAddress) || 
+                String.IsNullOrEmpty(setupExt.UsrStatementSftpUserName) || 
+                String.IsNullOrEmpty(setupExt.UsrStatementSftpPassword) || 
+                String.IsNullOrEmpty(setupExt.UsrStatementSftpInboxPath))
+            {
+                throw new PXException("Please configure SFTP settings from Cash Management Preferences.");
+            }
+
+            Files.SetProcessDelegate((files) => ProcessFiles(files));
         }
 
-        protected virtual void ImportFilter_CashAccountID_FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e)
+        private static void ProcessFiles(List<BankTransactionFile> files)
         {
-            Files.Cache.Clear();
-        }
+            bool hasErrors = false;
 
-        private static void ProcessFile(CABankTransactionsImport graph, int? cashAccountID, BankTransactionFile file)
-        {
-            throw new PXException("File " + file.FileName + " failed to process");
+            var graph = PXGraph.CreateInstance<CABankTransactionsImport>();
+            graph.CASetup.Select();
+            var setupExt = PXCache<CASetup>.GetExtension<CASetupExt>(graph.CASetup.Current);
+
+            using (var client = new Renci.SshNet.SftpClient(setupExt.UsrStatementSftpAddress, setupExt.UsrStatementSftpUserName, setupExt.UsrStatementSftpPassword))
+            {
+                client.Connect();
+                for (int i = 0; i<files.Count; i++)
+                {
+                    var file = files[i];
+                    try
+                    {
+                        var stream = new System.IO.MemoryStream();
+                        client.DownloadFile(file.FullName, stream);
+                        string nameWithExtension = file.FullName.EndsWith(".txt") ? file.FileName : file.FileName + ".txt";
+                        var fileInfo = new FileInfo(Guid.NewGuid(), nameWithExtension, null, stream.ToArray());
+
+                        graph.Clear();
+                        graph.ImportStatement(fileInfo, false);
+
+                        if(!String.IsNullOrEmpty(setupExt.UsrStatementSftpArchivePath))
+                        {
+                            var newPath = setupExt.UsrStatementSftpArchivePath + (setupExt.UsrStatementSftpArchivePath.EndsWith("/") ? "" : "/") + file.FileName;
+                            client.RenameFile(file.FullName, newPath);
+                        }
+
+                        //TODO: Move file out somewhere else on SFTP site?
+
+                        PXProcessing.SetInfo(i, $"File {file.FileName} was processed. Size: {stream.Length} bytes");
+                    }
+                    catch(Exception ex)
+                    {
+                        PXProcessing.SetError(i, $"An error occured while processing file {file.FileName}: {ex.Message}");
+                        hasErrors = true;
+                    }
+                }
+
+                client.Disconnect();
+
+                if(hasErrors)
+                {
+                    throw new PXException(PX.Objects.CA.Messages.ErrorsInProcessing);
+                }
+            }
         }
 
         protected virtual IEnumerable files()
@@ -64,19 +119,20 @@ namespace NexVue.HsbcEBanking
                 yield return item;
             }
 
-            if (found || Filter.Current.CashAccountID == null)
+            if (found)
             { 
                 yield break;
             }
 
-            using (var client = new Renci.SshNet.SftpClient("filegateway.us.hsbc.com", "HFG01989", "password"))
+            var setupExt = PXCache<CASetup>.GetExtension<CASetupExt>(CASetup.Current);
+            using (var client = new Renci.SshNet.SftpClient(setupExt.UsrStatementSftpAddress, setupExt.UsrStatementSftpUserName, setupExt.UsrStatementSftpPassword))
             {
                 client.Connect();
-                foreach (var entry in client.ListDirectory("/Inbox"))
+                foreach (var entry in client.ListDirectory(setupExt.UsrStatementSftpInboxPath))
                 {
-                    if(entry.Name.StartsWith("CD.BAI"))
+                    if(entry.Name.StartsWith(FilePrefix))
                     {
-                        yield return Files.Insert(new BankTransactionFile { FileName = entry.Name });
+                        yield return Files.Insert(new BankTransactionFile { FileName = entry.Name, FullName = entry.FullName });
                     }
                 }
 

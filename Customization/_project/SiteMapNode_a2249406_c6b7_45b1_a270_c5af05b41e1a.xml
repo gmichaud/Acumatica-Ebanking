@@ -1,0 +1,13 @@
+﻿<SiteMapNode>
+    <data-set>
+        <relations format-version="3" relations-version="20160101" main-table="SiteMap" />
+        <layout>
+            <table name="SiteMap" />
+        </layout>
+        <data>
+            <SiteMap>
+                <row Position="2" Title="Import Bank Transactions Files from SFTP" Url="~/Pages/CA/CA506590.aspx" Expanded="0" IsFolder="0" ScreenID="CA506590" NodeID="a2249406-c6b7-45b1-a270-c5af05b41e1a" ParentID="a6f0d00b-317e-468b-bef6-0cd06037ad26" />
+            </SiteMap>
+        </data>
+    </data-set>
+</SiteMapNode>

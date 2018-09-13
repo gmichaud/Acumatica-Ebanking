@@ -140,13 +140,19 @@ namespace NexVue.HsbcEBanking
         {
             detail.TranCode = statementDetail.TypeCode;
             detail.TranDate = transactionDate.Date;
-            detail.ExtTranID = (statementDetail.BankReferenceNumber == "NONREF") ? "" : statementDetail.BankReferenceNumber;
-            detail.ExtRefNbr = (statementDetail.CustomerReferenceNumber == "NONREF") ? "" : statementDetail.CustomerReferenceNumber;
+            detail.ExtTranID = (statementDetail.BankReferenceNumber == "NONREF") ? "" : RemoveLeadingZeros(statementDetail.BankReferenceNumber);
+            detail.ExtRefNbr = (statementDetail.CustomerReferenceNumber == "NONREF") ? "" : RemoveLeadingZeros(statementDetail.CustomerReferenceNumber);
             detail.TranDesc = statementDetail.Text.Trim();
             if(detail.TranDesc.Length > 256)
             {
                 detail.TranDesc = detail.TranDesc.Substring(0, 256);
             }
+        }
+
+        private static string RemoveLeadingZeros(string value)
+        {
+            //Reference numbers are zero padded. This will interfere with transaction matching in Acumatica.
+            return value.TrimStart(new Char[] { '0' }); ;
         }
 
         private static void ProcessTransactionAfterInsert(CABankTran detail, Detail statementDetail, string accountCurrencyCode)
