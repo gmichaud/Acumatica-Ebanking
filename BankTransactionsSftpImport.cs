@@ -89,9 +89,7 @@ namespace NexVue.HsbcEBanking
                             var newPath = setupExt.UsrStatementSftpArchivePath + (setupExt.UsrStatementSftpArchivePath.EndsWith("/") ? "" : "/") + file.FileName;
                             client.RenameFile(file.FullName, newPath);
                         }
-
-                        //TODO: Move file out somewhere else on SFTP site?
-
+                        
                         PXProcessing.SetInfo(i, $"File {file.FileName} was processed. Size: {stream.Length} bytes");
                     }
                     catch(Exception ex)
