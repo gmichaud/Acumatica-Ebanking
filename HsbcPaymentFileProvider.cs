@@ -503,7 +503,7 @@ namespace NexVue.HsbcEBanking
                                 writer.WriteElementString("Cd", "RPIN"); //Related Payment Instruction
                             writer.WriteEndElement(); //CdOrPrtry
                         writer.WriteEndElement(); //Tp
-                        writer.WriteElementString("Ref", adj.AdjgRefNbr);
+                        writer.WriteElementString("Ref", adj.DisplayDocDesc);
                     writer.WriteEndElement(); //CdtrRefInf
                 writer.WriteEndElement(); //Strd
 
