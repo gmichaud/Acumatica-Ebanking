@@ -22,12 +22,6 @@ namespace NexVue.HsbcEBanking
             return true;
         }
 
-        public void ExportTo(FileInfo aFileInfo, CABankStatementEntry current, out List<CABankStatement> aExported)
-        {
-            //Deprecated and not used in current version
-            throw new NotImplementedException();
-        }
-        
         public void ExportToNew<T>(FileInfo aFileInfo, T current, out List<CABankTranHeader> statements) where T : CABankTransactionsImport, new()
         {
             UploadFileMaintenance fileGraph = PXGraph.CreateInstance<UploadFileMaintenance>();

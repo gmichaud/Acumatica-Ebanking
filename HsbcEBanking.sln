@@ -7,7 +7,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LTApparel", "http://localho
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "false"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
-		ProjectReferences = "{769d0108-a644-4dcf-b96e-ac00fb22f9c3}|NexVue.HsbcEBanking.dll;{643f102a-d9bf-4dd6-8c7f-5c022784dc64}|BatchPaymentSFTPProvider.dll;{ea8b676c-1206-490c-8446-e50d49f3bea8}|BatchPaymentSFTPProviderAP.dll;{2F5F8C90-0BD1-424F-997C-7BC6280919D1}|Renci.SshNet.dll;"
+		ProjectReferences = "{769d0108-a644-4dcf-b96e-ac00fb22f9c3}|NexVue.HsbcEBanking.dll;{643f102a-d9bf-4dd6-8c7f-5c022784dc64}|BatchPaymentSFTPProvider.dll;{ea8b676c-1206-490c-8446-e50d49f3bea8}|BatchPaymentSFTPProviderAP.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/LTApparel"
 		Debug.AspNetCompiler.PhysicalPath = "..\..\Program Files (x86)\Acumatica ERP\LTApparel\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\LTApparel\"
@@ -27,11 +27,15 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LTApparel", "http://localho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexVue.HsbcEBanking", "NexVue.HsbcEBanking.csproj", "{769D0108-A644-4DCF-B96E-AC00FB22F9C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatchPaymentSFTPProvider", "..\BatchPaymentSFTPProvider-master\source\BatchPaymentSFTPProvider\BatchPaymentSFTPProvider\BatchPaymentSFTPProvider.csproj", "{643F102A-D9BF-4DD6-8C7F-5C022784DC64}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatchPaymentSFTPProvider", "..\BatchPaymentSFTPProvider\source\BatchPaymentSFTPProvider\BatchPaymentSFTPProvider\BatchPaymentSFTPProvider.csproj", "{643F102A-D9BF-4DD6-8C7F-5C022784DC64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatchPaymentSFTPProviderAP", "..\BatchPaymentSFTPProvider-master\source\BatchPaymentSFTPProviderAP\BatchPaymentSFTPProviderAP\BatchPaymentSFTPProviderAP.csproj", "{EA8B676C-1206-490C-8446-E50D49F3BEA8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatchPaymentSFTPProviderAP", "..\BatchPaymentSFTPProvider\source\BatchPaymentSFTPProviderAP\BatchPaymentSFTPProviderAP\BatchPaymentSFTPProviderAP.csproj", "{EA8B676C-1206-490C-8446-E50D49F3BEA8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Renci.SshNet", "..\SSH.NET-develop\src\Renci.SshNet\Renci.SshNet.csproj", "{2F5F8C90-0BD1-424F-997C-7BC6280919D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatchPaymentSFTPProviderAR", "..\BatchPaymentSFTPProvider\source\BatchPaymentSFTPProviderAR\BatchPaymentSFTPProviderAR\BatchPaymentSFTPProviderAR.csproj", "{BB7DFDCB-B305-4FD5-B441-56247E385245}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PX.Objects.ACH", "..\DirectDebitAccountReceivable\PX.Objects.ACH\PX.Objects.ACH.csproj", "{9731B6C8-5D6B-4B3C-A005-3B676D661351}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +63,14 @@ Global
 		{2F5F8C90-0BD1-424F-997C-7BC6280919D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F5F8C90-0BD1-424F-997C-7BC6280919D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F5F8C90-0BD1-424F-997C-7BC6280919D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB7DFDCB-B305-4FD5-B441-56247E385245}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB7DFDCB-B305-4FD5-B441-56247E385245}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB7DFDCB-B305-4FD5-B441-56247E385245}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB7DFDCB-B305-4FD5-B441-56247E385245}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9731B6C8-5D6B-4B3C-A005-3B676D661351}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9731B6C8-5D6B-4B3C-A005-3B676D661351}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9731B6C8-5D6B-4B3C-A005-3B676D661351}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9731B6C8-5D6B-4B3C-A005-3B676D661351}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
