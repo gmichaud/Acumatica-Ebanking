@@ -468,7 +468,7 @@ namespace NexVue.HsbcEBanking
                 writer.WriteStartElement("Strd");
                     //Referred Document Information
                     writer.WriteStartElement("RfrdDocInf");
-                        writer.WriteStartElement("Tp");
+                        writer.WriteStartElement("Tp"); 
                             writer.WriteStartElement("CdOrPrtry");
                                 writer.WriteElementString("Cd", GetReferredDocumentTypeFromAPDocType(adj.AdjdDocType));
                             writer.WriteEndElement(); //CdOrPrtry
@@ -483,7 +483,7 @@ namespace NexVue.HsbcEBanking
                         { 
                             writer.WriteStartElement("DuePyblAmt");
                                 writer.WriteAttributeString("Ccy", currencyID);
-                                writer.WriteValue(FormatAmount(adj.AdjgBalSign.GetValueOrDefault() * inv.CuryOrigDocAmt.GetValueOrDefault()));
+                                writer.WriteValue(FormatAmount(inv.CuryOrigDocAmt.GetValueOrDefault()));
                             writer.WriteEndElement(); //DuePyblAmt
                         }
                         writer.WriteStartElement("DscntApldAmt");
@@ -492,7 +492,7 @@ namespace NexVue.HsbcEBanking
                         writer.WriteEndElement(); //DscntApldAmt
                         writer.WriteStartElement("RmtdAmt");
                             writer.WriteAttributeString("Ccy", currencyID);
-                            writer.WriteValue(FormatAmount(adj.AdjgBalSign.GetValueOrDefault() * adj.CuryAdjgAmt.GetValueOrDefault()));
+                            writer.WriteValue(FormatAmount(adj.CuryAdjgAmt.GetValueOrDefault()));
                         writer.WriteEndElement(); //RmtdAmt
                     writer.WriteEndElement(); //RfrdDocAmt
                     
