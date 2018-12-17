@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace NexVue.HsbcEBanking.BaiParsing
+namespace Velixo.HsbcEBanking.BaiParsing
 {
     public static class FundTypeHelper
     {

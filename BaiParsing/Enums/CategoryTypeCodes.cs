@@ -1,4 +1,4 @@
-﻿namespace NexVue.HsbcEBanking.BaiParsing
+﻿namespace Velixo.HsbcEBanking.BaiParsing
 {
     public enum CategoryTypeCodes
     {

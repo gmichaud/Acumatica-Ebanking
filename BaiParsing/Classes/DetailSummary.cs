@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NexVue.HsbcEBanking.BaiParsing
+namespace Velixo.HsbcEBanking.BaiParsing
 {
     public class DetailSummary
     {

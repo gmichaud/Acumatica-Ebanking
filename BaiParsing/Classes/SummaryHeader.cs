@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NexVue.HsbcEBanking.BaiParsing
+namespace Velixo.HsbcEBanking.BaiParsing
 {
     /// <summary>
     /// A hodge podge of what Oracle/JD Edwards and Treasury Software export

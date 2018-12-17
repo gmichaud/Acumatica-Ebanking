@@ -9,7 +9,7 @@ using PX.Objects.GL;
 using PX.Objects.IN;
 using PX.SM;
 
-namespace NexVue.HsbcEBanking
+namespace Velixo.HsbcEBanking
 {
     public class BankTransactionsSftpImport : PXGraph<BankTransactionsSftpImport>
     {

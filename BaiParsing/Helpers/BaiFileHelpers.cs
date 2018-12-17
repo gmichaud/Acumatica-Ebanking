@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NexVue.HsbcEBanking.BaiParsing
+namespace Velixo.HsbcEBanking.BaiParsing
 {
     public static class BaiFileHelpers
     {

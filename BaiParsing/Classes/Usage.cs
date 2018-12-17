@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NexVue.HsbcEBanking.BaiParsing
+namespace Velixo.HsbcEBanking.BaiParsing
 {
     [AttributeUsage(AttributeTargets.Property)]
     public class Usage : Attribute
