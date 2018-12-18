@@ -91,6 +91,7 @@
     <Compile Include="HsbcPaymentFileProvider.cs" />
     <Compile Include="BaiParsing\Parsers\BaiParser.cs" />
     <Compile Include="BaiParsing\Parsers\BaiTranslator.cs" />
+    <Compile Include="PaymentMethodSetupExt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
