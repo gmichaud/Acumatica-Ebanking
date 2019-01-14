@@ -12,6 +12,7 @@ namespace Velixo.HsbcEbanking
         {
             Ach,
             Wire,
+            WireDomestic,
             Osc
         }
 
@@ -19,6 +20,7 @@ namespace Velixo.HsbcEbanking
         {
             EbankingSetup.AddMenuAction(SetupForAch);
             EbankingSetup.AddMenuAction(SetupForWire);
+            EbankingSetup.AddMenuAction(SetupForWireDomestic);
             EbankingSetup.AddMenuAction(SetupForOsc);
         }
 
@@ -56,6 +58,18 @@ namespace Velixo.HsbcEbanking
             AddPaymentMethodDetail(PaymentMethodType.Wire);
         }
 
+        public PXAction<PaymentMethod> SetupForWireDomestic;
+        [PXButton]
+        [PXUIField(DisplayName = "Setup for Domestic Wire Transfers", MapEnableRights = PXCacheRights.Insert,
+            MapViewRights = PXCacheRights.Insert,
+            Visibility = PXUIVisibility.Visible)]
+        protected void setupForWireDomestic()
+        {
+            CheckPrerequirements();
+            AddRemittanceDetail(PaymentMethodType.WireDomestic);
+            AddPaymentMethodDetail(PaymentMethodType.WireDomestic);
+        }
+
         public PXAction<PaymentMethod> SetupForOsc;
         [PXButton]
         [PXUIField(DisplayName = "Setup for Outsourced Checks", MapEnableRights = PXCacheRights.Insert,
@@ -65,7 +79,7 @@ namespace Velixo.HsbcEbanking
         {
             CheckPrerequirements();
             AddRemittanceDetail(PaymentMethodType.Osc);
-            AddPaymentMethodDetail(PaymentMethodType.Ach);
+            AddPaymentMethodDetail(PaymentMethodType.Osc);
         }
 
         private void CheckPrerequirements()
@@ -76,7 +90,6 @@ namespace Velixo.HsbcEbanking
             }
 
             Base.PaymentMethod.Current.UseForAP = true;
-            //Base.PaymentMethod.Current.IntegratedProcessing = true;
             Base.PaymentMethod.Current.APAdditionalProcessing = PaymentMethod.aPAdditionalProcessing.CreateBatchPayment;
             Base.PaymentMethod.Update(Base.PaymentMethod.Current);
         }
@@ -87,7 +100,7 @@ namespace Velixo.HsbcEbanking
 
             AddPaymentMethodDetail(1, "CDTRACCTID", "Creditor Account ID", true, "", @"^.{1,34}$");
 
-            if (type == PaymentMethodType.Ach)
+            if (type == PaymentMethodType.Ach || type == PaymentMethodType.WireDomestic)
             {
                 AddPaymentMethodDetail(2, "FININSTID", "Financial Institution ID", true, "", @"^.{1,35}$"); //Ach
             }
@@ -122,13 +135,13 @@ namespace Velixo.HsbcEbanking
 
             AddRemittanceDetail(10, "DBTRACCTID", "Debtor Account ID", true, "", @"^.{1,34}$");
 
-            if (type == PaymentMethodType.Ach || type == PaymentMethodType.Osc)
+            if (type == PaymentMethodType.Ach || type == PaymentMethodType.Osc || type == PaymentMethodType.WireDomestic)
             {
                 AddRemittanceDetail(11, "FININSTID", "Financial Institution ID", true, "", @"^.{1,35}$");
             }
             else if (type == PaymentMethodType.Wire)
             {
-                AddRemittanceDetail(11, "FININSTBIC", "Financial Institution BIC ID", true, "", @"^.{1,35}$");
+                AddRemittanceDetail(11, "FININSTBIC", "Financial Institution BIC ID", true, "", @"^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$");
             }
 
             AddRemittanceDetail(12, "FINSTNAME", "Financial Institution Street Name", false, "", @"^.{1,70}$");
