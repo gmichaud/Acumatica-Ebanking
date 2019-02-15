@@ -418,12 +418,6 @@ namespace Velixo.HsbcEBanking
                             writer.WriteEndElement(); //PstlAdr
                         writer.WriteEndElement(); //Cdtr
 
-                        //Detailed Remittance Information -- we are getting it directly from the AP tables because this info is not available in batch payments
-                        if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(RmtInfAPRefNbr)]))
-                        {
-                            WriteDetailedAPRemittanceInformation(writer, row[table.Columns.IndexOf(RmtInfAPRefNbr)], row[table.Columns.IndexOf(CdtTrfTxInfAmtCcy)]);
-                        }
-
                         //Creditor Account -- omit node on cheque outsourcing files
                         if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(CdtrAcctId)]))
                         { 
@@ -435,6 +429,13 @@ namespace Velixo.HsbcEBanking
                                 writer.WriteEndElement(); //Id
                             writer.WriteEndElement(); //CdtrAcct
                         }
+
+                        //Detailed Remittance Information -- we are getting it directly from the AP tables because this info is not available in batch payments
+                        if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(RmtInfAPRefNbr)]))
+                        {
+                            WriteDetailedAPRemittanceInformation(writer, row[table.Columns.IndexOf(RmtInfAPRefNbr)], row[table.Columns.IndexOf(CdtTrfTxInfAmtCcy)]);
+                        }
+
                     writer.WriteEndElement(); //CdtTrfTxInf
                 }
 
