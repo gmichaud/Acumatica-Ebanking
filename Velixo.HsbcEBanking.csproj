@@ -33,23 +33,26 @@
   <ItemGroup>
     <Reference Include="PX.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo70\Bin\PX.Common.dll</HintPath>
+      <HintPath>..\..\Program Files\Acumatica ERP\AcumaticaDemo2019\Bin\PX.Common.dll</HintPath>
     </Reference>
     <Reference Include="PX.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo70\Bin\PX.Data.dll</HintPath>
+      <HintPath>..\..\Program Files\Acumatica ERP\AcumaticaDemo2019\Bin\PX.Data.dll</HintPath>
     </Reference>
-    <Reference Include="PX.DataSync, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo70\Bin\PX.DataSync.dll</HintPath>
+    <Reference Include="PX.DataSync.Core">
+      <HintPath>..\..\Program Files\Acumatica ERP\AcumaticaDemo2019\Bin\PX.DataSync.Core.dll</HintPath>
     </Reference>
     <Reference Include="PX.DbServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo70\Bin\PX.DbServices.dll</HintPath>
+      <HintPath>..\..\Program Files\Acumatica ERP\AcumaticaDemo2019\Bin\PX.DbServices.dll</HintPath>
     </Reference>
     <Reference Include="PX.Objects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo70\Bin\PX.Objects.dll</HintPath>
+      <HintPath>..\..\Program Files\Acumatica ERP\AcumaticaDemo2019\Bin\PX.Objects.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2017.0.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Program Files\Acumatica ERP\AcumaticaDemo2019\Bin\Renci.SshNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -99,12 +102,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="XmlWriterExtensions.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SSH.NET-develop\src\Renci.SshNet\Renci.SshNet.csproj">
-      <Project>{2f5f8c90-0bd1-424f-997c-7bc6280919d1}</Project>
-      <Name>Renci.SshNet</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

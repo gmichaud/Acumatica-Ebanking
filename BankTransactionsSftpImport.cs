@@ -16,10 +16,11 @@ namespace Velixo.HsbcEBanking
         private const string FilePrefix = "CD.BAI"; //Hardcoded for now, could be moved to CASetup if needed...
 
         [Serializable]
+        [PXHidden]
         public class BankTransactionFile : IBqlTable
         {
             [PXBool]
-            [PXDefault(false)]
+            [PXUnboundDefault(false)]
             [PXUIFieldAttribute(DisplayName = "Selected")]
             public bool? Selected { get; set; }
 
@@ -45,7 +46,7 @@ namespace Velixo.HsbcEBanking
             if(CASetup.Current.ImportToSingleAccount == true)
             {
                 //When this is checked, the configuration of IStatementReader is done at the cash account level; separate SFTP would have to be configured in the cash account screen
-                throw new PXException("This import process is designed to work with the 'Import to Single Account' checkbox unchecked in Cash Management Preferences.");
+                throw new PXException(Messages.ImportToSingleAccount);
             }
 
             var setupExt = PXCache<CASetup>.GetExtension<CASetupExt>(CASetup.Current);
@@ -54,7 +55,7 @@ namespace Velixo.HsbcEBanking
                 String.IsNullOrEmpty(setupExt.UsrStatementSftpPassword) || 
                 String.IsNullOrEmpty(setupExt.UsrStatementSftpInboxPath))
             {
-                throw new PXException("Please configure SFTP settings from Cash Management Preferences.");
+                throw new PXException(Messages.SftpNotConfigured);
             }
 
             Files.SetProcessDelegate((files) => ProcessFiles(files));

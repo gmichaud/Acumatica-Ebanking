@@ -86,7 +86,7 @@ namespace Velixo.HsbcEbanking
         {
             if (Base.DetailsForCashAccount.Select().Any())
             {
-                throw new PXException("This payment method already contains remittance settings. Aborting setup.");
+                throw new PXException(Velixo.HsbcEBanking.Messages.PaymentMethodAlreadyContainsRemittanceSettings);
             }
 
             Base.PaymentMethod.Current.UseForAP = true;

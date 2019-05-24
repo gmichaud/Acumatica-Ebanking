@@ -1,41 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27703.2000
+VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AcumaticaDemo70", "http://localhost/AcumaticaDemo70", "{E752D644-F22A-449F-9556-0C5AE763A714}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AcumaticaDemo2019", "http://localhost/AcumaticaDemo2019", "{06481509-5BED-40CC-A8E5-FAE0DC7F3400}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "false"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
-		ProjectReferences = "{769d0108-a644-4dcf-b96e-ac00fb22f9c3}|Velixo.HsbcEBanking.dll;{643f102a-d9bf-4dd6-8c7f-5c022784dc64}|BatchPaymentSFTPProvider.dll;{ea8b676c-1206-490c-8446-e50d49f3bea8}|BatchPaymentSFTPProviderAP.dll;{2F5F8C90-0BD1-424F-997C-7BC6280919D1}|Renci.SshNet.dll;"
-		Debug.AspNetCompiler.VirtualPath = "/AcumaticaDemo70"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo70\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\AcumaticaDemo70\"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.1"
+		ProjectReferences = "{769d0108-a644-4dcf-b96e-ac00fb22f9c3}|Velixo.HsbcEBanking.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/AcumaticaDemo2019"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\Program Files\Acumatica ERP\AcumaticaDemo2019\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\AcumaticaDemo2019\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/AcumaticaDemo70"
-		Release.AspNetCompiler.PhysicalPath = "..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo70\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\AcumaticaDemo70\"
+		Release.AspNetCompiler.VirtualPath = "/AcumaticaDemo2019"
+		Release.AspNetCompiler.PhysicalPath = "..\..\Program Files\Acumatica ERP\AcumaticaDemo2019\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\AcumaticaDemo2019\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo70\"
+		SlnRelativePath = "..\..\Program Files\Acumatica ERP\AcumaticaDemo2019\"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Velixo.HsbcEBanking", "Velixo.HsbcEBanking.csproj", "{769D0108-A644-4DCF-B96E-AC00FB22F9C3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatchPaymentSFTPProvider", "..\BatchPaymentSFTPProvider\source\BatchPaymentSFTPProvider\BatchPaymentSFTPProvider\BatchPaymentSFTPProvider.csproj", "{643F102A-D9BF-4DD6-8C7F-5C022784DC64}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatchPaymentSFTPProviderAP", "..\BatchPaymentSFTPProvider\source\BatchPaymentSFTPProviderAP\BatchPaymentSFTPProviderAP\BatchPaymentSFTPProviderAP.csproj", "{EA8B676C-1206-490C-8446-E50D49F3BEA8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Renci.SshNet", "..\SSH.NET-develop\src\Renci.SshNet\Renci.SshNet.csproj", "{2F5F8C90-0BD1-424F-997C-7BC6280919D1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatchPaymentSFTPProviderAR", "..\BatchPaymentSFTPProvider\source\BatchPaymentSFTPProviderAR\BatchPaymentSFTPProviderAR\BatchPaymentSFTPProviderAR.csproj", "{BB7DFDCB-B305-4FD5-B441-56247E385245}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PX.Objects.ACH", "..\DirectDebitAccountReceivable\PX.Objects.ACH\PX.Objects.ACH.csproj", "{9731B6C8-5D6B-4B3C-A005-3B676D661351}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,39 +33,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E752D644-F22A-449F-9556-0C5AE763A714}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E752D644-F22A-449F-9556-0C5AE763A714}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E752D644-F22A-449F-9556-0C5AE763A714}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{E752D644-F22A-449F-9556-0C5AE763A714}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{06481509-5BED-40CC-A8E5-FAE0DC7F3400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06481509-5BED-40CC-A8E5-FAE0DC7F3400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06481509-5BED-40CC-A8E5-FAE0DC7F3400}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{06481509-5BED-40CC-A8E5-FAE0DC7F3400}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{769D0108-A644-4DCF-B96E-AC00FB22F9C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{769D0108-A644-4DCF-B96E-AC00FB22F9C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{769D0108-A644-4DCF-B96E-AC00FB22F9C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{769D0108-A644-4DCF-B96E-AC00FB22F9C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{643F102A-D9BF-4DD6-8C7F-5C022784DC64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{643F102A-D9BF-4DD6-8C7F-5C022784DC64}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{643F102A-D9BF-4DD6-8C7F-5C022784DC64}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{643F102A-D9BF-4DD6-8C7F-5C022784DC64}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EA8B676C-1206-490C-8446-E50D49F3BEA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EA8B676C-1206-490C-8446-E50D49F3BEA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EA8B676C-1206-490C-8446-E50D49F3BEA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EA8B676C-1206-490C-8446-E50D49F3BEA8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F5F8C90-0BD1-424F-997C-7BC6280919D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F5F8C90-0BD1-424F-997C-7BC6280919D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2F5F8C90-0BD1-424F-997C-7BC6280919D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2F5F8C90-0BD1-424F-997C-7BC6280919D1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BB7DFDCB-B305-4FD5-B441-56247E385245}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BB7DFDCB-B305-4FD5-B441-56247E385245}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BB7DFDCB-B305-4FD5-B441-56247E385245}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BB7DFDCB-B305-4FD5-B441-56247E385245}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9731B6C8-5D6B-4B3C-A005-3B676D661351}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9731B6C8-5D6B-4B3C-A005-3B676D661351}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9731B6C8-5D6B-4B3C-A005-3B676D661351}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9731B6C8-5D6B-4B3C-A005-3B676D661351}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {353C527A-C337-42FC-ADD3-4CF6E32E5A75}
+		SolutionGuid = {A56BDB11-A1B0-468A-B971-D9FA9751EDE9}
 	EndGlobalSection
 EndGlobal
