@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03">
+    <CstmrCdtTrfInitn>
+        <GrpHdr>
+            <MsgId>000001</MsgId>
+            <CreDtTm>2020-09-04T14:14:12</CreDtTm>
+            <NbOfTxs>1</NbOfTxs>
+            <CtrlSum>438.75</CtrlSum>
+            <InitgPty>
+                <Id>
+                    <OrgId>
+                        <Othr>
+                            <Id>9785696554</Id>
+                        </Othr>
+                    </OrgId>
+                </Id>
+            </InitgPty>
+        </GrpHdr>
+        <PmtInf>
+            <PmtInfId>021971</PmtInfId>
+            <PmtMtd>TRF</PmtMtd>
+            <NbOfTxs>1</NbOfTxs>
+            <CtrlSum>438.75</CtrlSum>
+            <PmtTpInf>
+                <SvcLvl>
+                    <Cd>NURG</Cd>
+                </SvcLvl>
+                <LclInstrm>
+                    <Prtry>CTX</Prtry>
+                </LclInstrm>
+            </PmtTpInf>
+            <ReqdExctnDt>2020-09-04</ReqdExctnDt>
+            <Dbtr>
+                <Nm>Bauer USA</Nm>
+                <PstlAdr>
+                    <StrtNm>SYLVAN AVENUE</StrtNm>
+                    <BldgNb>270</BldgNb>
+                    <PstCd>0762</PstCd>
+                    <TwnNm>Englewood Cliffs</TwnNm>
+                    <CtrySubDvsn>NJ</CtrySubDvsn>
+                    <Ctry>US</Ctry>
+                </PstlAdr>
+                <Id>
+                    <OrgId>
+                        <Othr>
+                            <Id>9000560280</Id>
+                            <SchmeNm>
+                                <Prtry>JPMCOID</Prtry>
+                            </SchmeNm>
+                        </Othr>
+                    </OrgId>
+                </Id>
+            </Dbtr>
+            <DbtrAcct>
+                <Id>
+                    <Othr>
+                        <Id>137560280</Id>
+                    </Othr>
+                </Id>
+                <Ccy>USD</Ccy>
+            </DbtrAcct>
+            <DbtrAgt>
+                <FinInstnId>
+                    <BIC>CHASUS33</BIC>
+                    <ClrSysMmbId>
+                        <MmbId>021000021</MmbId>
+                    </ClrSysMmbId>
+                    <PstlAdr>
+                        <Ctry>US</Ctry>
+                    </PstlAdr>
+                </FinInstnId>
+            </DbtrAgt>
+            <CdtTrfTxInf>
+                <PmtId>
+                    <InstrId>021971</InstrId>
+                    <EndToEndId>021971</EndToEndId>
+                </PmtId>
+                <Amt>
+                    <InstdAmt Ccy="USD">438.75</InstdAmt>
+                </Amt>
+                <CdtrAgt>
+                    <FinInstnId>
+                        <ClrSysMmbId>
+                            <MmbId>026073150</MmbId>
+                        </ClrSysMmbId>
+                        <PstlAdr>
+                            <Ctry>US</Ctry>
+                        </PstlAdr>
+                    </FinInstnId>
+                </CdtrAgt>
+                <Cdtr>
+                    <Nm>NexVue Information Systems Inc</Nm>
+                    <PstlAdr>
+                        <StrtNm>65 Broad Street </StrtNm>
+                        <PstCd>06901</PstCd>
+                        <TwnNm>Stamford</TwnNm>
+                        <CtrySubDvsn>CT</CtrySubDvsn>
+                        <Ctry>US</Ctry>
+                    </PstlAdr>
+                    <Id>
+                        <OrgId>
+                            <Othr>
+                                <Id>NEX1</Id>
+                                <SchmeNm>
+                                    <Cd>CHID</Cd>
+                                </SchmeNm>
+                            </Othr>
+                        </OrgId>
+                    </Id>
+                </Cdtr>
+                <CdtrAcct>
+                    <Id>
+                        <Othr>
+                            <Id>8310142732</Id>
+                        </Othr>
+                    </Id>
+                    <Tp>
+                        <Cd>CASH</Cd>
+                    </Tp>
+                </CdtrAcct>
+                <RmtInf>
+                    <Ustrd>CONSULTING JULY 2020</Ustrd>
+                    <Ustrd>CONSULTING JULY 2020</Ustrd>
+                    <Strd>
+                        <RfrdDocInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>CINV</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Nb>102901</Nb>
+                            <RltdDt>2020-07-31</RltdDt>
+                        </RfrdDocInf>
+                        <RfrdDocAmt>
+                            <DuePyblAmt Ccy="USD">438.75</DuePyblAmt>
+                            <DscntApldAmt Ccy="USD">0.00</DscntApldAmt>
+                            <RmtdAmt Ccy="USD">438.75</RmtdAmt>
+                        </RfrdDocAmt>
+                        <CdtrRefInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>RPIN</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Ref>102901</Ref>
+                        </CdtrRefInf>
+                        <AddtlRmtInf>CONSULTING JULY 2020</AddtlRmtInf>
+                    </Strd>
+                </RmtInf>
+            </CdtTrfTxInf>
+        </PmtInf>
+    </CstmrCdtTrfInitn>
+</Document>

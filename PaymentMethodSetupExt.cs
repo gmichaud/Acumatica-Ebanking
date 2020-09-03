@@ -102,13 +102,13 @@ namespace Velixo.EBanking
 
             if (type == PaymentMethodType.Ach || type == PaymentMethodType.WireDomestic)
             {
-                AddPaymentMethodDetail(2, "FININSTID", "Financial Institution ID", true, "", @"^.{1,35}$"); //Ach
+                
             }
             else if (type == PaymentMethodType.Wire)
             {
-                AddPaymentMethodDetail(2, "FININSTBIC", "Financial Institution BIC ID", true, "", @"^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$"); //Wire
             }
-
+            AddPaymentMethodDetail(2, "FININSTID", "Financial Institution ID", (type == PaymentMethodType.Ach || type == PaymentMethodType.WireDomestic), "", @"^.{1,35}$"); //Ach
+            AddPaymentMethodDetail(2, "FININSTBIC", "Financial Institution BIC ID", (type == PaymentMethodType.Wire), "", @"^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$"); //Wire
             AddPaymentMethodDetail(3, "FINSTNAME", "Financial Institution Street Name", false, "", @"^.{1,70}$");
             AddPaymentMethodDetail(4, "FINBLDGNB", "Financial Institution Building Number", false, "", @"^.{1,16}$");
             AddPaymentMethodDetail(5, "FINTOWN", "Financial Institution Town", false, "", @"^.{1,35}$");
@@ -134,26 +134,18 @@ namespace Velixo.EBanking
             }
 
             AddRemittanceDetail(10, "DBTRACCTID", "Debtor Account ID", true, "", @"^.{1,34}$");
-
-            if (type == PaymentMethodType.Ach || type == PaymentMethodType.Osc || type == PaymentMethodType.WireDomestic)
-            {
-                AddRemittanceDetail(11, "FININSTID", "Financial Institution ID", true, "", @"^.{1,35}$");
-            }
-            else if (type == PaymentMethodType.Wire)
-            {
-                AddRemittanceDetail(11, "FININSTBIC", "Financial Institution BIC ID", true, "", @"^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$");
-            }
-
-            AddRemittanceDetail(12, "FINSTNAME", "Financial Institution Street Name", false, "", @"^.{1,70}$");
-            AddRemittanceDetail(13, "FINBLDGNB", "Financial Institution Building Number", false, "", @"^.{1,16}$");
-            AddRemittanceDetail(14, "FINTOWN", "Financial Institution Town", false, "", @"^.{1,35}$");
-            AddRemittanceDetail(15, "FINSTATE", "Financial Institution State/Province", false, "", @"^.{1,35}$");
-            AddRemittanceDetail(16, "FINZIP", "Financial Institution Zip/Postal Code", false, "", @"^.{1,16}$");
-            AddRemittanceDetail(17, "FINCNTRY", "Financial Institution Country", true, "", @"^\w{2}$");
+            AddRemittanceDetail(11, "FININSTID", "Financial Institution ID", (type == PaymentMethodType.Ach || type == PaymentMethodType.Osc || type == PaymentMethodType.WireDomestic), "", @"^.{1,35}$");
+            AddRemittanceDetail(12, "FININSTBIC", "Financial Institution BIC ID", (type == PaymentMethodType.Wire), "", @"^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$");
+            AddRemittanceDetail(13, "FINSTNAME", "Financial Institution Street Name", false, "", @"^.{1,70}$");
+            AddRemittanceDetail(14, "FINBLDGNB", "Financial Institution Building Number", false, "", @"^.{1,16}$");
+            AddRemittanceDetail(15, "FINTOWN", "Financial Institution Town", false, "", @"^.{1,35}$");
+            AddRemittanceDetail(16, "FINSTATE", "Financial Institution State/Province", false, "", @"^.{1,35}$");
+            AddRemittanceDetail(17, "FINZIP", "Financial Institution Zip/Postal Code", false, "", @"^.{1,16}$");
+            AddRemittanceDetail(18, "FINCNTRY", "Financial Institution Country", true, "", @"^\w{2}$");
 
             if (type == PaymentMethodType.Osc)
             {
-                AddRemittanceDetail(18, "CHQFRMSCD", "Check Form Code", true, "", @"^.{1,35}$");
+                AddRemittanceDetail(19, "CHQFRMSCD", "Check Form Code", true, "", @"^.{1,35}$");
             }
         }
 
