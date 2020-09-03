@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Velixo.HsbcEBanking.BaiParsing
+namespace Velixo.EBanking.BaiParsing
 {
     public class BaiFile
     {

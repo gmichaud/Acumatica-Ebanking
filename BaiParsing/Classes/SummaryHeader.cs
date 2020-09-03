@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Velixo.HsbcEBanking.BaiParsing
+namespace Velixo.EBanking.BaiParsing
 {
     /// <summary>
     /// A hodge podge of what Oracle/JD Edwards and Treasury Software export

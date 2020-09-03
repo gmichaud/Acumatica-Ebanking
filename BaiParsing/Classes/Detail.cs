@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Velixo.HsbcEBanking.BaiParsing
+namespace Velixo.EBanking.BaiParsing
 {
     public class Detail
     {

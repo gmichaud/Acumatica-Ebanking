@@ -1,4 +1,4 @@
-﻿using Velixo.HsbcEBanking.BaiParsing;
+﻿using Velixo.EBanking.BaiParsing;
 using PX.Data;
 using PX.Objects.CA;
 using PX.SM;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Velixo.HsbcEBanking
+namespace Velixo.EBanking
 {
     public class BaiStatementReader : IStatementReader
     {

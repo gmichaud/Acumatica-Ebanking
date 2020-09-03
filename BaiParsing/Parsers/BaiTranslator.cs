@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 
-namespace Velixo.HsbcEBanking.BaiParsing
+namespace Velixo.EBanking.BaiParsing
 {
     public class BaiTranslator
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml;
 
-namespace Velixo.HsbcEBanking
+namespace Velixo.EBanking
 {
     internal static class XmlWriterExtensions
     {

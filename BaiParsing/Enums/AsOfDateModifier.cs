@@ -1,4 +1,4 @@
-﻿namespace Velixo.HsbcEBanking.BaiParsing
+﻿namespace Velixo.EBanking.BaiParsing
 {
     /// <summary>
     /// Distinguishes same-day data from previous-day data and interim data from final data. As-of-Date Modifier is for identification only and does not affect processing.

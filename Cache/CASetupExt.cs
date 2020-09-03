@@ -2,7 +2,7 @@
 using PX.Data;
 using PX.Objects.CA;
 
-namespace Velixo.HsbcEBanking
+namespace Velixo.EBanking
 {
     public sealed class CASetupExt : PXCacheExtension<PX.Objects.CA.CASetup>
     {

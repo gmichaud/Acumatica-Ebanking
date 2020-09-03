@@ -4,7 +4,7 @@ using System.Linq;
 using PX.Data;
 using PX.Objects.CA;
 
-namespace Velixo.HsbcEbanking
+namespace Velixo.EBanking
 {
     public class PaymentMethodSetupExt : PXGraphExtension<PaymentMethodMaint>
     {
@@ -86,7 +86,7 @@ namespace Velixo.HsbcEbanking
         {
             if (Base.DetailsForCashAccount.Select().Any())
             {
-                throw new PXException(Velixo.HsbcEBanking.Messages.PaymentMethodAlreadyContainsRemittanceSettings);
+                throw new PXException(Velixo.EBanking.Messages.PaymentMethodAlreadyContainsRemittanceSettings);
             }
 
             Base.PaymentMethod.Current.UseForAP = true;

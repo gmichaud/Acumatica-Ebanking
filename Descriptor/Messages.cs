@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Velixo.HsbcEBanking
+namespace Velixo.EBanking
 {
     [PX.Common.PXLocalizable]
     public static class Messages

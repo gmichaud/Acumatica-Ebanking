@@ -1,4 +1,4 @@
-﻿namespace Velixo.HsbcEBanking.BaiParsing
+﻿namespace Velixo.EBanking.BaiParsing
 {
     public enum LevelType
     {
