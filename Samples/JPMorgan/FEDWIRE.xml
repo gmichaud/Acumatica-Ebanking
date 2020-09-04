@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03">
+    <CstmrCdtTrfInitn>
+        <GrpHdr>
+            <MsgId>000004</MsgId>
+            <CreDtTm>2020-09-04T15:53:49</CreDtTm>
+            <NbOfTxs>1</NbOfTxs>
+            <CtrlSum>4798.13</CtrlSum>
+            <InitgPty>
+                <Id>
+                    <OrgId>
+                        <Othr>
+                            <Id>9785696554</Id>
+                        </Othr>
+                    </OrgId>
+                </Id>
+            </InitgPty>
+        </GrpHdr>
+        <PmtInf>
+            <PmtInfId>021974</PmtInfId>
+            <PmtMtd>TRF</PmtMtd>
+            <NbOfTxs>1</NbOfTxs>
+            <CtrlSum>4798.13</CtrlSum>
+            <PmtTpInf>
+                <SvcLvl>
+                    <Cd>URGP</Cd>
+                </SvcLvl>
+            </PmtTpInf>
+            <ReqdExctnDt>2020-09-04</ReqdExctnDt>
+            <Dbtr>
+                <Nm>Bauer USA</Nm>
+                <PstlAdr>
+                    <StrtNm>SYLVAN AVENUE</StrtNm>
+                    <BldgNb>270</BldgNb>
+                    <PstCd>0762</PstCd>
+                    <TwnNm>Englewood Cliffs</TwnNm>
+                    <CtrySubDvsn>NJ</CtrySubDvsn>
+                    <Ctry>US</Ctry>
+                </PstlAdr>
+            </Dbtr>
+            <DbtrAcct>
+                <Id>
+                    <Othr>
+                        <Id>137560280</Id>
+                    </Othr>
+                </Id>
+                <Ccy>USD</Ccy>
+            </DbtrAcct>
+            <DbtrAgt>
+                <FinInstnId>
+                    <BIC>CHASUS33</BIC>
+                    <ClrSysMmbId>
+                        <MmbId>021000021</MmbId>
+                    </ClrSysMmbId>
+                    <PstlAdr>
+                        <Ctry>US</Ctry>
+                    </PstlAdr>
+                </FinInstnId>
+            </DbtrAgt>
+            <CdtTrfTxInf>
+                <PmtId>
+                    <InstrId>021974</InstrId>
+                    <EndToEndId>021974</EndToEndId>
+                </PmtId>
+                <Amt>
+                    <InstdAmt Ccy="USD">4798.13</InstdAmt>
+                </Amt>
+                <CdtrAgt>
+                    <FinInstnId>
+                        <ClrSysMmbId>
+                            <MmbId>026073008</MmbId>
+                        </ClrSysMmbId>
+                        <PstlAdr>
+                            <Ctry>US</Ctry>
+                        </PstlAdr>
+                    </FinInstnId>
+                </CdtrAgt>
+                <Cdtr>
+                    <Nm>DUN &amp; BRADSTREET</Nm>
+                    <PstlAdr>
+                        <StrtNm>75 Remittance Drive Suite 1096</StrtNm>
+                        <PstCd>60675-1096</PstCd>
+                        <TwnNm>Chicago</TwnNm>
+                        <CtrySubDvsn>IL</CtrySubDvsn>
+                        <Ctry>US</Ctry>
+                    </PstlAdr>
+                    <Id>
+                        <OrgId>
+                            <Othr>
+                                <Id>DUN6</Id>
+                                <SchmeNm>
+                                    <Cd>CHID</Cd>
+                                </SchmeNm>
+                            </Othr>
+                        </OrgId>
+                    </Id>
+                </Cdtr>
+                <CdtrAcct>
+                    <Id>
+                        <Othr>
+                            <Id>8310142732</Id>
+                        </Othr>
+                    </Id>
+                    <Tp>
+                        <Cd>CASH</Cd>
+                    </Tp>
+                </CdtrAcct>
+                <RmtInf>
+                    <Strd>
+                        <RfrdDocInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>CINV</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Nb>050010000106385</Nb>
+                            <RltdDt>2020-05-18</RltdDt>
+                        </RfrdDocInf>
+                        <RfrdDocAmt>
+                            <DuePyblAmt Ccy="USD">4798.13</DuePyblAmt>
+                            <DscntApldAmt Ccy="USD">0.00</DscntApldAmt>
+                            <RmtdAmt Ccy="USD">4798.13</RmtdAmt>
+                        </RfrdDocAmt>
+                        <CdtrRefInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>RPIN</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Ref>050010000106385</Ref>
+                        </CdtrRefInf>
+                        <AddtlRmtInf>Period 5/18/20 to 5/17/2021</AddtlRmtInf>
+                    </Strd>
+                </RmtInf>
+            </CdtTrfTxInf>
+        </PmtInf>
+    </CstmrCdtTrfInitn>
+</Document>
