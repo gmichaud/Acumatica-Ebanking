@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<CstmrCdtTrfInitn>
+		<GrpHdr>
+			<MsgId>00000001</MsgId>
+			<CreDtTm>2020-08-07T08:45:51</CreDtTm>
+			<NbOfTxs>3</NbOfTxs>
+			<CtrlSum>3750.00</CtrlSum>
+			<InitgPty>
+				<Nm>BAUER MEDIA</Nm>
+			</InitgPty>
+		</GrpHdr>
+		<PmtInf>
+			<PmtInfId>000002</PmtInfId>
+			<PmtMtd>CHK</PmtMtd>
+			<NbOfTxs>2</NbOfTxs>
+			<CtrlSum>2500.00</CtrlSum>
+			<ReqdExctnDt>2020-08-07</ReqdExctnDt>
+			<Dbtr>
+				<Nm>BAUER MEDIA</Nm>
+				<PstlAdr>
+					<Ctry>US</Ctry>
+				</PstlAdr>
+			</Dbtr>
+			<DbtrAcct>
+				<Id>
+					<Othr>
+						<Id>6123456789</Id>
+					</Othr>
+				</Id>
+				<Ccy>USD</Ccy>
+			</DbtrAcct>
+			<DbtrAgt>
+				<FinInstnId>
+					<BIC>CHASUS33</BIC>
+					<ClrSysMmbId>
+						<MmbId>021000021</MmbId>
+					</ClrSysMmbId>
+					<PstlAdr>
+						<Ctry>US</Ctry>
+					</PstlAdr>
+				</FinInstnId>
+			</DbtrAgt>
+			<CdtTrfTxInf>
+				<PmtId>
+					<InstrId>000001</InstrId>
+					<EndToEndId>000001</EndToEndId>
+				</PmtId>
+				<Amt>
+					<InstdAmt Ccy="USD">1250.00</InstdAmt>
+				</Amt>
+				<ChqInstr>
+					<ChqNb>1000022</ChqNb>
+					<DlvryMtd>
+						<Prtry>00000</Prtry>
+					</DlvryMtd>
+					<FrmsCd>A1</FrmsCd>
+				</ChqInstr>
+				<Cdtr>
+					<Nm>PINPOINT DATA, LLC</Nm>
+					<PstlAdr>
+						<StrtNm>339 SOMERSET STREET</StrtNm>
+						<PstCd>07060</PstCd>
+						<TwnNm>NORTH PLAINFIELD</TwnNm>
+						<CtrySubDvsn>NJ</CtrySubDvsn>
+						<Ctry>US</Ctry>
+					</PstlAdr>
+					
+				</Cdtr>
+				<RmtInf>
+					<Ustrd>PE07022020</Ustrd>
+					<Strd>
+						<RfrdDocInf>
+							<Tp>
+								<CdOrPrtry>
+									<Cd>CINV</Cd>
+								</CdOrPrtry>
+							</Tp>
+							<Nb>031416</Nb>
+							<RltdDt>2020-08-07</RltdDt>
+						</RfrdDocInf>
+						<RfrdDocAmt>
+							<DuePyblAmt Ccy="USD">102.00</DuePyblAmt>
+							<DscntApldAmt Ccy="USD">2.00</DscntApldAmt>
+							<RmtdAmt Ccy="USD">100.00</RmtdAmt>
+						</RfrdDocAmt>
+						<CdtrRefInf>
+							<Ref>30 CHAR PO NUMBER REFERENCE</Ref>
+						</CdtrRefInf>
+						
+					</Strd>
+					<Strd>
+						<RfrdDocInf>
+							<Tp>
+								<CdOrPrtry>
+									<Cd>CINV</Cd>
+								</CdOrPrtry>
+							</Tp>
+							<Nb>INV100002</Nb>
+							<RltdDt>2020-08-07</RltdDt>
+						</RfrdDocInf>
+						<RfrdDocAmt>
+							<DuePyblAmt Ccy="USD">204.00</DuePyblAmt>
+							<DscntApldAmt Ccy="USD">4.00</DscntApldAmt>
+							<RmtdAmt Ccy="USD">200.00</RmtdAmt>
+						</RfrdDocAmt>
+						<CdtrRefInf>
+							<Ref>PO A-123456</Ref>
+						</CdtrRefInf>
+						
+					</Strd>
+					<Strd>
+						<RfrdDocInf>
+							<Tp>
+								<CdOrPrtry>
+									<Cd>CREN</Cd>
+								</CdOrPrtry>
+							</Tp>
+							<Nb>CRMEM00003</Nb>
+							<RltdDt>2020-08-07</RltdDt>
+						</RfrdDocInf>
+						<RfrdDocAmt>
+							<DuePyblAmt Ccy="USD">51.00</DuePyblAmt>
+							<DscntApldAmt Ccy="USD">1.00</DscntApldAmt>
+							<CdtNoteAmt Ccy="USD">50.00</CdtNoteAmt>
+						</RfrdDocAmt>
+						<CdtrRefInf>
+							<Ref>REFERENCE NUMBER 1</Ref>
+						</CdtrRefInf>
+						
+					</Strd>
+					<Strd>
+						<RfrdDocInf>
+							<Tp>
+								<CdOrPrtry>
+									<Cd>CREN</Cd>
+								</CdOrPrtry>
+							</Tp>
+							<Nb>CRMEM00004</Nb>
+							<RltdDt>2020-08-07</RltdDt>
+						</RfrdDocInf>
+						<RfrdDocAmt>
+							<DuePyblAmt Ccy="USD">100.00</DuePyblAmt>
+							<DscntApldAmt Ccy="USD">04.00</DscntApldAmt>
+							<CdtNoteAmt Ccy="USD">100.00</CdtNoteAmt>
+						</RfrdDocAmt>
+						<CdtrRefInf>
+							<Ref>PO REFERENCE NUMBER 2</Ref>
+						</CdtrRefInf>
+						
+					</Strd>
+					<Strd>
+						<RfrdDocInf>
+							<Tp>
+								<CdOrPrtry>
+									<Cd>CINV</Cd>
+								</CdOrPrtry>
+							</Tp>
+							<Nb>INV100005</Nb>
+							<RltdDt>2020-08-07</RltdDt>
+						</RfrdDocInf>
+						<RfrdDocAmt>
+							<DuePyblAmt Ccy="USD">500.00</DuePyblAmt>
+							<DscntApldAmt Ccy="USD">0.00</DscntApldAmt>
+							<RmtdAmt Ccy="USD">500.00</RmtdAmt>
+						</RfrdDocAmt>
+						<CdtrRefInf>
+							<Ref>PO REFERENCE</Ref>
+						</CdtrRefInf>
+						<AddtlRmtInf>ADDTL REFERENCE</AddtlRmtInf>
+					</Strd>
+					<Strd>
+						<RfrdDocInf>
+							<Tp>
+								<CdOrPrtry>
+									<Cd>CINV</Cd>
+								</CdOrPrtry>
+							</Tp>
+							<Nb>INV100006</Nb>
+							<RltdDt>2020-08-07</RltdDt>
+						</RfrdDocInf>
+						<RfrdDocAmt>
+							<DuePyblAmt Ccy="USD">606.00</DuePyblAmt>
+							<DscntApldAmt Ccy="USD">6.00</DscntApldAmt>
+							<RmtdAmt Ccy="USD">600.00</RmtdAmt>
+						</RfrdDocAmt>
+						<CdtrRefInf>
+							<Ref>PO REFERENCE 3</Ref>
+						</CdtrRefInf>
+						
+					</Strd>
+				</RmtInf>
+			</CdtTrfTxInf>
+			<CdtTrfTxInf>
+				<PmtId>
+					<InstrId>YOUR SYSTEM INSTRUCTION ID PMT2</InstrId>
+					<EndToEndId>021729</EndToEndId>
+				</PmtId>
+				<Amt>
+					<InstdAmt Ccy="USD">1250.00</InstdAmt>
+				</Amt>
+				<ChqInstr>
+					<ChqNb>1000023</ChqNb>
+					<DlvryMtd>
+					<Prtry>00000</Prtry>
+					</DlvryMtd>
+					<FrmsCd>A1</FrmsCd>
+				</ChqInstr>
+				<Cdtr>
+					<Nm>Voya Retirement Insurance</Nm>
+					<PstlAdr>
+						<PstCd>91801</PstCd>
+						<TwnNm>LOS ANGELES</TwnNm>
+						<CtrySubDvsn>CA</CtrySubDvsn>
+						<Ctry>US</Ctry>
+						<AdrLine> 3 TECHNOLOGY DRIVE, BUILDING 12</AdrLine>
+					</PstlAdr>
+				</Cdtr>
+				<RmtInf>
+					<Ustrd>REMITTANCE - UP TO 140 CHARACTERS PER PAYMENT ALLOWED</Ustrd>
+					<Strd>
+						<RfrdDocInf>
+							<Tp>
+								<CdOrPrtry>
+									<Cd>CINV</Cd>
+								</CdOrPrtry>
+							</Tp>
+							<Nb>M52671723T</Nb>
+							<RltdDt>2020-08-07</RltdDt>
+						</RfrdDocInf>
+						<RfrdDocAmt>
+							<DuePyblAmt Ccy="USD">1000.00</DuePyblAmt>
+							<DscntApldAmt Ccy="USD">20.00</DscntApldAmt>
+							<TaxAmt Ccy="USD">70.00</TaxAmt>
+							<RmtdAmt Ccy="USD">1050.00</RmtdAmt>
+						</RfrdDocAmt>
+						<CdtrRefInf>
+							<Ref>PO REFERENCE 4</Ref>
+						</CdtrRefInf>
+						
+					</Strd>
+				</RmtInf>
+			</CdtTrfTxInf>
+		</PmtInf>
+		<PmtInf>
+			<PmtInfId>BATCH REF2</PmtInfId>
+			<PmtMtd>CHK</PmtMtd>
+			<NbOfTxs>1</NbOfTxs>
+			<CtrlSum>1250.00</CtrlSum>
+			<ReqdExctnDt>2020-08-07</ReqdExctnDt>
+			<Dbtr>
+				<Nm>BAUER MEDIA</Nm>
+				<PstlAdr>
+					<Ctry>US</Ctry>
+				</PstlAdr>
+			</Dbtr>
+			<DbtrAcct>
+				<Id>
+					<Othr>
+						<Id>137560280</Id>
+					</Othr>
+				</Id>
+				<Ccy>USD</Ccy>
+			</DbtrAcct>
+			<DbtrAgt>
+				<FinInstnId>
+					<BIC>CHASUS33</BIC>
+					<ClrSysMmbId>
+						<MmbId>021000021</MmbId>
+					</ClrSysMmbId>
+					<PstlAdr>
+						<Ctry>US</Ctry>
+					</PstlAdr>
+				</FinInstnId>
+			</DbtrAgt>
+			<CdtTrfTxInf>
+				<PmtId>
+					<InstrId>031417</InstrId>
+					<EndToEndId>031417</EndToEndId>
+				</PmtId>
+				<Amt>
+					<InstdAmt Ccy="USD">1250.00</InstdAmt>
+				</Amt>
+				<ChqInstr>
+					<ChqNb>1200222</ChqNb>
+					<DlvryMtd>
+						<Prtry>00000</Prtry>
+					</DlvryMtd>
+					<FrmsCd>A1</FrmsCd>
+				</ChqInstr>
+				<Cdtr>
+					<Nm>Voya Retirement Insurance</Nm>
+					<PstlAdr>
+						<PstCd>06199</PstCd>
+						<TwnNm>Hartford</TwnNm>
+						<CtrySubDvsn>CT</CtrySubDvsn>
+						<Ctry>US</Ctry>
+						<AdrLine>PO Box 990064</AdrLine>
+					</PstlAdr>
+	
+				</Cdtr>
+				<RmtInf>
+					<Ustrd>REMITTANCE - UP TO 140 CHARACTERS PER PAYMENT ALLOWED</Ustrd>
+					<Strd>
+						<RfrdDocInf>
+							<Tp>
+								<CdOrPrtry>
+									<Cd>CINV</Cd>
+								</CdOrPrtry>
+							</Tp>
+							<Nb>INV100001</Nb>
+							<RltdDt>2020-08-07</RltdDt>
+						</RfrdDocInf>
+						<RfrdDocAmt>
+							<DuePyblAmt Ccy="USD">1250.00</DuePyblAmt>
+							<RmtdAmt Ccy="USD">1250.00</RmtdAmt>
+						</RfrdDocAmt>
+						<CdtrRefInf>
+							<Ref>Sample Check #2</Ref>
+						</CdtrRefInf>
+						
+					</Strd>
+				</RmtInf>
+			</CdtTrfTxInf>
+		</PmtInf>
+	</CstmrCdtTrfInitn>
+</Document>

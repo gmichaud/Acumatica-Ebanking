@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03">
+    <CstmrCdtTrfInitn>
+        <GrpHdr>
+            <MsgId>000003</MsgId>
+            <CreDtTm>2020-09-04T14:42:23</CreDtTm>
+            <NbOfTxs>2</NbOfTxs>
+            <CtrlSum>4734.57</CtrlSum>
+            <InitgPty>
+                <Id>
+                    <OrgId>
+                        <Othr>
+                            <Id>9785696554</Id>
+                        </Othr>
+                    </OrgId>
+                </Id>
+            </InitgPty>
+        </GrpHdr>
+        <PmtInf>
+            <PmtInfId>021972</PmtInfId>
+            <PmtMtd>CHK</PmtMtd>
+            <NbOfTxs>2</NbOfTxs>
+            <CtrlSum>4734.57</CtrlSum>
+            <PmtTpInf>
+                <SvcLvl>
+                    <Cd>NURG</Cd>
+                </SvcLvl>
+            </PmtTpInf>
+            <ReqdExctnDt>2020-09-04</ReqdExctnDt>
+            <Dbtr>
+                <Nm>Bauer USA</Nm>
+                <PstlAdr>
+                    <StrtNm>SYLVAN AVENUE</StrtNm>
+                    <BldgNb>270</BldgNb>
+                    <PstCd>0762</PstCd>
+                    <TwnNm>Englewood Cliffs</TwnNm>
+                    <CtrySubDvsn>NJ</CtrySubDvsn>
+                    <Ctry>US</Ctry>
+                </PstlAdr>
+            </Dbtr>
+            <DbtrAcct>
+                <Id>
+                    <Othr>
+                        <Id>137560280</Id>
+                    </Othr>
+                </Id>
+                <Ccy>USD</Ccy>
+            </DbtrAcct>
+            <DbtrAgt>
+                <FinInstnId>
+                    <BIC>CHASUS33</BIC>
+                    <ClrSysMmbId>
+                        <MmbId>021000021</MmbId>
+                    </ClrSysMmbId>
+                    <PstlAdr>
+                        <Ctry>US</Ctry>
+                    </PstlAdr>
+                </FinInstnId>
+            </DbtrAgt>
+            <CdtTrfTxInf>
+                <PmtId>
+                    <InstrId>021972</InstrId>
+                    <EndToEndId>021972</EndToEndId>
+                </PmtId>
+                <Amt>
+                    <InstdAmt Ccy="USD">4661.57</InstdAmt>
+                </Amt>
+                <ChqInstr>
+                    <ChqNb>CKO-0002</ChqNb>
+                    <FrmsCd>A1</FrmsCd>
+                </ChqInstr>
+                <Cdtr>
+                    <Nm>CIGNA</Nm>
+                    <PstlAdr>
+                        <StrtNm>LIFE INSURANCE COMPANY OF NORTH AMERICA PO BOX 780110</StrtNm>
+                        <PstCd>19178-0110</PstCd>
+                        <TwnNm>PHILADELPHIA</TwnNm>
+                        <CtrySubDvsn>PA</CtrySubDvsn>
+                        <Ctry>US</Ctry>
+                    </PstlAdr>
+                </Cdtr>
+                <RmtInf>
+                    <Strd>
+                        <RfrdDocInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>CINV</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Nb>JULY 2020 BMS</Nb>
+                            <RltdDt>2020-07-01</RltdDt>
+                        </RfrdDocInf>
+                        <RfrdDocAmt>
+                            <DuePyblAmt Ccy="USD">512.49</DuePyblAmt>
+                            <DscntApldAmt Ccy="USD">0.00</DscntApldAmt>
+                            <RmtdAmt Ccy="USD">512.49</RmtdAmt>
+                        </RfrdDocAmt>
+                        <CdtrRefInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>RPIN</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Ref>JULY 2020 BMS</Ref>
+                        </CdtrRefInf>
+                        <AddtlRmtInf>JULY 2020 BMS</AddtlRmtInf>
+                    </Strd>
+                    <Strd>
+                        <RfrdDocInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>CINV</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Nb>AUG 2020 BMGU</Nb>
+                            <RltdDt>2020-08-01</RltdDt>
+                        </RfrdDocInf>
+                        <RfrdDocAmt>
+                            <DuePyblAmt Ccy="USD">1875.37</DuePyblAmt>
+                            <DscntApldAmt Ccy="USD">0.00</DscntApldAmt>
+                            <RmtdAmt Ccy="USD">1875.37</RmtdAmt>
+                        </RfrdDocAmt>
+                        <CdtrRefInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>RPIN</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Ref>AUG 2020 BMGU</Ref>
+                        </CdtrRefInf>
+                        <AddtlRmtInf>AUG 2020 BMGU</AddtlRmtInf>
+                    </Strd>
+                    <Strd>
+                        <RfrdDocInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>CINV</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Nb>AUG 2020 BPC</Nb>
+                            <RltdDt>2020-08-01</RltdDt>
+                        </RfrdDocInf>
+                        <RfrdDocAmt>
+                            <DuePyblAmt Ccy="USD">1367.22</DuePyblAmt>
+                            <DscntApldAmt Ccy="USD">0.00</DscntApldAmt>
+                            <RmtdAmt Ccy="USD">1367.22</RmtdAmt>
+                        </RfrdDocAmt>
+                        <CdtrRefInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>RPIN</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Ref>AUG 2020 BPC</Ref>
+                        </CdtrRefInf>
+                        <AddtlRmtInf>AUG 2020 BPC</AddtlRmtInf>
+                    </Strd>
+                    <Strd>
+                        <RfrdDocInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>CINV</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Nb>AUG 2020 BMLP</Nb>
+                            <RltdDt>2020-08-01</RltdDt>
+                        </RfrdDocInf>
+                        <RfrdDocAmt>
+                            <DuePyblAmt Ccy="USD">394.00</DuePyblAmt>
+                            <DscntApldAmt Ccy="USD">0.00</DscntApldAmt>
+                            <RmtdAmt Ccy="USD">394.00</RmtdAmt>
+                        </RfrdDocAmt>
+                        <CdtrRefInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>RPIN</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Ref>AUG 2020 BMLP</Ref>
+                        </CdtrRefInf>
+                        <AddtlRmtInf>AUG 2020 BMLP</AddtlRmtInf>
+                    </Strd>
+                    <Strd>
+                        <RfrdDocInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>CINV</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Nb>AUG 2020 BMS</Nb>
+                            <RltdDt>2020-08-01</RltdDt>
+                        </RfrdDocInf>
+                        <RfrdDocAmt>
+                            <DuePyblAmt Ccy="USD">512.49</DuePyblAmt>
+                            <DscntApldAmt Ccy="USD">0.00</DscntApldAmt>
+                            <RmtdAmt Ccy="USD">512.49</RmtdAmt>
+                        </RfrdDocAmt>
+                        <CdtrRefInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>RPIN</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Ref>AUG 2020 BMS</Ref>
+                        </CdtrRefInf>
+                        <AddtlRmtInf>AUG 2020 BMS</AddtlRmtInf>
+                    </Strd>
+                </RmtInf>
+            </CdtTrfTxInf>
+            <CdtTrfTxInf>
+                <PmtId>
+                    <InstrId>021973</InstrId>
+                    <EndToEndId>021973</EndToEndId>
+                </PmtId>
+                <Amt>
+                    <InstdAmt Ccy="USD">73.00</InstdAmt>
+                </Amt>
+                <ChqInstr>
+                    <ChqNb>CKO-0003</ChqNb>
+                    <FrmsCd>A1</FrmsCd>
+                </ChqInstr>
+                <Cdtr>
+                    <Nm>Federal Express</Nm>
+                    <PstlAdr>
+                        <StrtNm>ACCT 2242-9519-7 PO Box 371461</StrtNm>
+                        <PstCd>15250-7461</PstCd>
+                        <TwnNm>Pittsburgh</TwnNm>
+                        <CtrySubDvsn>PA</CtrySubDvsn>
+                        <Ctry>US</Ctry>
+                    </PstlAdr>
+                </Cdtr>
+                <RmtInf>
+                    <Strd>
+                        <RfrdDocInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>CINV</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Nb>7-101-68326</Nb>
+                            <RltdDt>2020-08-24</RltdDt>
+                        </RfrdDocInf>
+                        <RfrdDocAmt>
+                            <DuePyblAmt Ccy="USD">73.00</DuePyblAmt>
+                            <DscntApldAmt Ccy="USD">0.00</DscntApldAmt>
+                            <RmtdAmt Ccy="USD">73.00</RmtdAmt>
+                        </RfrdDocAmt>
+                        <CdtrRefInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>RPIN</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Ref>7-101-68326</Ref>
+                        </CdtrRefInf>
+                        <AddtlRmtInf>AUG 2020</AddtlRmtInf>
+                    </Strd>
+                </RmtInf>
+            </CdtTrfTxInf>
+        </PmtInf>
+    </CstmrCdtTrfInitn>
+</Document>

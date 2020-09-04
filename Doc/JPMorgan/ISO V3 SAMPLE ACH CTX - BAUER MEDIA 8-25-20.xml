@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<CstmrCdtTrfInitn>
+		<GrpHdr>
+			<MsgId>Sample ACH</MsgId>
+			<CreDtTm>2020-08-07T08:45:51</CreDtTm>
+			<NbOfTxs>2</NbOfTxs>
+			<CtrlSum>3300.00</CtrlSum>
+			<InitgPty>
+				<Nm>BAUER MEDIA</Nm>
+			</InitgPty>
+		</GrpHdr>
+		<PmtInf>
+			<PmtInfId>00001</PmtInfId>
+			<PmtMtd>TRF</PmtMtd>
+			<NbOfTxs>2</NbOfTxs>
+			<CtrlSum>3300.00</CtrlSum>
+			<PmtTpInf>
+				<SvcLvl>
+					<Cd>NURG</Cd>
+				</SvcLvl>
+				<LclInstrm>
+					<Cd>CTX</Cd>
+				</LclInstrm>
+			</PmtTpInf>
+			<ReqdExctnDt>2020-08-07</ReqdExctnDt>
+			<Dbtr>
+				<Nm>21 PALISADE AVE, LLC</Nm>
+				<PstlAdr>
+					<Ctry>US</Ctry>
+				</PstlAdr>
+				<Id>
+					<OrgId>
+						<Othr>
+							<Id>9000560280</Id>
+							<SchmeNm>
+								<Prtry>JPMCOID</Prtry>
+							</SchmeNm>
+						</Othr>
+					</OrgId>
+				</Id>
+			</Dbtr>
+			<DbtrAcct>
+				<Id>
+					<Othr>
+						<Id>5223456789</Id>
+					</Othr>
+				</Id>
+				<Ccy>USD</Ccy>
+			</DbtrAcct>
+			<DbtrAgt>
+				<FinInstnId>
+					<BIC>CHASUS33</BIC>
+					<ClrSysMmbId>
+						<MmbId>021000021</MmbId>
+					</ClrSysMmbId>
+					<PstlAdr>
+						<Ctry>US</Ctry>
+					</PstlAdr>
+				</FinInstnId>
+			</DbtrAgt>
+			<CdtTrfTxInf>
+				<PmtId>
+					<InstrId>000001</InstrId>
+					<EndToEndId>000001</EndToEndId>
+				</PmtId>
+				<Amt>
+					<InstdAmt Ccy="USD">3300.00</InstdAmt>
+				</Amt>
+				<CdtrAgt>
+					<FinInstnId>
+						<ClrSysMmbId>
+							<MmbId>322070019 </MmbId>
+						</ClrSysMmbId>
+						<Nm>CITIBANK NA</Nm>
+						<PstlAdr>
+							<TwnNm>LOS ANGELES</TwnNm>
+							<CtrySubDvsn>CA</CtrySubDvsn>
+							<Ctry>US</Ctry>
+						</PstlAdr>
+					</FinInstnId>
+				</CdtrAgt>
+				<Cdtr>
+					<Nm>21 PALISADE AVE, LLC</Nm>
+					<PstlAdr>
+						<Ctry>US</Ctry>
+						<AdrLine>PO BOX 92</AdrLine>
+						<AdrLine>WYCKOFF, NJ</AdrLine>
+					</PstlAdr>
+					<Id>
+						<OrgId>
+							<Othr>
+								<Id>21P1</Id>
+								<SchmeNm>
+									<Cd>CHID</Cd>
+								</SchmeNm>
+							</Othr>
+						</OrgId>
+					</Id>
+				</Cdtr>
+				<CdtrAcct>
+					<Id>
+						<Othr>
+							<Id>987654321</Id>
+						</Othr>
+					</Id>
+					<Tp>
+						<Cd>CASH</Cd>
+					</Tp>
+				</CdtrAcct>
+				<RmtInf>
+					<Ustrd>SAMPLE PAYMENT-UP TO 75 CHARACTERS PER PAYMENT ALLOWED</Ustrd>
+					<Strd>
+						<RfrdDocInf>
+							<Tp>
+								<CdOrPrtry>
+									<Cd>CINV</Cd>
+								</CdOrPrtry>
+							</Tp>
+							<Nb>015380</Nb>
+							<RltdDt>2020-08-07</RltdDt>
+						</RfrdDocInf>
+						<RfrdDocAmt>
+							<DuePyblAmt Ccy="USD">1300.00</DuePyblAmt>
+							<DscntApldAmt Ccy="USD">0.00</DscntApldAmt>
+							<TaxAmt Ccy="USD">0.00</TaxAmt>
+							<RmtdAmt Ccy="USD">1300.00</RmtdAmt>
+						</RfrdDocAmt>
+						<CdtrRefInf>
+							<Tp>
+								<CdOrPrtry>
+									<Prtry>PO</Prtry>
+								</CdOrPrtry>
+							</Tp>
+							<Ref>PO REFERENCE</Ref>
+						</CdtrRefInf>
+						<AddtlRmtInf>ADDTL REFERENCE UP TO 140 CHARACTERS PER DOCUMENT SENT AS NTE SEGMENT</AddtlRmtInf>
+					</Strd>
+					<Strd>
+						
+						<RfrdDocInf>
+							<Tp>
+								<CdOrPrtry>
+									<Cd>CINV</Cd>
+								</CdOrPrtry>
+							</Tp>
+							<Nb>015380</Nb>
+							<RltdDt>2020-08-07</RltdDt>
+						</RfrdDocInf>
+						<RfrdDocAmt>
+							<DuePyblAmt Ccy="USD">700.00</DuePyblAmt>
+							<DscntApldAmt Ccy="USD">0.00</DscntApldAmt>
+							<TaxAmt Ccy="USD">0.00</TaxAmt>
+							<RmtdAmt Ccy="USD">700.00</RmtdAmt>
+						</RfrdDocAmt>
+						<CdtrRefInf>
+							<Tp>
+								<CdOrPrtry>
+									<Prtry>PO</Prtry>
+								</CdOrPrtry>
+							</Tp>
+							<Ref>PO REFERENCE</Ref>
+						</CdtrRefInf>
+						<AddtlRmtInf>ADDTL REFERENCE UP TO 140 CHARACTERS PER DOCUMENT SENT AS NTE SEGMENT</AddtlRmtInf>
+					</Strd>
+				
+						
+				</RmtInf>
+			</CdtTrfTxInf>
+			<CdtTrfTxInf>
+				<PmtId>
+					<InstrId>000002</InstrId>
+					<EndToEndId>000002</EndToEndId>
+				</PmtId>
+				<Amt>
+					<InstdAmt Ccy="USD">1000.00</InstdAmt>
+				</Amt>
+				<CdtrAgt>
+					<FinInstnId>
+						<ClrSysMmbId>
+							<MmbId>121000248 </MmbId>
+						</ClrSysMmbId>
+						<Nm>WELLS FARGO BANK NA</Nm>
+						<PstlAdr>
+							<TwnNm>LOS ANGELES</TwnNm>
+							<CtrySubDvsn>CA</CtrySubDvsn>
+							<Ctry>US</Ctry>
+						</PstlAdr>
+					</FinInstnId>
+				</CdtrAgt>
+				<Cdtr>
+					<Nm>310 PIX</Nm>
+					<PstlAdr>
+						<Ctry>US</Ctry>
+						<AdrLine>1507 7TH STREET</AdrLine>
+						<AdrLine>SUITE 310</AdrLine>
+						<AdrLine>SANTA MONICA, CA</AdrLine>
+					</PstlAdr>
+				</Cdtr>
+				<CdtrAcct>
+					<Id>
+						<Othr>
+							<Id>4234123111</Id>
+						</Othr>
+					</Id>
+					<Tp>
+						<Cd>SVGS</Cd>
+					</Tp>
+				</CdtrAcct>
+				<RmtInf>
+					<Ustrd>REMITTANCE2- UP TO 75 CHARACTERS PER PAYMENT ALLOWED</Ustrd>
+					<Strd>
+						<RfrdDocInf>
+							<Tp>
+								<CdOrPrtry>
+									<Cd>CINV</Cd>
+								</CdOrPrtry>
+							</Tp>
+							<Nb>M52671723T</Nb>
+							<RltdDt>2020-08-07</RltdDt>
+						</RfrdDocInf>
+						<RfrdDocAmt>
+							<DuePyblAmt Ccy="USD">1000.00</DuePyblAmt>
+							<DscntApldAmt Ccy="USD">0.00</DscntApldAmt>
+							<TaxAmt Ccy="USD">0.00</TaxAmt>
+							<RmtdAmt Ccy="USD">1000.00</RmtdAmt>
+						</RfrdDocAmt>
+						<CdtrRefInf>
+							<Tp>
+								<CdOrPrtry>
+									<Prtry>PO</Prtry>
+								</CdOrPrtry>
+							</Tp>
+							<Ref>PO REFERENCE</Ref>
+						</CdtrRefInf>
+						<AddtlRmtInf>ADDTL REFERENCE UP TO 140 CHARACTERS PER DOCUMENT SENT AS NTE SEGMENT</AddtlRmtInf>
+					</Strd>
+				</RmtInf>
+			</CdtTrfTxInf>
+		</PmtInf>
+	</CstmrCdtTrfInitn>
+</Document>
