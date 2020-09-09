@@ -28,6 +28,7 @@ namespace Velixo.EBanking
         protected const string PmtInfId = "PmtInfId";
         protected const string PmtMtd = "PmtMtd";
         protected const string PmtTpInfSvcLvlCd = "PmtTpInfSvcLvlCd";
+        protected const string PmtTpInfLclInstrmCd = "PmtTpInfLclInstrmCd";
         protected const string PmtTpInfLclInstrmPrty = "PmtTpInfLclInstrmPrty";
         protected const string ReqdExctnDt = "ReqdExctnDt";
         protected const string CtrlSum = "CtrlSum";
@@ -56,7 +57,8 @@ namespace Velixo.EBanking
         protected const string CdtTrfTxInfAmtCcy = "CdtTrfTxInfAmtCcy";
         protected const string CdtTrfTxInfAmt = "CdtTrfTxInfAmt";
         protected const string ChqInstrChqNb = "ChqInstrChqNb";
-        protected const string ChqInstrDlvryMtd = "ChqInstrDlvryMtd"; 
+        protected const string ChqInstrDlvryMtd = "ChqInstrDlvryMtd";
+        protected const string ChqInstrDlvryMtdPrtry = "ChqInstrDlvryMtdPrtry";
         protected const string ChqInstrDlvryToNm = "ChqInstrDlvryToNm";
         protected const string ChqInstrDlvryStrtNm = "ChqInstrDlvryStrtNm";
         protected const string ChqInstrDlvryBldgNb = "ChqInstrDlvryBldgNb";
@@ -119,6 +121,7 @@ namespace Velixo.EBanking
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, PmtInfId)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, PmtMtd)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, PmtTpInfSvcLvlCd)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, PmtTpInfLclInstrmCd)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, PmtTpInfLclInstrmPrty)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ReqdExctnDt)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CtrlSum)));
@@ -148,6 +151,7 @@ namespace Velixo.EBanking
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtTrfTxInfAmt)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ChqInstrChqNb)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ChqInstrDlvryMtd)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ChqInstrDlvryMtdPrtry)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ChqInstrDlvryToNm)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ChqInstrDlvryStrtNm)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ChqInstrDlvryBldgNb)));
@@ -282,18 +286,31 @@ namespace Velixo.EBanking
                     writer.WriteElementString(CtrlSum, table.Rows[0][table.Columns.IndexOf(CtrlSum)]);
 
                     //Payment Type Information 
-                    writer.WriteStartElement("PmtTpInf");
-                    writer.WriteStartElement("SvcLvl");
-                        writer.WriteElementString("Cd", table.Rows[0][table.Columns.IndexOf(PmtTpInfSvcLvlCd)]);
-                    writer.WriteEndElement(); //SvcLvl
-                    if(!String.IsNullOrEmpty(table.Rows[0][table.Columns.IndexOf(PmtTpInfLclInstrmPrty)]))
+                    if(!String.IsNullOrEmpty(table.Rows[0][table.Columns.IndexOf(PmtTpInfSvcLvlCd)]) || 
+                        !String.IsNullOrEmpty(table.Rows[0][table.Columns.IndexOf(PmtTpInfLclInstrmCd)]) || 
+                        !String.IsNullOrEmpty(table.Rows[0][table.Columns.IndexOf(PmtTpInfLclInstrmPrty)]))
                     {
-                        writer.WriteStartElement("LclInstrm");
-                            writer.WriteElementString("Prtry", table.Rows[0][table.Columns.IndexOf(PmtTpInfLclInstrmPrty)]);
-                        writer.WriteEndElement(); //LclInstrm
+                        writer.WriteStartElement("PmtTpInf");
+                        if(!String.IsNullOrEmpty(table.Rows[0][table.Columns.IndexOf(PmtTpInfSvcLvlCd)]))
+                        {
+                            writer.WriteStartElement("SvcLvl");
+                                writer.WriteElementString("Cd", table.Rows[0][table.Columns.IndexOf(PmtTpInfSvcLvlCd)]);
+                            writer.WriteEndElement(); //SvcLvl
+                        }
+                        if(!String.IsNullOrEmpty(table.Rows[0][table.Columns.IndexOf(PmtTpInfLclInstrmCd)]))
+                        {
+                            writer.WriteStartElement("LclInstrm");
+                                writer.WriteElementString("Cd", table.Rows[0][table.Columns.IndexOf(PmtTpInfLclInstrmCd)]);
+                            writer.WriteEndElement(); //LclInstrm
+                        }
+                        if(!String.IsNullOrEmpty(table.Rows[0][table.Columns.IndexOf(PmtTpInfLclInstrmPrty)]))
+                        {
+                            writer.WriteStartElement("LclInstrm");
+                                writer.WriteElementString("Prtry", table.Rows[0][table.Columns.IndexOf(PmtTpInfLclInstrmPrty)]);
+                            writer.WriteEndElement(); //LclInstrm
+                        }
+                        writer.WriteEndElement(); //PmtTpInf
                     }
-                writer.WriteEndElement(); //PmtTpInf
-                    
                 writer.WriteElementString("ReqdExctnDt", table.Rows[0][table.Columns.IndexOf(ReqdExctnDt)]);
 
                 //Debitor
@@ -407,8 +424,13 @@ namespace Velixo.EBanking
                                 writer.WriteElementString("ChqNb", row[table.Columns.IndexOf(ChqInstrChqNb)]);
                                 if(!String.IsNullOrEmpty(row[table.Columns.IndexOf(ChqInstrDlvryMtd)]))
                                 { 
-                                    writer.WriteStartElement("DlvryMtd"); //TODO: Make node optional
                                         writer.WriteElementString("Cd", row[table.Columns.IndexOf(ChqInstrDlvryMtd)]);
+                                    writer.WriteEndElement(); //DlvryMtd
+                                }
+                                if(!String.IsNullOrEmpty(row[table.Columns.IndexOf(ChqInstrDlvryMtdPrtry)]))
+                                { 
+                                    writer.WriteStartElement("DlvryMtd");
+                                        writer.WriteElementString("Prtry", row[table.Columns.IndexOf(ChqInstrDlvryMtdPrtry)]);
                                     writer.WriteEndElement(); //DlvryMtd
                                 }
                                 if(!String.IsNullOrEmpty(row[table.Columns.IndexOf(ChqInstrDlvryToNm)]))
@@ -553,11 +575,6 @@ namespace Velixo.EBanking
                     
                     //Creditor Referrence Information
                     writer.WriteStartElement("CdtrRefInf");
-                        writer.WriteStartElement("Tp");
-                            writer.WriteStartElement("CdOrPrtry");
-                                writer.WriteElementString("Cd", "RPIN"); //Related Payment Instruction
-                            writer.WriteEndElement(); //CdOrPrtry
-                        writer.WriteEndElement(); //Tp
                         if(inv != null) writer.WriteElementStringIfNotNull("Ref", inv.InvoiceNbr, 35);
                     writer.WriteEndElement(); //CdtrRefInf
                     if (inv != null) writer.WriteElementStringIfNotNull("AddtlRmtInf", inv.DocDesc, 140);

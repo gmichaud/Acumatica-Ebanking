@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03">
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03">
     <CstmrCdtTrfInitn>
         <GrpHdr>
             <MsgId>000003</MsgId>
-            <CreDtTm>2020-09-04T14:42:23</CreDtTm>
+            <CreDtTm>2020-09-09T16:55:03</CreDtTm>
             <NbOfTxs>2</NbOfTxs>
             <CtrlSum>4734.57</CtrlSum>
             <InitgPty>
@@ -21,11 +22,6 @@
             <PmtMtd>CHK</PmtMtd>
             <NbOfTxs>2</NbOfTxs>
             <CtrlSum>4734.57</CtrlSum>
-            <PmtTpInf>
-                <SvcLvl>
-                    <Cd>NURG</Cd>
-                </SvcLvl>
-            </PmtTpInf>
             <ReqdExctnDt>2020-09-04</ReqdExctnDt>
             <Dbtr>
                 <Nm>Bauer USA</Nm>
@@ -66,7 +62,7 @@
                     <InstdAmt Ccy="USD">4661.57</InstdAmt>
                 </Amt>
                 <ChqInstr>
-                    <ChqNb>CKO-0002</ChqNb>
+                    <ChqNb>0002</ChqNb>
                     <FrmsCd>A1</FrmsCd>
                 </ChqInstr>
                 <Cdtr>
@@ -96,11 +92,6 @@
                             <RmtdAmt Ccy="USD">512.49</RmtdAmt>
                         </RfrdDocAmt>
                         <CdtrRefInf>
-                            <Tp>
-                                <CdOrPrtry>
-                                    <Cd>RPIN</Cd>
-                                </CdOrPrtry>
-                            </Tp>
                             <Ref>JULY 2020 BMS</Ref>
                         </CdtrRefInf>
                         <AddtlRmtInf>JULY 2020 BMS</AddtlRmtInf>
@@ -121,11 +112,6 @@
                             <RmtdAmt Ccy="USD">1875.37</RmtdAmt>
                         </RfrdDocAmt>
                         <CdtrRefInf>
-                            <Tp>
-                                <CdOrPrtry>
-                                    <Cd>RPIN</Cd>
-                                </CdOrPrtry>
-                            </Tp>
                             <Ref>AUG 2020 BMGU</Ref>
                         </CdtrRefInf>
                         <AddtlRmtInf>AUG 2020 BMGU</AddtlRmtInf>
@@ -146,11 +132,6 @@
                             <RmtdAmt Ccy="USD">1367.22</RmtdAmt>
                         </RfrdDocAmt>
                         <CdtrRefInf>
-                            <Tp>
-                                <CdOrPrtry>
-                                    <Cd>RPIN</Cd>
-                                </CdOrPrtry>
-                            </Tp>
                             <Ref>AUG 2020 BPC</Ref>
                         </CdtrRefInf>
                         <AddtlRmtInf>AUG 2020 BPC</AddtlRmtInf>
@@ -171,11 +152,6 @@
                             <RmtdAmt Ccy="USD">394.00</RmtdAmt>
                         </RfrdDocAmt>
                         <CdtrRefInf>
-                            <Tp>
-                                <CdOrPrtry>
-                                    <Cd>RPIN</Cd>
-                                </CdOrPrtry>
-                            </Tp>
                             <Ref>AUG 2020 BMLP</Ref>
                         </CdtrRefInf>
                         <AddtlRmtInf>AUG 2020 BMLP</AddtlRmtInf>
@@ -196,11 +172,6 @@
                             <RmtdAmt Ccy="USD">512.49</RmtdAmt>
                         </RfrdDocAmt>
                         <CdtrRefInf>
-                            <Tp>
-                                <CdOrPrtry>
-                                    <Cd>RPIN</Cd>
-                                </CdOrPrtry>
-                            </Tp>
                             <Ref>AUG 2020 BMS</Ref>
                         </CdtrRefInf>
                         <AddtlRmtInf>AUG 2020 BMS</AddtlRmtInf>
@@ -216,7 +187,7 @@
                     <InstdAmt Ccy="USD">73.00</InstdAmt>
                 </Amt>
                 <ChqInstr>
-                    <ChqNb>CKO-0003</ChqNb>
+                    <ChqNb>0003</ChqNb>
                     <FrmsCd>A1</FrmsCd>
                 </ChqInstr>
                 <Cdtr>
@@ -246,11 +217,6 @@
                             <RmtdAmt Ccy="USD">73.00</RmtdAmt>
                         </RfrdDocAmt>
                         <CdtrRefInf>
-                            <Tp>
-                                <CdOrPrtry>
-                                    <Cd>RPIN</Cd>
-                                </CdOrPrtry>
-                            </Tp>
                             <Ref>7-101-68326</Ref>
                         </CdtrRefInf>
                         <AddtlRmtInf>AUG 2020</AddtlRmtInf>

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03">
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03">
     <CstmrCdtTrfInitn>
         <GrpHdr>
             <MsgId>000001</MsgId>
-            <CreDtTm>2020-09-04T14:14:12</CreDtTm>
+            <CreDtTm>2020-09-09T16:10:35</CreDtTm>
             <NbOfTxs>1</NbOfTxs>
             <CtrlSum>438.75</CtrlSum>
             <InitgPty>
@@ -26,7 +27,7 @@
                     <Cd>NURG</Cd>
                 </SvcLvl>
                 <LclInstrm>
-                    <Prtry>CTX</Prtry>
+                    <Cd>CTX</Cd>
                 </LclInstrm>
             </PmtTpInf>
             <ReqdExctnDt>2020-09-04</ReqdExctnDt>
@@ -119,8 +120,6 @@
                     </Tp>
                 </CdtrAcct>
                 <RmtInf>
-                    <Ustrd>CONSULTING JULY 2020</Ustrd>
-                    <Ustrd>CONSULTING JULY 2020</Ustrd>
                     <Strd>
                         <RfrdDocInf>
                             <Tp>

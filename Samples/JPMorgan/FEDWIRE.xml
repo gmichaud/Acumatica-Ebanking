@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03">
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03">
     <CstmrCdtTrfInitn>
         <GrpHdr>
             <MsgId>000004</MsgId>
-            <CreDtTm>2020-09-04T15:53:49</CreDtTm>
+            <CreDtTm>2020-09-09T17:05:58</CreDtTm>
             <NbOfTxs>1</NbOfTxs>
             <CtrlSum>4798.13</CtrlSum>
             <InitgPty>
@@ -84,16 +85,6 @@
                         <CtrySubDvsn>IL</CtrySubDvsn>
                         <Ctry>US</Ctry>
                     </PstlAdr>
-                    <Id>
-                        <OrgId>
-                            <Othr>
-                                <Id>DUN6</Id>
-                                <SchmeNm>
-                                    <Cd>CHID</Cd>
-                                </SchmeNm>
-                            </Othr>
-                        </OrgId>
-                    </Id>
                 </Cdtr>
                 <CdtrAcct>
                     <Id>
@@ -106,31 +97,7 @@
                     </Tp>
                 </CdtrAcct>
                 <RmtInf>
-                    <Strd>
-                        <RfrdDocInf>
-                            <Tp>
-                                <CdOrPrtry>
-                                    <Cd>CINV</Cd>
-                                </CdOrPrtry>
-                            </Tp>
-                            <Nb>050010000106385</Nb>
-                            <RltdDt>2020-05-18</RltdDt>
-                        </RfrdDocInf>
-                        <RfrdDocAmt>
-                            <DuePyblAmt Ccy="USD">4798.13</DuePyblAmt>
-                            <DscntApldAmt Ccy="USD">0.00</DscntApldAmt>
-                            <RmtdAmt Ccy="USD">4798.13</RmtdAmt>
-                        </RfrdDocAmt>
-                        <CdtrRefInf>
-                            <Tp>
-                                <CdOrPrtry>
-                                    <Cd>RPIN</Cd>
-                                </CdOrPrtry>
-                            </Tp>
-                            <Ref>050010000106385</Ref>
-                        </CdtrRefInf>
-                        <AddtlRmtInf>Period 5/18/20 to 5/17/2021</AddtlRmtInf>
-                    </Strd>
+                    <Ustrd>Test Unstructured Remittance Info</Ustrd>
                 </RmtInf>
             </CdtTrfTxInf>
         </PmtInf>
