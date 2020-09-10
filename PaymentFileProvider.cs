@@ -577,7 +577,7 @@ namespace Velixo.EBanking
                     writer.WriteStartElement("CdtrRefInf");
                         if(inv != null) writer.WriteElementStringIfNotNull("Ref", inv.InvoiceNbr, 35);
                     writer.WriteEndElement(); //CdtrRefInf
-                    if (inv != null) writer.WriteElementStringIfNotNull("AddtlRmtInf", inv.DocDesc, 140);
+                    //if (inv != null) writer.WriteElementStringIfNotNull("AddtlRmtInf", inv.DocDesc, 140); JP Morgan is asking us to remove this and keep the Ref tag only. Add an option in the mapping if this needs to be enabled for others
                 writer.WriteEndElement(); //Strd
 
             }
