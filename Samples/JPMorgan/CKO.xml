@@ -4,7 +4,7 @@
     <CstmrCdtTrfInitn>
         <GrpHdr>
             <MsgId>000003</MsgId>
-            <CreDtTm>2020-09-09T16:55:03</CreDtTm>
+            <CreDtTm>2020-09-11T10:15:22</CreDtTm>
             <NbOfTxs>2</NbOfTxs>
             <CtrlSum>4734.57</CtrlSum>
             <InitgPty>
@@ -63,6 +63,9 @@
                 </Amt>
                 <ChqInstr>
                     <ChqNb>0002</ChqNb>
+                    <DlvryMtd>
+                        <Prtry>00000</Prtry>
+                    </DlvryMtd>
                     <FrmsCd>A1</FrmsCd>
                 </ChqInstr>
                 <Cdtr>
@@ -94,7 +97,6 @@
                         <CdtrRefInf>
                             <Ref>JULY 2020 BMS</Ref>
                         </CdtrRefInf>
-                        <AddtlRmtInf>JULY 2020 BMS</AddtlRmtInf>
                     </Strd>
                     <Strd>
                         <RfrdDocInf>
@@ -114,7 +116,6 @@
                         <CdtrRefInf>
                             <Ref>AUG 2020 BMGU</Ref>
                         </CdtrRefInf>
-                        <AddtlRmtInf>AUG 2020 BMGU</AddtlRmtInf>
                     </Strd>
                     <Strd>
                         <RfrdDocInf>
@@ -134,7 +135,6 @@
                         <CdtrRefInf>
                             <Ref>AUG 2020 BPC</Ref>
                         </CdtrRefInf>
-                        <AddtlRmtInf>AUG 2020 BPC</AddtlRmtInf>
                     </Strd>
                     <Strd>
                         <RfrdDocInf>
@@ -154,7 +154,6 @@
                         <CdtrRefInf>
                             <Ref>AUG 2020 BMLP</Ref>
                         </CdtrRefInf>
-                        <AddtlRmtInf>AUG 2020 BMLP</AddtlRmtInf>
                     </Strd>
                     <Strd>
                         <RfrdDocInf>
@@ -174,7 +173,6 @@
                         <CdtrRefInf>
                             <Ref>AUG 2020 BMS</Ref>
                         </CdtrRefInf>
-                        <AddtlRmtInf>AUG 2020 BMS</AddtlRmtInf>
                     </Strd>
                 </RmtInf>
             </CdtTrfTxInf>
@@ -188,6 +186,9 @@
                 </Amt>
                 <ChqInstr>
                     <ChqNb>0003</ChqNb>
+                    <DlvryMtd>
+                        <Prtry>00000</Prtry>
+                    </DlvryMtd>
                     <FrmsCd>A1</FrmsCd>
                 </ChqInstr>
                 <Cdtr>
@@ -219,7 +220,6 @@
                         <CdtrRefInf>
                             <Ref>7-101-68326</Ref>
                         </CdtrRefInf>
-                        <AddtlRmtInf>AUG 2020</AddtlRmtInf>
                     </Strd>
                 </RmtInf>
             </CdtTrfTxInf>

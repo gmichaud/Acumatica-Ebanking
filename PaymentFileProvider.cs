@@ -94,6 +94,9 @@ namespace Velixo.EBanking
 
         protected const string RmtInfUstrd = "RmtInfUstrd";
         protected const string RmtInfAPRefNbr = "RmtInfAPRefNbr";
+        protected const string RmtInfRefInfoPrtry = "RmtInfRefInfoPrtry";
+        protected const string RmtInfRefInfoCd = "RmtInfRefInfoCd";
+
 
         protected const string NoteID = "NoteID";
         protected const string FileID = "FileName";
@@ -186,7 +189,8 @@ namespace Velixo.EBanking
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrAcctTp)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, RmtInfUstrd)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, RmtInfAPRefNbr)));
-
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, RmtInfRefInfoCd)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, RmtInfRefInfoPrtry)));
 
             return ret.ToArray();
         }
@@ -508,7 +512,7 @@ namespace Velixo.EBanking
                                 writer.WriteElementStringIfNotNull("Ustrd", row[table.Columns.IndexOf(RmtInfUstrd)], 75);
                                 if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(RmtInfAPRefNbr)]))
                                 {
-                                    WriteStructuredAPRemittanceInformation(writer, row[table.Columns.IndexOf(RmtInfAPRefNbr)], row[table.Columns.IndexOf(CdtTrfTxInfAmtCcy)]);
+                                    WriteStructuredAPRemittanceInformation(writer, row[table.Columns.IndexOf(RmtInfAPRefNbr)], row[table.Columns.IndexOf(CdtTrfTxInfAmtCcy)], row[table.Columns.IndexOf(RmtInfRefInfoCd)], row[table.Columns.IndexOf(RmtInfRefInfoPrtry)]);
                                 }
                             writer.WriteEndElement(); //RmtInf
                         }
@@ -531,7 +535,7 @@ namespace Velixo.EBanking
             return encoding.GetBytes(doc.OuterXml);
         }
 
-        private void WriteStructuredAPRemittanceInformation(XmlWriter writer, string refNbr, string currencyID)
+        private void WriteStructuredAPRemittanceInformation(XmlWriter writer, string refNbr, string currencyID, string cdtrRefInfCd, string cdtrRefInfPrtry)
         {
             var payments = new PXSelectJoin<APAdjust,
                 LeftJoin<APInvoice, On<APAdjust.adjdDocType, Equal<APInvoice.docType>, And<APAdjust.adjdRefNbr, Equal<APInvoice.refNbr>>>>,
@@ -575,6 +579,15 @@ namespace Velixo.EBanking
                     
                     //Creditor Referrence Information
                     writer.WriteStartElement("CdtrRefInf");
+                        if(!String.IsNullOrEmpty(cdtrRefInfCd) || !String.IsNullOrEmpty(cdtrRefInfPrtry))
+                        {
+                            writer.WriteStartElement("Tp");
+                                writer.WriteStartElement("CdOrPrtry");
+                                    writer.WriteElementStringIfNotNull("Cd", cdtrRefInfCd);
+                                    writer.WriteElementStringIfNotNull("Prtry", cdtrRefInfPrtry);
+                                writer.WriteEndElement(); //CdOrPrtry
+                            writer.WriteEndElement(); //Tp
+                        }
                         if(inv != null) writer.WriteElementStringIfNotNull("Ref", inv.InvoiceNbr, 35);
                     writer.WriteEndElement(); //CdtrRefInf
                     //if (inv != null) writer.WriteElementStringIfNotNull("AddtlRmtInf", inv.DocDesc, 140); JP Morgan is asking us to remove this and keep the Ref tag only. Add an option in the mapping if this needs to be enabled for others

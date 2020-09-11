@@ -4,7 +4,7 @@
     <CstmrCdtTrfInitn>
         <GrpHdr>
             <MsgId>000001</MsgId>
-            <CreDtTm>2020-09-09T16:10:35</CreDtTm>
+            <CreDtTm>2020-09-11T10:15:29</CreDtTm>
             <NbOfTxs>1</NbOfTxs>
             <CtrlSum>438.75</CtrlSum>
             <InitgPty>
@@ -138,12 +138,11 @@
                         <CdtrRefInf>
                             <Tp>
                                 <CdOrPrtry>
-                                    <Cd>RPIN</Cd>
+                                    <Prtry>ZZ</Prtry>
                                 </CdOrPrtry>
                             </Tp>
                             <Ref>102901</Ref>
                         </CdtrRefInf>
-                        <AddtlRmtInf>CONSULTING JULY 2020</AddtlRmtInf>
                     </Strd>
                 </RmtInf>
             </CdtTrfTxInf>
