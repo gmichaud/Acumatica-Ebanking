@@ -6,6 +6,7 @@ using PX.CCProcessingBase.Interfaces.V2;
 using PX.Data;
 using PX.Data.Update.ExchangeService;
 using PX.Objects.CA;
+using PX.Objects.CA.Repositories;
 using PX.SM;
 
 namespace Velixo.EBanking
@@ -104,13 +105,14 @@ namespace Velixo.EBanking
 
         private static IEnumerable<SettingsValue> GetSettings(PXGraph graph, CABatch doc, CABatchExt docExt)
         {
-            throw new NotImplementedException();
+            var detailRepository = new CCProcessingCenterDetailRepository(graph);
+
             List<SettingsValue> result = new List<SettingsValue>();
-            //foreach (var setting in settingsDict)
-            //{
-            //    VSettingsValue newSetting = new SettingsValue() { DetailID = setting.Key, Value = setting.Value };
-            //    result.Add(newSetting);
-            //}
+            foreach (CCProcessingCenterDetail setting in detailRepository.FindAllProcessingCenterDetails(docExt.UsrProcessingCenterID))
+            {
+                SettingsValue newSetting = new SettingsValue() { DetailID = setting.DetailID, Value = setting.Value };
+                result.Add(newSetting);
+            }
             return result;
         }
 
