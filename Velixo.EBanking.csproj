@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PX.CCProcessingBase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Program Files\Acumatica ERP\BauerUSA\Bin\PX.CCProcessingBase.dll</HintPath>
+    </Reference>
     <Reference Include="PX.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Program Files\Acumatica ERP\BauerUSA\Bin\PX.Common.dll</HintPath>
@@ -38,6 +42,10 @@
     <Reference Include="PX.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Program Files\Acumatica ERP\BauerUSA\Bin\PX.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="PX.Data.BQL.Fluent, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Program Files\Acumatica ERP\BauerUSA\Bin\PX.Data.BQL.Fluent.dll</HintPath>
     </Reference>
     <Reference Include="PX.DataSync.Core">
       <HintPath>..\..\Program Files\Acumatica ERP\BauerUSA\Bin\PX.DataSync.Core.dll</HintPath>
@@ -89,8 +97,12 @@
     <Compile Include="BaiParsing\Enums\UsageType.cs" />
     <Compile Include="BaiStatementReader.cs" />
     <Compile Include="BankTransactionsSftpImport.cs" />
+    <Compile Include="CABatchEntryExt.cs" />
+    <Compile Include="Cache\CABatchExt.cs" />
     <Compile Include="Cache\CASetupExt.cs" />
+    <Compile Include="Cache\PaymentMethodExt.cs" />
     <Compile Include="Descriptor\Messages.cs" />
+    <Compile Include="IAPPaymentProcessor.cs" />
     <Compile Include="PaymentFileProvider.cs" />
     <Compile Include="BaiParsing\Parsers\BaiParser.cs" />
     <Compile Include="BaiParsing\Parsers\BaiTranslator.cs" />
@@ -101,6 +113,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SftpPaymentProcessor.cs" />
+    <Compile Include="SftpProcessingPlugin.cs" />
     <Compile Include="XmlWriterExtensions.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -24,6 +24,20 @@ namespace Velixo.EBanking
             EbankingSetup.AddMenuAction(SetupForOsc);
         }
 
+        [PXMergeAttributes(Method = MergeMethod.Append)]
+        [PXFormula(typeof(PaymentMethod.aRIsProcessingRequired))]
+        protected virtual void PaymentMethod_IntegratedProcessing_CacheAttached(PXCache sender)
+        {
+        }
+
+        protected virtual void PaymentMethod_IntegratedProcessing_FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e)
+        {
+            var row = (PaymentMethod)e.Row;
+            var rowExt = sender.GetExtension<PaymentMethodExt>(row);
+
+            sender.SetValue<PaymentMethod.aRIsProcessingRequired>(row, rowExt.IntegratedProcessing);
+        }
+
         public PXAction<PaymentMethod> EbankingSetup;
         [PXButton(MenuAutoOpen = true)]
         [PXUIField(DisplayName = "Ebanking Setup", MapEnableRights = PXCacheRights.Insert,
