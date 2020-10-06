@@ -11,37 +11,31 @@ namespace Velixo.EBanking
 	[PXDisplayTypeName("SFTP Upload plug-in")]
 	public class SftpProcessingPlugin : ICCProcessingPlugin
 	{
-        private static class SettingsKeys
+        public static class SettingsKeys
         {
-            //Not more Then 10 chars
             public static class Key
             {
-                public const string URLConnection = "URLCONNECT";
+                //Not more Then 10 chars
+                public const string Host = "HOST";
                 public const string Port = "PORT";
-                public const string LoginID = "LOGINID";
-                public const string TranKey = "TRANKEY";
-                public const string BankName = "BANKNAME";
+                public const string Username = "USERNAME";
+                public const string Password = "PASSWORD";
+                public const string SshIdentityCert = "SSHCERT";
+                public const string PgpPublicKeyCert = "PGPPUBLIC";
+                public const string PgpPrivateKeyCert = "PGPPRIVATE";
                 public const string Path = "PATH";
-            }
-
-            public static class Default
-            {
-                public const string URLConnection = "";
-                public const string Port = "";
-                public const string LoginID = "";
-                public const string TranKey = "";
-                public const string BankName = "";
-                public const string Path = "";
             }
 
             [PXLocalizable]
             public static class Descr
             {
-                public const string URLConnection = "URL for connecting to the SFTP Site";
-                public const string Port = "(Optional) Port used for connecting to the SFTP Site";
-                public const string LoginID = "Your Login";
-                public const string TranKey = "Your Password";
-                public const string BankName = "Bank Name";
+                public const string Host = "Address of the SFTP Site";
+                public const string Port = "Port used for connecting to the SFTP Site";
+                public const string Username = "User Name";
+                public const string Password = "Password";
+                public const string SshIdentityCert = "SSH Private Key Certificate (optional)";
+                public const string PgpPublicKeyCert = "PGP Encryption Public Key Certificate (optional)";
+                public const string PgpPrivateKeyCert = "PGP Signature Private Key Certificate (optional)";
                 public const string Path = "Folder Path (blank for root)";
             }
         }
@@ -49,14 +43,62 @@ namespace Velixo.EBanking
         public IEnumerable<SettingsDetail> ExportSettings()
 		{
             Dictionary<string, SettingsDetail> dictionary = new Dictionary<string, SettingsDetail>();
-            dictionary[SettingsKeys.Key.BankName] = new SettingsDetail
+            dictionary[SettingsKeys.Key.Host] = new SettingsDetail
             {
-                DetailID = SettingsKeys.Key.BankName,
-                Descr = PXLocalizer.Localize(SettingsKeys.Descr.BankName),
+                DetailID = SettingsKeys.Key.Host,
+                Descr = PXLocalizer.Localize(SettingsKeys.Descr.Host),
                 DefaultValue = "",
                 IsEncryptionRequired = false
             };
-
+            dictionary[SettingsKeys.Key.Port] = new SettingsDetail
+            {
+                DetailID = SettingsKeys.Key.Port,
+                Descr = PXLocalizer.Localize(SettingsKeys.Descr.Port),
+                DefaultValue = "22",
+                IsEncryptionRequired = false
+            };
+            dictionary[SettingsKeys.Key.Username] = new SettingsDetail
+            {
+                DetailID = SettingsKeys.Key.Username,
+                Descr = PXLocalizer.Localize(SettingsKeys.Descr.Username),
+                DefaultValue = "",
+                IsEncryptionRequired = false
+            };
+            dictionary[SettingsKeys.Key.Password] = new SettingsDetail
+            {
+                DetailID = SettingsKeys.Key.Password,
+                Descr = PXLocalizer.Localize(SettingsKeys.Descr.Password),
+                DefaultValue = "",
+                IsEncryptionRequired = true
+            };
+            dictionary[SettingsKeys.Key.SshIdentityCert] = new SettingsDetail
+            {
+                DetailID = SettingsKeys.Key.SshIdentityCert,
+                Descr = PXLocalizer.Localize(SettingsKeys.Descr.SshIdentityCert),
+                DefaultValue = "",
+                IsEncryptionRequired = false
+            };
+            dictionary[SettingsKeys.Key.PgpPublicKeyCert] = new SettingsDetail
+            {
+                DetailID = SettingsKeys.Key.PgpPublicKeyCert,
+                Descr = PXLocalizer.Localize(SettingsKeys.Descr.PgpPublicKeyCert),
+                DefaultValue = "",
+                IsEncryptionRequired = false
+            };
+            dictionary[SettingsKeys.Key.PgpPrivateKeyCert] = new SettingsDetail
+            {
+                DetailID = SettingsKeys.Key.PgpPrivateKeyCert,
+                Descr = PXLocalizer.Localize(SettingsKeys.Descr.PgpPrivateKeyCert),
+                DefaultValue = "",
+                IsEncryptionRequired = false
+            };
+            dictionary[SettingsKeys.Key.Path] = new SettingsDetail
+            {
+                DetailID = SettingsKeys.Key.Path,
+                Descr = PXLocalizer.Localize(SettingsKeys.Descr.Path),
+                DefaultValue = "",
+                IsEncryptionRequired = false
+            };
             return dictionary.Values;
         }
 

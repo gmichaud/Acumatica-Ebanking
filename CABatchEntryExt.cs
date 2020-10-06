@@ -67,18 +67,11 @@ namespace Velixo.EBanking
                         var fileNote = fileNotes[0];
                         UploadFileMaintenance upload = PXGraph.CreateInstance<UploadFileMaintenance>();
                         var file = upload.GetFile(fileNote);
-                        string message;
-
-                        if (!processor.DoTransaction(file.FullName, file.BinData, out message))
-                        {
-                            throw new PXException(message);
-                        }
-                        else
-                        {
-                            docExt.UsrFileTransferTime = DateTime.Now;
-                            graph.Views[graph.PrimaryView].Cache.Update(doc);
-                            graph.Actions.PressSave();
-                        }
+                        
+                        processor.UploadFile(file.FullName, file.BinData);
+                        docExt.UsrFileTransferTime = DateTime.Now;
+                        graph.Views[graph.PrimaryView].Cache.Update(doc);
+                        graph.Actions.PressSave();
                     }
                     else
                     {

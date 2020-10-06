@@ -5,6 +5,6 @@ namespace Velixo.EBanking
 {
     public interface IAPPaymentProcessor
     {
-        bool DoTransaction(string fileName, byte[] file, out string message);
+        void UploadFile(string fileName, byte[] file);
     }
 }

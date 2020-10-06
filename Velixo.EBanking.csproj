@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.8.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>packages\Portable.BouncyCastle.1.8.8\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="PX.CCProcessingBase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Program Files\Acumatica ERP\BauerUSA\Bin\PX.CCProcessingBase.dll</HintPath>
@@ -107,6 +110,10 @@
     <Compile Include="BaiParsing\Parsers\BaiParser.cs" />
     <Compile Include="BaiParsing\Parsers\BaiTranslator.cs" />
     <Compile Include="PaymentMethodSetupExt.cs" />
+    <Compile Include="Pgp\EncryptionKeys.cs" />
+    <Compile Include="Pgp\PGP.cs" />
+    <Compile Include="Pgp\Streams.cs" />
+    <Compile Include="Pgp\Utilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -124,9 +131,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Schemas\pain.001.001.03.xsd">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pgp\License.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
