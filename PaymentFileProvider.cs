@@ -51,6 +51,8 @@ namespace Velixo.EBanking
         protected const string DbtrFinInstnTwnNm = "DbtrFinInstnTwnNm";
         protected const string DbtrFinInstnCtrySubDvsn = "DbtrFinInstnCtrySubDvsn";
         protected const string DbtrFinInstnCtry = "DbtrFinInstnCtry";
+        protected const string CdtrIntrmyAgt1Bic = "CdtrIntrmyAgt1Bic";
+        protected const string CdtrIntrmyAgt1BicCtry = "CdtrIntrmyAgt1BicCtry";
         protected const string ChrgBr = "ChrgBr";
         protected const string CdtTrfTxInfPmtInstrId = "CdtTrfTxInfPmtInstrId";
         protected const string CdtTrfTxInfPmtEndToEndId = "CdtTrfTxInfPmtEndToEndId";
@@ -148,6 +150,8 @@ namespace Velixo.EBanking
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrFinInstnCtrySubDvsn)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrFinInstnCtry)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, ChrgBr)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrIntrmyAgt1Bic)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrIntrmyAgt1BicCtry)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtTrfTxInfPmtInstrId)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtTrfTxInfPmtEndToEndId)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtTrfTxInfAmtCcy)));
@@ -399,6 +403,22 @@ namespace Velixo.EBanking
                         if(String.IsNullOrEmpty(row[table.Columns.IndexOf(ChqInstrChqNb)]))
                         { 
                             //Regular ACH/WIRE File
+                            if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(CdtrIntrmyAgt1Bic)]))
+                            {
+                                writer.WriteStartElement("IntrmyAgt1");
+                                    writer.WriteStartElement("FinInstnId");
+                                        writer.WriteElementString("BIC", row[table.Columns.IndexOf(CdtrIntrmyAgt1Bic)]);
+                                    if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(CdtrIntrmyAgt1BicCtry)]))
+                                    {
+                                        writer.WriteStartElement("PstlAdr");
+                                        writer.WriteElementString("Ctry", row[table.Columns.IndexOf(CdtrIntrmyAgt1BicCtry)]);
+                                        writer.WriteEndElement(); //PstlAdr
+
+                                    }
+                                    writer.WriteEndElement(); //FinInstnId
+                                writer.WriteEndElement(); //IntrmyAgt1
+                            }
+
                             writer.WriteStartElement("CdtrAgt");
                                 writer.WriteStartElement("FinInstnId");
                                     writer.WriteElementStringIfNotNull("BIC", row[table.Columns.IndexOf(CdtrFinInstnBic)]);
