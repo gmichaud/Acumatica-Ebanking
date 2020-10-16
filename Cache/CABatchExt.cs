@@ -11,12 +11,10 @@ namespace Velixo.EBanking
             InnerJoin<CCProcessingCenter,
                 On<CCProcessingCenterPmntMethod.processingCenterID,
                     Equal<CCProcessingCenter.processingCenterID>>>,
-            Where<CCProcessingCenter.cashAccountID,
-                Equal<Current<CABatch.cashAccountID>>,
-            And<CCProcessingCenterPmntMethod.paymentMethodID,
-                Equal<Current<CABatch.paymentMethodID>>,
-            And<CCProcessingCenterPmntMethod.isActive,
-                Equal<True>>>>>))]
+            Where<CCProcessingCenterPmntMethod.isActive, Equal<True>,
+                And<CCProcessingCenterPmntMethod.paymentMethodID, Equal<Current<CABatch.paymentMethodID>>,
+                And<Where<CCProcessingCenterPmntMethod.isDefault, Equal<True>, 
+                    Or<CCProcessingCenter.cashAccountID, Equal<Current<CABatch.cashAccountID>>>>>>>>))]
         [PXUIField(DisplayName = "Proc. Center ID")]
         [PXFormula(typeof(Default<CABatch.paymentMethodID>))]
         public string UsrProcessingCenterID { get; set; }

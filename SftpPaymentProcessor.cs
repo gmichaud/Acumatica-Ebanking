@@ -19,7 +19,7 @@ namespace Velixo.EBanking
         private string _password;
         private string _sshIdentityCert;
         private string _pgpPublicKeyCert;
-        private string  ;
+        private string _pgpPrivateKeyCert;
         private string _path;
 
         public SftpPaymentProcessor(IEnumerable<SettingsValue> settings)

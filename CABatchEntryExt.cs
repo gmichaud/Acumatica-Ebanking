@@ -109,7 +109,7 @@ namespace Velixo.EBanking
             return result;
         }
 
-        public void CABatch_ProcessingCenterID_FieldDefaulting(PXCache sender, PXFieldDefaultingEventArgs e)
+        public void CABatch_UsrProcessingCenterID_FieldDefaulting(PXCache sender, PXFieldDefaultingEventArgs e)
         {
             var ret = string.Empty;
             foreach (PXResult<CCProcessingCenterPmntMethod,
