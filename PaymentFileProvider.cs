@@ -448,6 +448,7 @@ namespace Velixo.EBanking
                                 writer.WriteElementString("ChqNb", row[table.Columns.IndexOf(ChqInstrChqNb)]);
                                 if(!String.IsNullOrEmpty(row[table.Columns.IndexOf(ChqInstrDlvryMtd)]))
                                 { 
+                                    writer.WriteStartElement("DlvryMtd");
                                         writer.WriteElementString("Cd", row[table.Columns.IndexOf(ChqInstrDlvryMtd)]);
                                     writer.WriteEndElement(); //DlvryMtd
                                 }
