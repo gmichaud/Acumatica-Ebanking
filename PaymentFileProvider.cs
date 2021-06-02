@@ -94,6 +94,9 @@ namespace Velixo.EBanking
         protected const string CdtrAcctId = "CdtrAcctId";
         protected const string CdtrAcctTp = "CdtrAcctTp";
 
+        protected const string RmtInfEmail = "RmtInfEmail";
+        protected const string RmtInfPstlAdrNm = "RmtInfPstlAdrNm";
+        protected const string RmtInfPstlAdrCtry = "RmtInfPstlAdrCtry";
         protected const string RmtInfUstrd = "RmtInfUstrd";
         protected const string RmtInfAPRefNbr = "RmtInfAPRefNbr";
         protected const string RmtInfRefInfoPrtry = "RmtInfRefInfoPrtry";
@@ -191,6 +194,9 @@ namespace Velixo.EBanking
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrOrgSchmeNmCd)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrAcctId)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrAcctTp)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, RmtInfEmail)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, RmtInfPstlAdrNm)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, RmtInfPstlAdrCtry)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, RmtInfUstrd)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, RmtInfAPRefNbr)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, RmtInfRefInfoCd)));
@@ -526,11 +532,33 @@ namespace Velixo.EBanking
                             writer.WriteEndElement(); //CdtrAcct
                         }
 
-                        //Detailed Remittance Information -- we are getting it directly from the AP tables because this info is not available in batch payments
+                        //Email remittance
+                        if(!String.IsNullOrEmpty(row[table.Columns.IndexOf(RmtInfEmail)]))
+                        { 
+                            if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(RmtInfEmail)]))
+                            {
+                                writer.WriteStartElement("RltdRmtInf");
+                                    writer.WriteElementString("RmtId", "Remittance");
+                                    writer.WriteElementString("RmtLctnMtd", "EMAL");
+                                    writer.WriteElementString("RmtLctnElctrncAdr", row[table.Columns.IndexOf(RmtInfEmail)]);
+                                    writer.WriteStartElement("RmtLctnPstlAdr");
+                                        writer.WriteElementString("Nm", row[table.Columns.IndexOf(RmtInfPstlAdrNm)]);
+                                        writer.WriteStartElement("Adr");
+                                            writer.WriteElementString("Ctry", row[table.Columns.IndexOf(RmtInfPstlAdrCtry)]);
+                                        writer.WriteEndElement(); //Adr
+                                    writer.WriteEndElement(); //RmtLctnPstlAdr
+                                writer.WriteEndElement(); //RltdRmtInf
+                            }
+                        }
+
+                        //Detailed Remittance Information 
                         if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(RmtInfUstrd)]) || !String.IsNullOrEmpty(row[table.Columns.IndexOf(RmtInfAPRefNbr)]))
                         {
                             writer.WriteStartElement("RmtInf");
+                                //Unstructured remittance
                                 writer.WriteElementStringIfNotNull("Ustrd", row[table.Columns.IndexOf(RmtInfUstrd)], 75);
+
+                                //Structured remittance - we are getting it directly from the AP tables because this info is not available in batch payments
                                 if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(RmtInfAPRefNbr)]))
                                 {
                                     WriteStructuredAPRemittanceInformation(writer, row[table.Columns.IndexOf(RmtInfAPRefNbr)], row[table.Columns.IndexOf(CdtTrfTxInfAmtCcy)], row[table.Columns.IndexOf(RmtInfRefInfoCd)], row[table.Columns.IndexOf(RmtInfRefInfoPrtry)]);
