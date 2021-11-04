@@ -47,4 +47,7 @@
 			</AddItem>
 		</Children>
 	</PXTabItem>
+	<PXCheckBox DataField="ImportToSingleAccount" ParentId="phF_tab_Items#2_chkImportToSingleAccount" TypeFullName="PX.Web.UI.PXCheckBox">
+		<Prop Key="CommitChanges" Value="True" />
+	</PXCheckBox>
 </Page>
