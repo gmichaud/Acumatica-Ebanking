@@ -1,58 +1,50 @@
-﻿<Page path="~/pages/ca/ca101000.aspx" ControlId="6" pageSource="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">
-    <PXTabItem Text="Bank Statement Settings" ParentId="phF_tab_Items#1" TypeFullName="PX.Web.UI.PXTabItem">
-        <Children Key="Template">
-            <PXCheckBox DataField="MatchInSelection" OriginalIndex="13" />
-            <PXCheckBox DataField="ImportToSingleAccount" OriginalIndex="20" />
-            <PXCheckBox DataField="AllowMatchingToUnreleasedBatch" OriginalIndex="15" />
-            <AddItem>
-                <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
-                    <Prop Key="Virtual:ApplyStylesheetSkin" />
-                    <Prop Key="ID" Value="CstPXLayoutRule1" />
-                    <Prop Key="StartGroup" Value="True" />
-                    <Prop Key="ControlSize" Value="L" />
-                    <Prop Key="LabelsWidth" Value="L" />
-                    <Prop Key="GroupCaption" Value="SFTP Settings" />
-                </PXLayoutRule>
-            </AddItem>
-            <AddItem>
-                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
-                    <Prop Key="Virtual:ApplyStylesheetSkin" />
-                    <Prop Key="ID" Value="CstPXTextEdit2" />
-                    <Prop Key="DataField" Value="UsrStatementSftpAddress" />
-                </PXTextEdit>
-            </AddItem>
-            <AddItem>
-                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
-                    <Prop Key="Virtual:ApplyStylesheetSkin" />
-                    <Prop Key="ID" Value="CstPXTextEdit6" />
-                    <Prop Key="DataField" Value="UsrStatementSftpUserName" />
-                </PXTextEdit>
-            </AddItem>
-            <AddItem>
-                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
-                    <Prop Key="Virtual:ApplyStylesheetSkin" />
-                    <Prop Key="ID" Value="CstPXTextEdit5" />
-                    <Prop Key="DataField" Value="UsrStatementSftpPassword" />
-                    <Prop Key="TextMode" Value="Password" />
-                </PXTextEdit>
-            </AddItem>
-            <AddItem>
-                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
-                    <Prop Key="Virtual:ApplyStylesheetSkin" />
-                    <Prop Key="ID" Value="CstPXTextEdit4" />
-                    <Prop Key="DataField" Value="UsrStatementSftpInboxPath" />
-                </PXTextEdit>
-            </AddItem>
-            <AddItem>
-                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
-                    <Prop Key="Virtual:ApplyStylesheetSkin" />
-                    <Prop Key="ID" Value="CstPXTextEdit3" />
-                    <Prop Key="DataField" Value="UsrStatementSftpArchivePath" />
-                </PXTextEdit>
-            </AddItem>
-        </Children>
-    </PXTabItem>
-    <PXCheckBox DataField="ImportToSingleAccount" ParentId="phF_tab_Items#1_chkImportToSingleAccount" TypeFullName="PX.Web.UI.PXCheckBox">
-        <Prop Key="CommitChanges" Value="True" />
-    </PXCheckBox>
+﻿<Page path="~/pages/ca/ca101000.aspx" ControlId="1" pageSource="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">
+	<PXTabItem Text="Bank Statement Settings" ParentId="phF_tab_Items#2" TypeFullName="PX.Web.UI.PXTabItem">
+		<Children Key="Template">
+			<AddItem>
+				<PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+					<Prop Key="Virtual:ApplyStylesheetSkin" />
+					<Prop Key="ID" Value="CstPXLayoutRule1" />
+					<Prop Key="StartGroup" Value="True" />
+					<Prop Key="GroupCaption" Value="SFTP Settings" />
+				</PXLayoutRule>
+			</AddItem>
+			<AddItem>
+				<PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+					<Prop Key="Virtual:ApplyStylesheetSkin" />
+					<Prop Key="ID" Value="CstPXTextEdit2" />
+					<Prop Key="DataField" Value="UsrStatementSftpAddress" />
+				</PXTextEdit>
+			</AddItem>
+			<AddItem>
+				<PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+					<Prop Key="Virtual:ApplyStylesheetSkin" />
+					<Prop Key="ID" Value="CstPXTextEdit6" />
+					<Prop Key="DataField" Value="UsrStatementSftpUserName" />
+				</PXTextEdit>
+			</AddItem>
+			<AddItem>
+				<PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+					<Prop Key="Virtual:ApplyStylesheetSkin" />
+					<Prop Key="ID" Value="CstPXTextEdit5" />
+					<Prop Key="DataField" Value="UsrStatementSftpPassword" />
+					<Prop Key="TextMode" Value="Password" />
+				</PXTextEdit>
+			</AddItem>
+			<AddItem>
+				<PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+					<Prop Key="Virtual:ApplyStylesheetSkin" />
+					<Prop Key="ID" Value="CstPXTextEdit4" />
+					<Prop Key="DataField" Value="UsrStatementSftpInboxPath" />
+				</PXTextEdit>
+			</AddItem>
+			<AddItem>
+				<PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+					<Prop Key="Virtual:ApplyStylesheetSkin" />
+					<Prop Key="ID" Value="CstPXTextEdit3" />
+					<Prop Key="DataField" Value="UsrStatementSftpArchivePath" />
+				</PXTextEdit>
+			</AddItem>
+		</Children>
+	</PXTabItem>
 </Page>
