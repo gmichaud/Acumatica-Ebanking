@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Velixo.EBanking</RootNamespace>
     <AssemblyName>Velixo.EBanking</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -36,34 +36,37 @@
     </Reference>
     <Reference Include="PX.CCProcessingBase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files\Acumatica ERP\BauerUSA\Bin\PX.CCProcessingBase.dll</HintPath>
+      <HintPath>..\..\Program Files\Acumatica ERP\AcumaticaDemo2021R1\Bin\PX.CCProcessingBase.dll</HintPath>
     </Reference>
     <Reference Include="PX.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files\Acumatica ERP\BauerUSA\Bin\PX.Common.dll</HintPath>
+      <HintPath>..\..\Program Files\Acumatica ERP\AcumaticaDemo2021R1\Bin\PX.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="PX.Common.Std">
+      <HintPath>..\..\Program Files\Acumatica ERP\AcumaticaDemo2021R1\Bin\PX.Common.Std.dll</HintPath>
     </Reference>
     <Reference Include="PX.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files\Acumatica ERP\BauerUSA\Bin\PX.Data.dll</HintPath>
+      <HintPath>..\..\Program Files\Acumatica ERP\AcumaticaDemo2021R1\Bin\PX.Data.dll</HintPath>
     </Reference>
     <Reference Include="PX.Data.BQL.Fluent, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files\Acumatica ERP\BauerUSA\Bin\PX.Data.BQL.Fluent.dll</HintPath>
+      <HintPath>..\..\Program Files\Acumatica ERP\AcumaticaDemo2021R1\Bin\PX.Data.BQL.Fluent.dll</HintPath>
     </Reference>
     <Reference Include="PX.DataSync.Core">
-      <HintPath>..\..\Program Files\Acumatica ERP\BauerUSA\Bin\PX.DataSync.Core.dll</HintPath>
+      <HintPath>..\..\Program Files\Acumatica ERP\AcumaticaDemo2021R1\Bin\PX.DataSync.Core.dll</HintPath>
     </Reference>
     <Reference Include="PX.DbServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files\Acumatica ERP\BauerUSA\Bin\PX.DbServices.dll</HintPath>
+      <HintPath>..\..\Program Files\Acumatica ERP\AcumaticaDemo2021R1\Bin\PX.DbServices.dll</HintPath>
     </Reference>
     <Reference Include="PX.Objects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files\Acumatica ERP\BauerUSA\Bin\PX.Objects.dll</HintPath>
+      <HintPath>..\..\Program Files\Acumatica ERP\AcumaticaDemo2021R1\Bin\PX.Objects.dll</HintPath>
     </Reference>
     <Reference Include="Renci.SshNet, Version=2017.0.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files\Acumatica ERP\BauerUSA\Bin\Renci.SshNet.dll</HintPath>
+      <HintPath>..\..\Program Files\Acumatica ERP\AcumaticaDemo2021R1\Bin\Renci.SshNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

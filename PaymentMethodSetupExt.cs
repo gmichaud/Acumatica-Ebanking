@@ -13,7 +13,10 @@ namespace Velixo.EBanking
             Ach,
             Wire,
             WireDomestic,
-            Osc
+            Osc,
+            Sepa,
+            UKBacs,
+            UKPriority
         }
 
         public override void Initialize()
@@ -22,6 +25,9 @@ namespace Velixo.EBanking
             EbankingSetup.AddMenuAction(SetupForWire);
             EbankingSetup.AddMenuAction(SetupForWireDomestic);
             EbankingSetup.AddMenuAction(SetupForOsc);
+            EbankingSetup.AddMenuAction(SetupForSepa);
+            EbankingSetup.AddMenuAction(SetupForUKBacs);
+            EbankingSetup.AddMenuAction(SetupForUKPriority);
         }
 
         [PXMergeAttributes(Method = MergeMethod.Append)]
@@ -96,6 +102,42 @@ namespace Velixo.EBanking
             AddPaymentMethodDetail(PaymentMethodType.Osc);
         }
 
+        public PXAction<PaymentMethod> SetupForSepa;
+        [PXButton]
+        [PXUIField(DisplayName = "Setup for SEPA", MapEnableRights = PXCacheRights.Insert,
+            MapViewRights = PXCacheRights.Insert,
+            Visibility = PXUIVisibility.Visible)]
+        protected void setupForSepa()
+        {
+            CheckPrerequirements();
+            AddRemittanceDetail(PaymentMethodType.Sepa);
+            AddPaymentMethodDetail(PaymentMethodType.Sepa);
+        }
+
+        public PXAction<PaymentMethod> SetupForUKBacs;
+        [PXButton]
+        [PXUIField(DisplayName = "Setup for UK BACS", MapEnableRights = PXCacheRights.Insert,
+            MapViewRights = PXCacheRights.Insert,
+            Visibility = PXUIVisibility.Visible)]
+        protected void setupForUKBacs()
+        {
+            CheckPrerequirements();
+            AddRemittanceDetail(PaymentMethodType.UKBacs);
+            AddPaymentMethodDetail(PaymentMethodType.UKBacs);
+        }
+
+        public PXAction<PaymentMethod> SetupForUKPriority;
+        [PXButton]
+        [PXUIField(DisplayName = "Setup for UK Priority Payments", MapEnableRights = PXCacheRights.Insert,
+            MapViewRights = PXCacheRights.Insert,
+            Visibility = PXUIVisibility.Visible)]
+        protected void setupForUKPriority()
+        {
+            CheckPrerequirements();
+            AddRemittanceDetail(PaymentMethodType.UKPriority);
+            AddPaymentMethodDetail(PaymentMethodType.UKPriority);
+        }
+
         private void CheckPrerequirements()
         {
             if (Base.DetailsForCashAccount.Select().Any())
@@ -112,23 +154,25 @@ namespace Velixo.EBanking
         {
             if (type == PaymentMethodType.Osc) return; //Nothing is needed for checks, all is setup in the vendor details
 
-            AddPaymentMethodDetail(1, "CDTRACCTID", "Creditor Account ID", true, "", @"^.{1,34}$");
+            //UK Priority payments allow either an IBAN or a regular account ID; we can't make the file required in this case
+            if (type == PaymentMethodType.Sepa || type == PaymentMethodType.UKPriority)
+            {
+                AddPaymentMethodDetail(1, "CDTRIBANID", "Creditor IBAN Account ID", false, "", @"^[A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}$");
+            }
 
-            if (type == PaymentMethodType.Ach || type == PaymentMethodType.WireDomestic)
+            if (type != PaymentMethodType.Sepa)
             {
-                
+                AddPaymentMethodDetail(2, "CDTRACCTID", "Creditor Account ID", false, "", @"^.{1,34}$");
             }
-            else if (type == PaymentMethodType.Wire)
-            {
-            }
-            AddPaymentMethodDetail(2, "FININSTID", "Financial Institution ID", (type == PaymentMethodType.Ach || type == PaymentMethodType.WireDomestic), "", @"^.{1,35}$"); //Ach
-            AddPaymentMethodDetail(2, "FININSTBIC", "Financial Institution BIC ID", (type == PaymentMethodType.Wire), "", @"^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$"); //Wire
-            AddPaymentMethodDetail(3, "FINSTNAME", "Financial Institution Street Name", false, "", @"^.{1,70}$");
-            AddPaymentMethodDetail(4, "FINBLDGNB", "Financial Institution Building Number", false, "", @"^.{1,16}$");
-            AddPaymentMethodDetail(5, "FINTOWN", "Financial Institution Town", false, "", @"^.{1,35}$");
-            AddPaymentMethodDetail(6, "FINSTATE", "Financial Institution State/Province", false, "", @"^.{1,35}$");
-            AddPaymentMethodDetail(7, "FINZIP", "Financial Institution Zip/Postal Code", false, "", @"^.{1,16}$");
-            AddPaymentMethodDetail(8, "FINCNTRY", "Financial Institution Country", true, "", @"^\w{2}$");
+
+            AddPaymentMethodDetail(3, "FININSTID", "Financial Institution ID", (type == PaymentMethodType.Ach || type == PaymentMethodType.WireDomestic), "", @"^.{1,35}$"); //Ach
+            AddPaymentMethodDetail(4, "FININSTBIC", "Financial Institution BIC ID", (type == PaymentMethodType.Wire), "", @"^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$"); //Wire or SEPA
+            AddPaymentMethodDetail(5, "FINSTNAME", "Financial Institution Street Name", false, "", @"^.{1,70}$");
+            AddPaymentMethodDetail(6, "FINBLDGNB", "Financial Institution Building Number", false, "", @"^.{1,16}$");
+            AddPaymentMethodDetail(7, "FINTOWN", "Financial Institution Town", false, "", @"^.{1,35}$");
+            AddPaymentMethodDetail(8, "FINSTATE", "Financial Institution State/Province", false, "", @"^.{1,35}$");
+            AddPaymentMethodDetail(9, "FINZIP", "Financial Institution Zip/Postal Code", false, "", @"^.{1,16}$");
+            AddPaymentMethodDetail(10, "FINCNTRY", "Financial Institution Country", true, "", @"^\w{2}$");
         }
 
         private void AddRemittanceDetail(PaymentMethodType type)
@@ -147,19 +191,27 @@ namespace Velixo.EBanking
                 AddRemittanceDetail(9, "DBTRID", "ACH Company ID", true, "", @"^.{1,35}$");
             }
 
-            AddRemittanceDetail(10, "DBTRACCTID", "Debtor Account ID", true, "", @"^.{1,34}$");
-            AddRemittanceDetail(11, "FININSTID", "Financial Institution ID", (type == PaymentMethodType.Ach || type == PaymentMethodType.Osc || type == PaymentMethodType.WireDomestic), "", @"^.{1,35}$");
-            AddRemittanceDetail(12, "FININSTBIC", "Financial Institution BIC ID", (type == PaymentMethodType.Wire), "", @"^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$");
-            AddRemittanceDetail(13, "FINSTNAME", "Financial Institution Street Name", false, "", @"^.{1,70}$");
-            AddRemittanceDetail(14, "FINBLDGNB", "Financial Institution Building Number", false, "", @"^.{1,16}$");
-            AddRemittanceDetail(15, "FINTOWN", "Financial Institution Town", false, "", @"^.{1,35}$");
-            AddRemittanceDetail(16, "FINSTATE", "Financial Institution State/Province", false, "", @"^.{1,35}$");
-            AddRemittanceDetail(17, "FINZIP", "Financial Institution Zip/Postal Code", false, "", @"^.{1,16}$");
-            AddRemittanceDetail(18, "FINCNTRY", "Financial Institution Country", true, "", @"^\w{2}$");
+            if (type == PaymentMethodType.Sepa || type == PaymentMethodType.UKPriority)
+            {
+                AddRemittanceDetail(10, "DBTRIBANID", "Debtor IBAN Account ID", true, "", @"^[A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}$");
+            }
+            else
+            {
+                AddRemittanceDetail(11, "DBTRACCTID", "Debtor Account ID", true, "", @"^.{1,34}$");
+            }
+
+            AddRemittanceDetail(12, "FININSTID", "Financial Institution ID", (type == PaymentMethodType.Ach || type == PaymentMethodType.Osc || type == PaymentMethodType.WireDomestic), "", @"^.{1,35}$");
+            AddRemittanceDetail(13, "FININSTBIC", "Financial Institution BIC ID", (type == PaymentMethodType.Wire), "", @"^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$");
+            AddRemittanceDetail(14, "FINSTNAME", "Financial Institution Street Name", false, "", @"^.{1,70}$");
+            AddRemittanceDetail(15, "FINBLDGNB", "Financial Institution Building Number", false, "", @"^.{1,16}$");
+            AddRemittanceDetail(16, "FINTOWN", "Financial Institution Town", false, "", @"^.{1,35}$");
+            AddRemittanceDetail(17, "FINSTATE", "Financial Institution State/Province", false, "", @"^.{1,35}$");
+            AddRemittanceDetail(19, "FINZIP", "Financial Institution Zip/Postal Code", false, "", @"^.{1,16}$");
+            AddRemittanceDetail(20, "FINCNTRY", "Financial Institution Country", true, "", @"^\w{2}$");
 
             if (type == PaymentMethodType.Osc)
             {
-                AddRemittanceDetail(19, "CHQFRMSCD", "Check Form Code", true, "", @"^.{1,35}$");
+                AddRemittanceDetail(21, "CHQFRMSCD", "Check Form Code", true, "", @"^.{1,35}$");
             }
         }
 
