@@ -404,7 +404,7 @@ namespace Velixo.EBanking
                     //Credit Transaction Info
                     writer.WriteStartElement("CdtTrfTxInf");
                         writer.WriteStartElement("PmtId");
-                            writer.WriteElementString("InstrId", row[table.Columns.IndexOf(CdtTrfTxInfPmtInstrId)]);
+                            writer.WriteElementStringIfNotNull("InstrId", row[table.Columns.IndexOf(CdtTrfTxInfPmtInstrId)]);
                             writer.WriteElementString("EndToEndId", row[table.Columns.IndexOf(CdtTrfTxInfPmtEndToEndId)]);
                         writer.WriteEndElement(); //PmtId
                         writer.WriteStartElement("Amt");
@@ -524,7 +524,6 @@ namespace Velixo.EBanking
                         //Creditor Account -- omit node on cheque outsourcing files
                         if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(CdtrAcctId)]) || !String.IsNullOrEmpty(row[table.Columns.IndexOf(CdtrAcctIbanId)]))
                         {
-                            writer.WriteElementStringIfNotNull("IBAN", table.Rows[0][table.Columns.IndexOf(DbtrAcctIbanId)]);
                             writer.WriteStartElement("CdtrAcct");
                                 writer.WriteStartElement("Id");
                                     writer.WriteElementStringIfNotNull("IBAN", table.Rows[0][table.Columns.IndexOf(CdtrAcctIbanId)]);
