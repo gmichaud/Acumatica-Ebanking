@@ -526,8 +526,8 @@ namespace Velixo.EBanking
                         {
                             writer.WriteStartElement("CdtrAcct");
                                 writer.WriteStartElement("Id");
-                                    writer.WriteElementStringIfNotNull("IBAN", table.Rows[0][table.Columns.IndexOf(CdtrAcctIbanId)]);
-                                    if (!String.IsNullOrEmpty(table.Rows[0][table.Columns.IndexOf(CdtrAcctId)]))
+                                    writer.WriteElementStringIfNotNull("IBAN", row[table.Columns.IndexOf(CdtrAcctIbanId)]);
+                                    if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(CdtrAcctId)]))
                                     { 
                                         writer.WriteStartElement("Othr");
                                             writer.WriteElementString("Id", row[table.Columns.IndexOf(CdtrAcctId)]);
