@@ -42,6 +42,7 @@ namespace Velixo.EBanking
         protected const string DbtrOrgId = "DbtrOrgId";
         protected const string DbtrOrgIdSchemeNm = "DbtrOrgIdSchemeNm";
         protected const string DbtrAcctId = "DbtrAcctId";
+        protected const string DbtrAcctIbanId = "DbtrAcctIbanId";
         protected const string DbtrAcctCcy = "DbtrAcctCcy";
         protected const string DbtrFinInstnBic = "DbtrFinInstnBic";
         protected const string DbtrFinInstnClrSysMmbId = "DbtrFinInstnClrSysMmbId";
@@ -92,6 +93,7 @@ namespace Velixo.EBanking
         protected const string CdtrOrgId = "CdtrOrgId";
         protected const string CdtrOrgSchmeNmCd = "CdtrOrgSchmeNmCd";
         protected const string CdtrAcctId = "CdtrAcctId";
+        protected const string CdtrAcctIbanId = "CdtrAcctIbanId";
         protected const string CdtrAcctTp = "CdtrAcctTp";
 
         protected const string RmtInfEmail = "RmtInfEmail";
@@ -143,6 +145,7 @@ namespace Velixo.EBanking
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrOrgId)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrOrgIdSchemeNm)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrAcctId)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrAcctIbanId)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrAcctCcy)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrFinInstnBic)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, DbtrFinInstnClrSysMmbId)));
@@ -193,6 +196,7 @@ namespace Velixo.EBanking
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrOrgId)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrOrgSchmeNmCd)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrAcctId)));
+            ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrAcctIbanId)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, CdtrAcctTp)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, RmtInfEmail)));
             ret.Add(CreateFieldState(new SchemaFieldInfo(-1, RmtInfPstlAdrNm)));
@@ -359,9 +363,13 @@ namespace Velixo.EBanking
                 //Debitor Account
                 writer.WriteStartElement("DbtrAcct");
                     writer.WriteStartElement("Id");
-                        writer.WriteStartElement("Othr");
-                            writer.WriteElementString("Id", table.Rows[0][table.Columns.IndexOf(DbtrAcctId)]);
-                        writer.WriteEndElement(); //Othr
+                        writer.WriteElementStringIfNotNull("IBAN", table.Rows[0][table.Columns.IndexOf(DbtrAcctIbanId)]);
+                        if (!String.IsNullOrEmpty(table.Rows[0][table.Columns.IndexOf(DbtrAcctId)]))
+                        {
+                            writer.WriteStartElement("Othr");
+                                writer.WriteElementString("Id", table.Rows[0][table.Columns.IndexOf(DbtrAcctId)]);
+                            writer.WriteEndElement(); //Othr
+                        }
                     writer.WriteEndElement(); //Id
                     writer.WriteElementStringIfNotNull("Ccy", table.Rows[0][table.Columns.IndexOf(DbtrAcctCcy)]);
                 writer.WriteEndElement(); //DbtrAcct
@@ -396,7 +404,7 @@ namespace Velixo.EBanking
                     //Credit Transaction Info
                     writer.WriteStartElement("CdtTrfTxInf");
                         writer.WriteStartElement("PmtId");
-                            writer.WriteElementString("InstrId", row[table.Columns.IndexOf(CdtTrfTxInfPmtInstrId)]);
+                            writer.WriteElementStringIfNotNull("InstrId", row[table.Columns.IndexOf(CdtTrfTxInfPmtInstrId)]);
                             writer.WriteElementString("EndToEndId", row[table.Columns.IndexOf(CdtTrfTxInfPmtEndToEndId)]);
                         writer.WriteEndElement(); //PmtId
                         writer.WriteStartElement("Amt");
@@ -514,13 +522,17 @@ namespace Velixo.EBanking
                         writer.WriteEndElement(); //Cdtr
 
                         //Creditor Account -- omit node on cheque outsourcing files
-                        if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(CdtrAcctId)]))
-                        { 
+                        if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(CdtrAcctId)]) || !String.IsNullOrEmpty(row[table.Columns.IndexOf(CdtrAcctIbanId)]))
+                        {
                             writer.WriteStartElement("CdtrAcct");
                                 writer.WriteStartElement("Id");
-                                    writer.WriteStartElement("Othr");
-                                        writer.WriteElementString("Id", row[table.Columns.IndexOf(CdtrAcctId)]);
-                                    writer.WriteEndElement(); //Othr
+                                    writer.WriteElementStringIfNotNull("IBAN", row[table.Columns.IndexOf(CdtrAcctIbanId)]);
+                                    if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(CdtrAcctId)]))
+                                    { 
+                                        writer.WriteStartElement("Othr");
+                                            writer.WriteElementString("Id", row[table.Columns.IndexOf(CdtrAcctId)]);
+                                        writer.WriteEndElement(); //Othr
+                                    }
                                 writer.WriteEndElement(); //Id
 
                                 if (!String.IsNullOrEmpty(row[table.Columns.IndexOf(CdtrAcctTp)]))

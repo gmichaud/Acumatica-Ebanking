@@ -3,26 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BauerUSA", "http://localhost/BauerUSA", "{007890D7-4BBA-455D-A0DD-A2F7734D53A7}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AcumaticaDemo2021R1", "http://localhost/AcumaticaDemo2021R1", "{007890D7-4BBA-455D-A0DD-A2F7734D53A7}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "false"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.1"
 		ProjectReferences = "{769d0108-a644-4dcf-b96e-ac00fb22f9c3}|Velixo.EBanking.dll;"
-		Debug.AspNetCompiler.VirtualPath = "/BauerUSA"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\Program Files\Acumatica ERP\BauerUSA\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\BauerUSA\"
+		Debug.AspNetCompiler.VirtualPath = "/AcumaticaDemo2021R1"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\Program Files\Acumatica ERP\AcumaticaDemo2021R1\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\AcumaticaDemo2021R1\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/BauerUSA"
-		Release.AspNetCompiler.PhysicalPath = "..\..\Program Files\Acumatica ERP\BauerUSA\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\BauerUSA\"
+		Release.AspNetCompiler.VirtualPath = "/AcumaticaDemo2021R1"
+		Release.AspNetCompiler.PhysicalPath = "..\..\Program Files\Acumatica ERP\AcumaticaDemo2021R1\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\AcumaticaDemo2021R1\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "..\..\Program Files\Acumatica ERP\BauerUSA\"
+		SlnRelativePath = "..\..\Program Files\Acumatica ERP\AcumaticaDemo2021R1\"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Velixo.EBanking", "Velixo.EBanking.csproj", "{769D0108-A644-4DCF-B96E-AC00FB22F9C3}"
