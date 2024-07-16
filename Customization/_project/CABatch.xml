@@ -1,4 +1,4 @@
 ﻿<Table TableName="CABatch">
-    <Column TableName="CABatch" ColumnName="ProcessingCenterID" ColumnType="string" AllowNull="True" MaxLength="10" DecimalPrecision="0" DecimalLength="0" IsNewColumn="True" IsUnicode="True" />
-    <Column TableName="CABatch" ColumnName="FileTransferTime" ColumnType="date" AllowNull="True" DecimalPrecision="0" DecimalLength="0" IsNewColumn="True" IsUnicode="True" />
+    <Column TableName="CABatch" ColumnName="UsrProcessingCenterID" ColumnType="string" AllowNull="True" MaxLength="10" DecimalPrecision="0" DecimalLength="0" IsNewColumn="True" IsUnicode="True" />
+    <Column TableName="CABatch" ColumnName="UsrFileTransferTime" ColumnType="date" AllowNull="True" DecimalPrecision="0" DecimalLength="0" IsNewColumn="True" IsUnicode="True" />
 </Table>
