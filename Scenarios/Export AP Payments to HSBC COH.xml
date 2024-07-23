@@ -125,6 +125,7 @@
         <SYProviderField ObjectName="WIRE120419-00.xml" LineNbr="75" IsActive="1" Name="RmtInfUstrd" DisplayName="RmtInfUstrd" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
         <SYProviderField ObjectName="WIRE120419-00.xml" LineNbr="78" IsActive="1" Name="RmtInfRefInfoPrtry" DisplayName="RmtInfRefInfoPrtry" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
         <SYProviderField ObjectName="WIRE120419-00.xml" LineNbr="77" IsActive="1" Name="RmtInfRefInfoCd" DisplayName="RmtInfRefInfoCd" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+        <SYProviderField ObjectName="WIRE120419-00.xml" LineNbr="81" IsActive="1" Name="RmtInfEmail" IsKey="0" IsCustom="1" />
         <SYProviderField ObjectName="WIRE120419-00.xml" LineNbr="76" IsActive="1" Name="RmtInfAPRefNbr" DisplayName="RmtInfAPRefNbr" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
         <SYProviderField ObjectName="WIRE120419-00.xml" LineNbr="12" IsActive="1" Name="ReqdExctnDt" DisplayName="ReqdExctnDt" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
         <SYProviderField ObjectName="WIRE120419-00.xml" LineNbr="9" IsActive="1" Name="PmtTpInfSvcLvlCd" DisplayName="PmtTpInfSvcLvlCd" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
@@ -154,6 +155,7 @@
         <SYProviderField ObjectName="WIRE120419-00.xml" LineNbr="20" IsActive="1" Name="DbtrCtry" DisplayName="DbtrCtry" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
         <SYProviderField ObjectName="WIRE120419-00.xml" LineNbr="16" IsActive="1" Name="DbtrBldgNb" DisplayName="DbtrBldgNb" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
         <SYProviderField ObjectName="WIRE120419-00.xml" LineNbr="23" IsActive="1" Name="DbtrAcctId" DisplayName="DbtrAcctId" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+        <SYProviderField ObjectName="WIRE120419-00.xml" LineNbr="79" IsActive="1" Name="DbtrAcctIbanId" IsKey="0" IsCustom="1" />
         <SYProviderField ObjectName="WIRE120419-00.xml" LineNbr="24" IsActive="1" Name="DbtrAcctCcy" DisplayName="DbtrAcctCcy" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
         <SYProviderField ObjectName="WIRE120419-00.xml" LineNbr="13" IsActive="1" Name="CtrlSum" DisplayName="CtrlSum" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
         <SYProviderField ObjectName="WIRE120419-00.xml" LineNbr="4" IsActive="1" Name="CreDtTm" DisplayName="CreDtTm" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
@@ -199,11 +201,12 @@
         <SYProviderField ObjectName="WIRE120419-00.xml" LineNbr="65" IsActive="1" Name="CdtrAdrLine1" DisplayName="CdtrAdrLine1" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
         <SYProviderField ObjectName="WIRE120419-00.xml" LineNbr="74" IsActive="1" Name="CdtrAcctTp" DisplayName="CdtrAcctTp" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
         <SYProviderField ObjectName="WIRE120419-00.xml" LineNbr="73" IsActive="1" Name="CdtrAcctId" DisplayName="CdtrAcctId" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
+        <SYProviderField ObjectName="WIRE120419-00.xml" LineNbr="80" IsActive="1" Name="CdtrAcctIbanId" IsKey="0" IsCustom="1" />
         <SYProviderField ObjectName="WIRE120419-00.xml" LineNbr="5" IsActive="1" Name="AuthstnCd" DisplayName="AuthstnCd" IsKey="0" DataType="System.String" DataLength="-1" IsCustom="0" />
         <SYProviderField ObjectName="File" LineNbr="1" IsActive="1" Name="NoteID" IsKey="0" DataType="System.String" IsCustom="1" />
         <SYProviderField ObjectName="File" LineNbr="2" IsActive="1" Name="FileName" IsKey="0" DataType="System.String" IsCustom="1" />
         <SYProviderField ObjectName="File" LineNbr="3" IsActive="1" Name="Amount" IsKey="0" DataType="System.String" IsCustom="1" />
-        <SYProviderObject LineNbr="1" IsActive="1" Name="WIRE120419-00.xml" FieldCntr="78" IsCustom="0" />
+        <SYProviderObject LineNbr="1" IsActive="1" Name="WIRE120419-00.xml" FieldCntr="81" IsCustom="0" />
         <SYProviderParameter LineNbr="17" Name="DisableXmlSchemaValidation" DisplayName="Disable XML Schema Validation (debug mode)" Value="False" IsEncrypted="0" />
         <SYProviderParameter LineNbr="16" Name="BatchNbr" DisplayName="Batch Number" Value="" IsEncrypted="0" />
         <SYProviderParameter LineNbr="15" Name="Encoding" DisplayName="Encoding" Value="utf-8" IsEncrypted="0" />
