@@ -17,7 +17,7 @@ namespace Velixo.EBanking
 
         [Serializable]
         [PXHidden]
-        public class BankTransactionFile : IBqlTable
+        public class BankTransactionFile : PXBqlTable, IBqlTable
         {
             [PXBool]
             [PXUnboundDefault(false)]
