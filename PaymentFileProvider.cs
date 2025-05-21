@@ -615,7 +615,7 @@ namespace Velixo.EBanking
                                 writer.WriteElementString("Cd", GetReferredDocumentTypeFromAPDocType(adj.AdjdDocType));
                             writer.WriteEndElement(); //CdOrPrtry
                         writer.WriteEndElement(); //Tp
-                        if(inv != null && !String.IsNullOrEmpty(inv.InvoiceNbr)) writer.WriteElementString("Nb", inv.InvoiceNbr); else writer.WriteElementString("Nb", adj.AdjdRefNbr);
+                        if(inv != null && !String.IsNullOrEmpty(inv.InvoiceNbr)) writer.WriteElementStringIfNotNull("Nb", inv.InvoiceNbr, 35); else writer.WriteElementStringIfNotNull("Nb", adj.AdjdRefNbr, 35);
                         if(inv != null && inv.InvoiceDate != null) writer.WriteElementString("RltdDt", FormatDate(inv.DocDate.Value));
                     writer.WriteEndElement(); //RfrdDocInf
 
